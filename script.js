@@ -131,9 +131,8 @@ document.addEventListener("keydown", (event) => {
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
     const submitButton = contactForm.querySelector('button[type="submit"]');
-    submitButton.textContent = "Inquiry Sent";
+    submitButton.textContent = "Sending...";
     submitButton.disabled = true;
   });
 }
