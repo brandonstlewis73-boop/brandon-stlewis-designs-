@@ -1,237 +1,441 @@
-const projectData = {
-  logo: {
-    category: "Logo Design",
-    title: "Northline Atelier",
-    description:
-      "A luxury identity direction built for a boutique interior styling brand, combining editorial typography, premium spacing, and polished presentation mockups.",
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80",
-    alt: "Northline Atelier brand identity moodboard and presentation",
-  },
-  social: {
-    category: "Social Media Branding",
-    title: "Pulse House Fitness",
-    description:
-      "A launch-ready set of social visuals designed to keep the brand energetic, consistent, and premium across campaigns, promotions, and story content.",
-    image:
-      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1400&q=80",
-    alt: "Pulse House Fitness social campaign visuals on mobile screens",
-  },
-  print: {
-    category: "Business Cards / Print",
-    title: "Oak & Ember Legal",
-    description:
-      "A refined stationery system created to make a legal brand feel elevated and trustworthy, with premium print applications and strong visual restraint.",
-    image:
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80",
-    alt: "Oak and Ember Legal print collateral and business card photography",
-  },
-  ui: {
-    category: "Website UI Mockups",
-    title: "Halo Commerce",
-    description:
-      "A clean digital storefront concept balancing bold imagery, structured copy, and modern product storytelling to create a conversion-ready brand presence.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-    alt: "Halo Commerce website interface displayed on a large monitor",
-  },
-};
-
-const pricingPlans = [
-  { selector: "#paypal-starter", value: "95.00", name: "Starter Package" },
-  { selector: "#paypal-brand", value: "275.00", name: "Brand Identity" },
-  { selector: "#paypal-premium", value: "650.00", name: "Premium Package" },
-];
-
-const revealElements = document.querySelectorAll(".reveal");
-const navbar = document.querySelector(".navbar");
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const portfolioCards = document.querySelectorAll(".portfolio-card");
-const modal = document.getElementById("project-modal");
-const modalTitle = document.getElementById("modal-title");
-const modalCategory = document.getElementById("modal-category");
-const modalDescription = document.getElementById("modal-description");
-const modalImage = document.getElementById("modal-image");
-const closeModalTriggers = document.querySelectorAll("[data-close-modal]");
-const contactForm = document.querySelector(".contact-form");
-const cursorDot = document.querySelector(".cursor-dot");
-const heroArt = document.getElementById("hero-art");
-const heroShape = document.getElementById("hero-shape");
-
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandon Stlewis Designs | Creative Brand Studio</title>
+    <meta
+      name="description"
+      content="Brandon Stlewis Designs creates premium visual identities, brand campaigns, and polished digital experiences for ambitious businesses."
+    />
+    <meta
+      name="keywords"
+      content="Brandon Stlewis Designs, graphic designer, brand identity, logo design, web design, packaging, creative studio"
+    />
+    <meta name="theme-color" content="#0B0B0C" />
+    <link rel="canonical" href="https://www.brandonstlewisdesigns.com/" />
+    <meta property="og:title" content="Brandon Stlewis Designs" />
+    <meta
+      property="og:description"
+      content="Crafting bold visual identities that stand out."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.brandonstlewisdesigns.com/" />
+    <meta property="og:image" content="assets/bsd-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Brandon Stlewis Designs" />
+    <meta
+      name="twitter:description"
+      content="Premium visual identities, launch visuals, and digital design for ambitious brands."
+    />
+    <meta name="twitter:image" content="assets/bsd-logo.png" />
+    <link rel="icon" type="image/png" href="assets/bsd-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=AaN0PcDHxOM8SccAfW02ax4cIRiJ5wXqsjxHuis_9Xm32nYd2VFDJ36c6fcRwj_AJ0N2FaPKoJVh8PVS&currency=USD&intent=capture"
+      data-sdk-source="integration-builder"
+      async
+    ></script>
+    <script defer src="script.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Brandon Stlewis Designs",
+        "url": "https://www.brandonstlewisdesigns.com",
+        "description": "Premium graphic design studio focused on bold visual identities, print systems, social media branding, and digital design.",
+        "areaServed": "Worldwide",
+        "priceRange": "$$",
+        "email": "brandonstlewis73@gmail.com"
       }
-    });
-  },
-  { threshold: 0.14 }
-);
+    </script>
+  </head>
+  <body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="noise-layer" aria-hidden="true"></div>
 
-revealElements.forEach((element) => revealObserver.observe(element));
+    <div class="site-shell">
+      <header class="site-header">
+        <nav class="navbar">
+          <a class="brand-mark" href="#top" aria-label="Brandon Stlewis Designs home">
+            <img
+              class="brand-logo"
+              src="assets/bsd-logo.png"
+              alt="Brandon Stlewis Designs logo"
+            />
+            <span class="brand-text-wrap">
+              <span class="brand-name">Brandon Stlewis Designs</span>
+              <span class="brand-subtitle">Creative Brand Studio</span>
+            </span>
+          </a>
 
-if (menuToggle) {
-  menuToggle.addEventListener("click", () => {
-    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-    menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-    navbar.classList.toggle("is-open", !isExpanded);
-  });
-}
+          <div class="nav-links">
+            <a href="#portfolio">Work</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
 
-navLinks?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navbar.classList.remove("is-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-  });
-});
+          <a class="nav-cta" href="#services">Book a Package</a>
+          <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+          </button>
+        </nav>
+      </header>
 
-function openModal(projectKey) {
-  const project = projectData[projectKey];
-  if (!project) return;
+      <main id="top">
+        <section class="hero section">
+          <div class="hero-grid">
+            <div class="hero-copy reveal">
+              <p class="eyebrow">Independent Brand Direction</p>
+              <h1>
+                <span>Brandon Stlewis</span>
+                <span>Designs That</span>
+                <span>Command Attention</span>
+              </h1>
+              <p class="hero-description">
+                Identity systems, polished launch visuals, and high-trust creative direction
+                built for founders and businesses that want a presence people remember.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-outline" href="#portfolio">View Work</a>
+                <a class="button button-filled" href="#contact">Hire Me</a>
+              </div>
+              <div class="hero-note">
+                <span>Available for logo design, print systems, campaign assets, website concepts, and launch visuals.</span>
+              </div>
+            </div>
 
-  modalCategory.textContent = project.category;
-  modalTitle.textContent = project.title;
-  modalDescription.textContent = project.description;
-  modalImage.src = project.image;
-  modalImage.alt = project.alt;
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-}
+            <div class="hero-art reveal" id="hero-art">
+              <div class="hero-oversized">BRANDON</div>
+              <div class="hero-visual-stack">
+                <div class="hero-image hero-image-primary">
+                  <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80"
+                    alt="Designer reviewing visual layouts in a premium studio setting"
+                  />
+                </div>
+                <div class="hero-image hero-image-secondary">
+                  <img
+                    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+                    alt="Brand identity presentation materials arranged on a desk"
+                  />
+                </div>
+                <div class="hero-shape" id="hero-shape"></div>
+                <div class="hero-info-card">
+                  <p class="eyebrow">Creative Brand Studio</p>
+                  <strong>Brandon Stlewis Designs</strong>
+                  <span>Identity, print, campaign, and digital design</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-function closeModal() {
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
-}
+        <section class="section section-divider reveal">
+          <div class="divider-line"></div>
+          <div class="divider-copy">
+            <span>Creative systems for brands that want more than a clean logo.</span>
+            <span>Built with premium perception, strong composition, and client trust in mind.</span>
+          </div>
+        </section>
 
-portfolioCards.forEach((card) => {
-  const open = () => openModal(card.dataset.project);
-  card.addEventListener("click", open);
-  card.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      open();
-    }
-  });
-});
+        <section class="section section-statement">
+          <div class="statement-grid">
+            <div class="statement-side reveal">
+              <p class="eyebrow">Studio View</p>
+              <h2>Not a template. Not a filler layout. A composed digital presence with some nerve.</h2>
+            </div>
+            <div class="statement-side reveal">
+              <p>
+                Brandon Stlewis Designs is positioned here like a modern creative studio: bold
+                typography, broken grid rhythm, layered imagery, and service presentation that
+                feels intentional all the way through payment.
+              </p>
+            </div>
+          </div>
+        </section>
 
-closeModalTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", closeModal);
-});
+        <section class="section section-portfolio" id="portfolio">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Selected Work</p>
+            <h2>Project showcases arranged like an editorial spread, not a standard grid.</h2>
+          </div>
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && modal.classList.contains("is-open")) {
-    closeModal();
-  }
-});
+          <div class="portfolio-masonry">
+            <article class="portfolio-card portfolio-large reveal" data-project="logo" tabindex="0">
+              <div class="portfolio-media">
+                <img
+                  src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80"
+                  alt="Premium brand identity presentation on desk"
+                />
+              </div>
+              <div class="portfolio-overlay">
+                <p class="portfolio-type">Logo Design</p>
+                <h3>Northline Atelier</h3>
+                <p>Luxury identity direction for a boutique interior styling brand.</p>
+              </div>
+            </article>
 
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    submitButton.textContent = "Sending...";
-    submitButton.disabled = true;
-  });
-}
+            <article class="portfolio-card portfolio-tall reveal" data-project="social" tabindex="0">
+              <div class="portfolio-media">
+                <img
+                  src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80"
+                  alt="Social campaign visuals displayed on phone screens"
+                />
+              </div>
+              <div class="portfolio-overlay">
+                <p class="portfolio-type">Social Media Branding</p>
+                <h3>Pulse House Fitness</h3>
+                <p>Launch content built for speed, consistency, and premium energy.</p>
+              </div>
+            </article>
 
-function renderFallbackButton(container, plan) {
-  container.innerHTML = "";
-  const fallback = document.createElement("a");
-  fallback.className = "paypal-fallback";
-  fallback.href = "#contact";
-  fallback.textContent = `Connect PayPal Client ID to enable ${plan.name}`;
-  container.appendChild(fallback);
-}
+            <article class="portfolio-card portfolio-wide reveal" data-project="print" tabindex="0">
+              <div class="portfolio-media">
+                <img
+                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80"
+                  alt="Business card and print collateral mockup"
+                />
+              </div>
+              <div class="portfolio-overlay">
+                <p class="portfolio-type">Business Cards / Print</p>
+                <h3>Oak & Ember Legal</h3>
+                <p>Printed touchpoints designed to feel restrained, polished, and credible.</p>
+              </div>
+            </article>
 
-function initializePayPalButtons() {
-  pricingPlans.forEach((plan) => {
-    const container = document.querySelector(plan.selector);
-    if (!container) return;
+            <article class="portfolio-card portfolio-offset reveal" data-project="ui" tabindex="0">
+              <div class="portfolio-media">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80"
+                  alt="Modern website UI mockup on desktop monitor"
+                />
+              </div>
+              <div class="portfolio-overlay">
+                <p class="portfolio-type">Website UI Mockups</p>
+                <h3>Halo Commerce</h3>
+                <p>Digital design shaped to sell trust, clarity, and premium positioning.</p>
+              </div>
+            </article>
+          </div>
+        </section>
 
-    if (!window.paypal || !window.paypal.Buttons) {
-      renderFallbackButton(container, plan);
-      return;
-    }
+        <section class="section section-services" id="services">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Services + Pricing</p>
+            <h2>Three designed offers, each presented like a feature block with built-in checkout.</h2>
+          </div>
 
-    window.paypal
-      .Buttons({
-        style: {
-          shape: "pill",
-          color: "gold",
-          label: "paypal",
-          height: 48,
-        },
-        createOrder(_, actions) {
-          return actions.order.create({
-            purchase_units: [
-              {
-                description: plan.name,
-                amount: {
-                  currency_code: "USD",
-                  value: plan.value,
-                },
-              },
-            ],
-          });
-        },
-        onApprove(_, actions) {
-          return actions.order.capture().then(() => {
-            container.innerHTML = '<div class="paypal-fallback">Payment approved. Thank you.</div>';
-          });
-        },
-        onError() {
-          renderFallbackButton(container, plan);
-        },
-      })
-      .render(plan.selector)
-      .catch(() => renderFallbackButton(container, plan));
-  });
-}
+          <div class="services-stack">
+            <article class="service-panel reveal">
+              <div class="service-kicker">Starter Package</div>
+              <div class="service-main">
+                <h3>$95</h3>
+                <p>
+                  A sharp visual starting point for new brands that need immediate polish without
+                  a full identity build.
+                </p>
+              </div>
+              <ul class="service-list">
+                <li>1 logo concept</li>
+                <li>2 revision rounds</li>
+                <li>Brand color palette</li>
+                <li>Profile graphic for social use</li>
+              </ul>
+              <div class="service-payment" id="paypal-starter"></div>
+            </article>
 
-if (cursorDot && window.matchMedia("(pointer:fine)").matches) {
-  document.addEventListener("mousemove", (event) => {
-    cursorDot.style.opacity = "1";
-    cursorDot.style.transform = `translate(${event.clientX - 9}px, ${event.clientY - 9}px)`;
-  });
+            <article class="service-panel featured reveal">
+              <div class="service-kicker">Brand Identity</div>
+              <div class="service-main">
+                <h3>$275</h3>
+                <p>
+                  A more complete identity package for businesses that need to look confident,
+                  structured, and commercially ready.
+                </p>
+              </div>
+              <ul class="service-list">
+                <li>Primary logo + alternate mark</li>
+                <li>Font and color direction</li>
+                <li>Business card design</li>
+                <li>3 branded social templates</li>
+              </ul>
+              <div class="service-payment" id="paypal-brand"></div>
+            </article>
 
-  document.querySelectorAll("a, button, .portfolio-card").forEach((target) => {
-    target.addEventListener("mouseenter", () => {
-      cursorDot.style.width = "34px";
-      cursorDot.style.height = "34px";
-    });
-    target.addEventListener("mouseleave", () => {
-      cursorDot.style.width = "18px";
-      cursorDot.style.height = "18px";
-    });
-  });
-}
+            <article class="service-panel reveal">
+              <div class="service-kicker">Premium Package</div>
+              <div class="service-main">
+                <h3>$650</h3>
+                <p>
+                  A higher-touch package for brands ready to show up with a full visual system
+                  across web, print, and promotional assets.
+                </p>
+              </div>
+              <ul class="service-list">
+                <li>Full identity kit</li>
+                <li>Website homepage mockup</li>
+                <li>Print collateral suite</li>
+                <li>Priority creative support</li>
+              </ul>
+              <div class="service-payment" id="paypal-premium"></div>
+            </article>
+          </div>
+        </section>
 
-if (heroArt && heroShape) {
-  heroArt.addEventListener("mousemove", (event) => {
-    const rect = heroArt.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
+        <section class="section section-about" id="about">
+          <div class="about-editorial">
+            <div class="about-copy reveal">
+              <p class="eyebrow">About The Studio</p>
+              <h2>Design that gives your brand presence before you say a single word.</h2>
+              <p>
+                I help brands stand out through bold, strategic design that connects with
+                audiences. Brandon Stlewis Designs blends sharp creative direction with polished
+                execution so businesses can show up looking intentional, elevated, and worth
+                paying attention to.
+              </p>
+              <div class="about-divider"></div>
+              <div class="about-points">
+                <span>Identity-led creative direction</span>
+                <span>Social, print, and digital launch visuals</span>
+                <span>Premium first impression across every touchpoint</span>
+              </div>
+            </div>
 
-    heroShape.style.transform = `translate(${x * 26}px, ${y * 20}px) rotate(${x * 18}deg)`;
-  });
+            <div class="about-visual reveal">
+              <div class="about-image-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80"
+                  alt="Creative workspace with sketches, laptop, and design materials"
+                />
+              </div>
+              <div class="about-floating-quote">
+                <span>Studio principle</span>
+                <strong>Every layout should earn its space.</strong>
+              </div>
+            </div>
+          </div>
+        </section>
 
-  heroArt.addEventListener("mouseleave", () => {
-    heroShape.style.transform = "";
-  });
-}
+        <section class="section section-testimonials">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Client Feedback</p>
+            <h2>Trust signals arranged as a moving strip, with enough space to breathe.</h2>
+          </div>
 
-window.addEventListener("load", () => {
-  initializePayPalButtons();
+          <div class="testimonial-rail reveal">
+            <article class="testimonial-card">
+              <p>
+                "Brandon gave our brand the kind of polish that instantly made us look more
+                established. Clients started taking us seriously right away."
+              </p>
+              <strong>Tia Reynolds</strong>
+              <span>Founder, Northline Atelier</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                "The social media branding felt custom, clean, and strategic. It helped our
+                launch content look far more premium than what we had before."
+              </p>
+              <strong>Marcus Hale</strong>
+              <span>Owner, Pulse House Fitness</span>
+            </article>
+            <article class="testimonial-card">
+              <p>
+                "Fast communication, strong creative direction, and a final design system that
+                looked ready for a much bigger agency budget."
+              </p>
+              <strong>Elena Brooks</strong>
+              <span>Managing Partner, Oak & Ember Legal</span>
+            </article>
+          </div>
+        </section>
 
-  setTimeout(() => {
-    pricingPlans.forEach((plan) => {
-      const container = document.querySelector(plan.selector);
-      if (container && !container.children.length) {
-        renderFallbackButton(container, plan);
-      }
-    });
-  }, 1600);
-});
+        <section class="section section-contact" id="contact">
+          <div class="contact-shell reveal">
+            <p class="eyebrow">Contact</p>
+            <h2>Let's build something unforgettable.</h2>
+            <p class="contact-intro">
+              Send your goals, timeline, and package interest. This front door is already framed
+              to support serious inquiries and paid client work.
+            </p>
+            <form
+              class="contact-form"
+              action="https://formsubmit.co/brandonstlewis73@gmail.com"
+              method="post"
+            >
+              <input type="hidden" name="_subject" value="New Brandon Stlewis Designs Inquiry" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input
+                type="hidden"
+                name="_next"
+                value="https://www.brandonstlewisdesigns.com/"
+              />
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                <span>Message</span>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your brand, goals, and timeline."
+                  required
+                ></textarea>
+              </label>
+              <button class="button button-filled" type="submit">Send Inquiry</button>
+            </form>
+            <p class="contact-note">
+              Prefer email? Reach out directly at
+              <a href="mailto:brandonstlewis73@gmail.com">brandonstlewis73@gmail.com</a>
+            </p>
+            <div class="social-links">
+              <a href="mailto:brandonstlewis73@gmail.com" aria-label="Email Brandon Stlewis Designs">Email</a>
+              <a href="#services" aria-label="View packages">Packages</a>
+              <a href="https://www.brandonstlewisdesigns.com/" aria-label="Brandon Stlewis Designs website">Domain</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <p>Brandon Stlewis Designs</p>
+          <span>Premium visual identity design for brands that want to stand out.</span>
+        </div>
+        <div class="footer-meta">
+          <span>Based in the U.S. / Available worldwide</span>
+          <span>brandonstlewisdesigns.com</span>
+        </div>
+      </footer>
+    </div>
+
+    <div class="modal" id="project-modal" aria-hidden="true">
+      <div class="modal-overlay" data-close-modal></div>
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" aria-label="Close project" data-close-modal>Close</button>
+        <div class="modal-media">
+          <img id="modal-image" src="" alt="" />
+        </div>
+        <div class="modal-copy">
+          <p class="eyebrow" id="modal-category"></p>
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
