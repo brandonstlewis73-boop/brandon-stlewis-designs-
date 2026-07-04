@@ -3,37 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Brandon Stlewis Designs | Creative Brand Studio</title>
+    <title>Brandon Stlewis Designs | 3D Web, Branding & Business Systems</title>
     <meta
       name="description"
-      content="Brandon Stlewis Designs creates premium visual identities, brand campaigns, and polished digital experiences for ambitious businesses."
+      content="Brandon Stlewis Designs builds premium websites, online stores, POS systems, AI receptionist tools, branding, graphics, and business automation."
     />
     <meta
       name="keywords"
-      content="Brandon Stlewis Designs, graphic designer, brand identity, logo design, web design, packaging, creative studio"
+      content="Brandon Stlewis Designs, web development, POS systems, online stores, AI receptionist, branding, graphic design, social media management, Trinidad"
     />
-    <meta name="theme-color" content="#0B0B0C" />
-    <link rel="canonical" href="https://www.brandonstlewisdesigns.com/" />
+    <meta name="theme-color" content="#05070B" />
+    <link rel="canonical" href="https://brandonstlewisdesign.shop/" />
     <meta property="og:title" content="Brandon Stlewis Designs" />
     <meta
       property="og:description"
-      content="Crafting bold visual identities that stand out."
+      content="Premium websites, business systems, AI tools, branding, and digital design."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.brandonstlewisdesigns.com/" />
+    <meta property="og:url" content="https://brandonstlewisdesign.shop/" />
     <meta property="og:image" content="assets/bsd-logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Brandon Stlewis Designs" />
     <meta
       name="twitter:description"
-      content="Premium visual identities, launch visuals, and digital design for ambitious brands."
+      content="Luxury tech-forward websites, POS systems, AI tools, and brand design."
     />
     <meta name="twitter:image" content="assets/bsd-logo.png" />
     <link rel="icon" type="image/png" href="assets/bsd-logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -42,14 +42,21 @@
       data-sdk-source="integration-builder"
       async
     ></script>
-    <script defer src="script.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="script.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Brandon Stlewis Designs",
-        "url": "https://www.brandonstlewisdesigns.com",
-        "description": "Premium graphic design studio focused on bold visual identities, print systems, social media branding, and digital design.",
+        "url": "https://brandonstlewisdesign.shop",
+        "description": "Premium web development, POS systems, online stores, AI receptionist tools, branding, graphics, social media management, and business automation.",
         "areaServed": "Worldwide",
         "priceRange": "$$",
         "email": "brandonstlewis73@gmail.com"
@@ -57,464 +64,335 @@
     </script>
   </head>
   <body>
-    <div class="cursor-dot" aria-hidden="true"></div>
-    <div class="noise-layer" aria-hidden="true"></div>
+    <div class="motion-grid" aria-hidden="true"></div>
 
-    <div class="site-shell">
-      <header class="site-header">
-        <nav class="navbar">
-          <a class="brand-mark" href="#top" aria-label="Brandon Stlewis Designs home">
-            <img
-              class="brand-logo"
-              src="assets/bsd-logo.png"
-              alt="Brandon Stlewis Designs logo"
-            />
-            <span class="brand-text-wrap">
-              <span class="brand-name">Brandon Stlewis Designs</span>
-              <span class="brand-subtitle">Creative Brand Studio</span>
-            </span>
-          </a>
-
-          <div class="nav-links">
-            <a href="#portfolio">Work</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
-
-          <a class="nav-cta" href="#services">Book a Package</a>
-          <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-          </button>
-        </nav>
-      </header>
-
-      <main id="top">
-        <section class="hero section">
-          <div class="hero-grid">
-            <div class="hero-copy reveal">
-              <p class="eyebrow">Independent Brand Direction</p>
-              <h1>
-                <span>Brandon Stlewis</span>
-                <span>Designs That</span>
-                <span>Command Attention</span>
-              </h1>
-              <p class="hero-description">
-                Identity systems, polished launch visuals, and high-trust creative direction
-                built for founders and businesses that want a presence people remember.
-              </p>
-              <div class="hero-actions">
-                <a class="button button-outline" href="#portfolio">View Work</a>
-                <a class="button button-filled" href="#contact">Hire Me</a>
-              </div>
-              <div class="hero-note">
-                <span>Available for logo design, print systems, campaign assets, website concepts, and launch visuals.</span>
-              </div>
-            </div>
-
-            <div class="hero-art reveal" id="hero-art">
-              <div class="hero-oversized">BRANDON</div>
-              <div class="hero-visual-stack">
-                <div class="hero-image hero-image-primary">
-                  <img
-                    src="https://images.unsplash.com/photo-1758193783649-13371d7fb8dd?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                    alt="Elegant modern hotel lobby with sleek reception seating"
-                  />
-                </div>
-                <div class="hero-image hero-image-secondary">
-                  <img
-                    src="https://images.unsplash.com/photo-1767216418975-9853643c4f10?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                    alt="Minimal stationery and desk flat lay for branding work"
-                  />
-                </div>
-                <div class="hero-shape" id="hero-shape"></div>
-                <div class="hero-info-card">
-                  <p class="eyebrow">Creative Brand Studio</p>
-                  <strong>Brandon Stlewis Designs</strong>
-                  <span>Identity, print, campaign, and digital design</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section section-divider reveal">
-          <div class="divider-line"></div>
-          <div class="divider-copy">
-            <span>Creative systems for brands that want more than a clean logo.</span>
-            <span>Built with premium perception, strong composition, and client trust in mind.</span>
-          </div>
-        </section>
-
-        <section class="section section-statement">
-          <div class="statement-grid">
-            <div class="statement-side reveal">
-              <p class="eyebrow">Studio View</p>
-              <h2>Not a template. Not a filler layout. A composed digital presence with some nerve.</h2>
-            </div>
-            <div class="statement-side reveal">
-              <p>
-                Brandon Stlewis Designs is positioned here like a modern creative studio: bold
-                typography, broken grid rhythm, layered imagery, and service presentation that
-                feels intentional all the way through payment.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section section-portfolio" id="portfolio">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Selected Work</p>
-            <h2>Project showcases arranged like an editorial spread, not a standard grid.</h2>
-          </div>
-
-          <div class="portfolio-masonry">
-            <article class="portfolio-card portfolio-large reveal" data-project="logo" tabindex="0">
-              <div class="portfolio-media">
-                <img
-                  src="https://images.unsplash.com/photo-1767216418975-9853643c4f10?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                  alt="Minimal branding stationery flat lay on a clean desk"
-                />
-              </div>
-              <div class="portfolio-overlay">
-                <p class="portfolio-type">Logo Design</p>
-                <h3>Northline Atelier</h3>
-                <p>Luxury identity direction for a boutique interior styling brand.</p>
-              </div>
-            </article>
-
-            <article class="portfolio-card portfolio-tall reveal" data-project="social" tabindex="0">
-              <div class="portfolio-media">
-                <img
-                  src="https://images.unsplash.com/photo-1689467885096-0e7d70516409?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                  alt="Professional using a mobile phone at a desk workspace"
-                />
-              </div>
-              <div class="portfolio-overlay">
-                <p class="portfolio-type">Social Media Branding</p>
-                <h3>Pulse House Fitness</h3>
-                <p>Launch content built for speed, consistency, and premium energy.</p>
-              </div>
-            </article>
-
-            <article class="portfolio-card portfolio-wide reveal" data-project="print" tabindex="0">
-              <div class="portfolio-media">
-                <img
-                  src="https://images.unsplash.com/photo-1758887248912-03a0c34a2f41?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                  alt="Business card sitting on a desk beside a stamp"
-                />
-              </div>
-              <div class="portfolio-overlay">
-                <p class="portfolio-type">Business Cards / Print</p>
-                <h3>Oak & Ember Legal</h3>
-                <p>Printed touchpoints designed to feel restrained, polished, and credible.</p>
-              </div>
-            </article>
-
-            <article class="portfolio-card portfolio-offset reveal" data-project="ui" tabindex="0">
-              <div class="portfolio-media">
-                <img
-                  src="https://images.unsplash.com/photo-1746021535489-00edc5efb203?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                  alt="Modern office workspace with dual monitors and clean decor"
-                />
-              </div>
-              <div class="portfolio-overlay">
-                <p class="portfolio-type">Website UI Mockups</p>
-                <h3>Halo Commerce</h3>
-                <p>Digital design shaped to sell trust, clarity, and premium positioning.</p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section section-services" id="services">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Services + Pricing</p>
-            <h2>Four service offers with starting prices and built-in checkout.</h2>
-          </div>
-
-          <div class="services-stack">
-            <article class="service-panel reveal">
-              <div class="service-kicker">Starter Package</div>
-              <div class="service-main">
-                <h3>Starting at $95</h3>
-                <p>
-                  A sharp visual starting point for new brands that need immediate polish without
-                  a full identity build.
-                </p>
-              </div>
-              <ul class="service-list">
-                <li>1 logo concept</li>
-                <li>2 revision rounds</li>
-                <li>Brand color palette</li>
-                <li>Profile graphic for social use</li>
-              </ul>
-              <div class="service-payment" id="paypal-starter"></div>
-            </article>
-
-            <article class="service-panel featured reveal">
-              <div class="service-kicker">Brand Identity</div>
-              <div class="service-main">
-                <h3>Starting at $275</h3>
-                <p>
-                  A more complete identity package for businesses that need to look confident,
-                  structured, and commercially ready.
-                </p>
-              </div>
-              <ul class="service-list">
-                <li>Primary logo + alternate mark</li>
-                <li>Font and color direction</li>
-                <li>Business card design</li>
-                <li>3 branded social templates</li>
-              </ul>
-              <div class="service-payment" id="paypal-brand"></div>
-            </article>
-
-            <article class="service-panel reveal">
-              <div class="service-kicker">Premium Package</div>
-              <div class="service-main">
-                <h3>Starting at $650</h3>
-                <p>
-                  A higher-touch package for brands ready to show up with a full visual system
-                  across web, print, and promotional assets.
-                </p>
-              </div>
-              <ul class="service-list">
-                <li>Full identity kit</li>
-                <li>Website homepage mockup</li>
-                <li>Print collateral suite</li>
-                <li>Priority creative support</li>
-              </ul>
-              <div class="service-payment" id="paypal-premium"></div>
-            </article>
-
-            <article class="service-panel reveal">
-              <div class="service-kicker">Social Media Management</div>
-              <div class="service-main">
-                <h3>Starting at $220</h3>
-                <p>
-                  Monthly content support for brands that need a more active, polished, and
-                  consistent social presence without handling every post themselves.
-                </p>
-              </div>
-              <ul class="service-list">
-                <li>12 branded posts per month</li>
-                <li>Caption writing support</li>
-                <li>Content calendar planning</li>
-                <li>Basic page management and scheduling</li>
-              </ul>
-              <div class="service-payment" id="paypal-social"></div>
-            </article>
-          </div>
-
-          <div class="policy-card reveal" id="refund-policy">
-            <p class="eyebrow">Refund Policy</p>
-            <h3>Clear expectations before any purchase is made.</h3>
-            <p>
-              Due to the custom nature of design work, all payments are generally non-refundable
-              once work has started. If a project has not yet begun, refund requests may be
-              reviewed within 24 hours of purchase.
-            </p>
-            <p>
-              If a client decides to cancel after concepts, revisions, or creative development
-              have already started, partial refunds are not guaranteed because time and creative
-              labor have already been invested.
-            </p>
-            <p>
-              Brandon Stlewis Designs will always communicate clearly about scope, turnaround,
-              revisions, and delivery before work begins so both sides have aligned expectations.
-            </p>
-          </div>
-
-          <div class="legal-grid">
-            <div class="policy-card reveal" id="terms-of-service">
-              <p class="eyebrow">Terms of Service</p>
-              <h3>Project terms for design bookings and service delivery.</h3>
-              <p>
-                By purchasing a package or submitting an inquiry, clients agree to provide clear
-                project information, respond in a timely manner, and review deliverables within
-                reasonable business timelines.
-              </p>
-              <p>
-                Brandon Stlewis Designs retains the right to pause or reschedule work if required
-                information, approvals, or client feedback are delayed. Final files are delivered
-                after payment is completed according to the agreed package scope.
-              </p>
-              <p>
-                Any work requested beyond the listed package scope may require a custom quote,
-                timeline adjustment, or additional payment before delivery.
-              </p>
-            </div>
-
-            <div class="policy-card reveal" id="privacy-policy">
-              <p class="eyebrow">Privacy Policy</p>
-              <h3>How client information is collected and used.</h3>
-              <p>
-                Information submitted through the contact form, checkout process, or direct email
-                is used only for communication, project planning, invoicing, and service delivery.
-              </p>
-              <p>
-                Brandon Stlewis Designs does not sell or share client information for unrelated
-                marketing purposes. Payment information is processed through third-party providers
-                such as PayPal and is subject to their own privacy and security policies.
-              </p>
-              <p>
-                Clients may request updates or removal of their inquiry information by contacting
-                brandonstlewis73@gmail.com.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="section section-about" id="about">
-          <div class="about-editorial">
-            <div class="about-copy reveal">
-              <p class="eyebrow">About The Studio</p>
-              <h2>Design that gives your brand presence before you say a single word.</h2>
-              <p>
-                I help brands stand out through bold, strategic design that connects with
-                audiences. <span class="brand-inline">Brandon Stlewis Designs</span> blends sharp
-                creative direction with polished execution so businesses can show up looking
-                intentional, elevated, and worth paying attention to.
-              </p>
-              <div class="about-divider"></div>
-              <div class="about-points">
-                <span>Identity-led creative direction</span>
-                <span>Social, print, and digital launch visuals</span>
-                <span>Premium first impression across every touchpoint</span>
-              </div>
-            </div>
-
-            <div class="about-visual reveal">
-              <div class="about-image-wrap">
-                <img
-                  src="https://images.unsplash.com/photo-1746021535489-00edc5efb203?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&ixlib=rb-4.1.0&q=60&w=3000"
-                  alt="Modern office workspace with desk monitors and decor"
-                />
-              </div>
-              <div class="about-floating-quote">
-                <span>Studio principle</span>
-                <strong>Every layout should earn its space.</strong>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section section-testimonials">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Client Feedback</p>
-            <h2>Trust signals arranged as a moving strip, with enough space to breathe.</h2>
-          </div>
-
-          <div class="testimonial-rail reveal">
-            <article class="testimonial-card">
-              <p>
-                "Brandon helped sharpen how we present Paria Suites online. The design direction
-                felt polished, modern, and much more in line with the level of experience we want
-                guests to expect from us."
-              </p>
-              <strong>Michael Achong</strong>
-              <span>Assistant Manager, Paria Suites, Trinidad and Tobago</span>
-            </article>
-            <article class="testimonial-card">
-              <p>
-                "The branding work gave our event promotions a much stronger look. Everything felt
-                more cohesive, easier to market, and more appealing to the audience we were trying
-                to attract in Trinidad."
-              </p>
-              <strong>Atisha Fletcher</strong>
-              <span>Owner, Island Bloom Events, Port of Spain</span>
-            </article>
-            <article class="testimonial-card">
-              <p>
-                "We needed visuals that looked professional enough for both local walk-in traffic
-                and online orders. Brandon delivered branding that felt premium without losing the
-                personality of the business."
-              </p>
-              <strong>Daniel Ramkissoon</strong>
-              <span>Director, South Coast Kitchen, San Fernando</span>
-            </article>
-          </div>
-        </section>
-
-        <section class="section section-contact" id="contact">
-          <div class="contact-shell reveal">
-            <p class="eyebrow">Contact</p>
-            <h2>Let's build something unforgettable.</h2>
-            <p class="contact-intro">
-              Send your goals, timeline, and package interest. This front door is already framed
-              to support serious inquiries and paid client work.
-            </p>
-            <form
-              class="contact-form"
-              action="https://formsubmit.co/brandonstlewis73@gmail.com"
-              method="post"
-            >
-              <input type="hidden" name="_subject" value="New Brandon Stlewis Designs Inquiry" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input
-                type="hidden"
-                name="_next"
-                value="https://www.brandonstlewisdesigns.com/"
-              />
-              <label>
-                <span>Name</span>
-                <input type="text" name="name" placeholder="Your name" required />
-              </label>
-              <label>
-                <span>Email</span>
-                <input type="email" name="email" placeholder="you@example.com" required />
-              </label>
-              <label>
-                <span>Message</span>
-                <textarea
-                  name="message"
-                  rows="5"
-                  placeholder="Tell me about your brand, goals, and timeline."
-                  required
-                ></textarea>
-              </label>
-              <button class="button button-filled" type="submit">Send Inquiry</button>
-            </form>
-            <p class="contact-note">
-              Prefer email? Reach out directly at
-              <a href="mailto:brandonstlewis73@gmail.com">brandonstlewis73@gmail.com</a>
-            </p>
-            <div class="social-links">
-              <a href="mailto:brandonstlewis73@gmail.com" aria-label="Email Brandon Stlewis Designs">Email</a>
-              <a href="#services" aria-label="View packages">Packages</a>
-              <a href="https://www.brandonstlewisdesigns.com/" aria-label="Brandon Stlewis Designs website">Domain</a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div>
-          <p>Brandon Stlewis Designs</p>
-          <span>Premium visual identity design for brands that want to stand out.</span>
+    <header class="site-header">
+      <nav class="navbar">
+        <a class="brand-mark" href="#top" aria-label="Brandon Stlewis Designs home">
+          <img src="assets/bsd-logo.png" alt="Brandon Stlewis Designs logo" />
+          <span>
+            <strong>Brandon Stlewis Designs</strong>
+            <small>3D Web + Business Systems</small>
+          </span>
+        </a>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
         </div>
-        <div class="footer-meta">
-          <span>Based in the U.S. / Available worldwide</span>
-          <span>brandonstlewisdesigns.com</span>
-        </div>
-      </footer>
-    </div>
+        <a class="nav-cta magnetic" href="#contact">Get a Free Quote</a>
+      </nav>
+    </header>
 
-    <div class="modal" id="project-modal" aria-hidden="true">
-      <div class="modal-overlay" data-close-modal></div>
-      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <button class="modal-close" aria-label="Close project" data-close-modal>Close</button>
-        <div class="modal-media">
-          <img id="modal-image" src="" alt="" />
+    <main id="top">
+      <section class="hero-section">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Luxury Tech Studio</p>
+          <h1>Brandon Stlewis Designs</h1>
+          <p class="hero-lede">
+            Futuristic websites, online stores, POS systems, AI receptionist flows, booking systems,
+            secure uploads, branding, and automation for businesses ready to look serious online.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary magnetic" href="#contact">Start Your Website</a>
+            <a class="button button-ghost magnetic" href="#pricing">Book a Project</a>
+          </div>
+          <div class="hero-meta">
+            <span>brandonstlewisdesign.shop</span>
+            <span>Websites / POS / AI / Branding</span>
+          </div>
         </div>
-        <div class="modal-copy">
-          <p class="eyebrow" id="modal-category"></p>
-          <h3 id="modal-title"></h3>
-          <p id="modal-description"></p>
+
+        <div class="hero-showroom" aria-label="Animated 3D business systems showroom">
+          <canvas id="showroom-canvas"></canvas>
+          <div class="canvas-loader" id="canvas-loader">Loading 3D showroom</div>
+          <div class="canvas-fallback" id="canvas-fallback">
+            <div class="fallback-panel">Website</div>
+            <div class="fallback-panel">POS</div>
+            <div class="fallback-panel">AI Chat</div>
+          </div>
         </div>
+      </section>
+
+      <section class="trust-strip reveal">
+        <span>Premium black, blue, silver, and white digital identity.</span>
+        <span>Built for trust, speed, mobile, and conversion.</span>
+      </section>
+
+      <section class="section" id="services">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Services</p>
+          <h2>Business systems designed as one connected digital engine.</h2>
+        </div>
+        <div class="service-grid">
+          <article class="glass-card service-card reveal">
+            <span>01</span>
+            <h3>Website Development</h3>
+            <p>Premium responsive websites with strong branding, lead capture, SEO foundations, and fast loading.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>02</span>
+            <h3>Online Stores</h3>
+            <p>Product pages, checkout paths, service payments, and store layouts built for customer confidence.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>03</span>
+            <h3>POS Systems</h3>
+            <p>Sales dashboards, product management, receipt workflows, inventory structure, and staff-ready tools.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>04</span>
+            <h3>AI Receptionist</h3>
+            <p>Chatbot and intake flows that answer common questions, collect leads, and route customers properly.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>05</span>
+            <h3>Booking Systems</h3>
+            <p>Clean appointment, consultation, and service request flows for local and online businesses.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>06</span>
+            <h3>Secure Uploads</h3>
+            <p>Client-friendly upload areas for documents, images, project files, and service intake materials.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>07</span>
+            <h3>Branding & Graphics</h3>
+            <p>Logos, print assets, social visuals, business cards, launch graphics, and premium visual systems.</p>
+          </article>
+          <article class="glass-card service-card reveal">
+            <span>08</span>
+            <h3>Business Automation</h3>
+            <p>Practical automations for inquiries, order flow, follow-ups, dashboards, and repeat admin work.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split-section" id="projects">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Featured Projects</p>
+          <h2>3D-framed previews for the systems clients actually need.</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-frame reveal">
+            <div class="frame-top"></div>
+            <h3>Hotel Booking Website</h3>
+            <p>Guest-ready landing page, inquiry form, visual identity, and booking call-to-action for hospitality businesses.</p>
+            <span>Website / Booking / Branding</span>
+          </article>
+          <article class="project-frame reveal">
+            <div class="frame-top"></div>
+            <h3>Retail POS Dashboard</h3>
+            <p>Inventory, sales summaries, customer records, staff actions, and clean management panels.</p>
+            <span>POS / Dashboard / Automation</span>
+          </article>
+          <article class="project-frame reveal">
+            <div class="frame-top"></div>
+            <h3>AI Reception Desk</h3>
+            <p>Chat intake, quote requests, service routing, and customer support prompts for faster lead response.</p>
+            <span>AI / Leads / Customer Flow</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section process-section" id="process">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Process</p>
+          <h2>A clear build process from idea to launch.</h2>
+        </div>
+        <div class="process-line">
+          <article class="process-step reveal">
+            <span>01</span>
+            <h3>Discovery</h3>
+            <p>Goals, audience, services, payment needs, content, integrations, and brand direction.</p>
+          </article>
+          <article class="process-step reveal">
+            <span>02</span>
+            <h3>Design System</h3>
+            <p>Visual direction, page structure, service positioning, CTA flow, and mobile-first layouts.</p>
+          </article>
+          <article class="process-step reveal">
+            <span>03</span>
+            <h3>Build</h3>
+            <p>Responsive frontend, forms, checkout links, dashboards, upload paths, and automation logic.</p>
+          </article>
+          <article class="process-step reveal">
+            <span>04</span>
+            <h3>Launch</h3>
+            <p>Final QA, domain connection, mobile checks, contact testing, and launch package handoff.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section why-section">
+        <div class="why-panel reveal">
+          <p class="eyebrow">Why Choose Us</p>
+          <h2>Design quality plus systems thinking.</h2>
+          <p>
+            Brandon Stlewis Designs is built for businesses that need more than a basic website.
+            The focus is a strong first impression, clean customer flow, practical business tools,
+            and a premium brand presence that can grow.
+          </p>
+        </div>
+        <div class="why-grid">
+          <div class="mini-card reveal">Fast mobile-first pages</div>
+          <div class="mini-card reveal">Practical business workflows</div>
+          <div class="mini-card reveal">Premium visual identity</div>
+          <div class="mini-card reveal">Clear launch handoff</div>
+        </div>
+      </section>
+
+      <section class="section" id="pricing">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Pricing / Packages</p>
+          <h2>Starting prices for common business needs.</h2>
+        </div>
+        <div class="pricing-stack">
+          <article class="price-row reveal">
+            <div>
+              <span>Starter Design Package</span>
+              <h3>Starting at $95</h3>
+              <p>Logo concept, revisions, color palette, and social profile graphic.</p>
+            </div>
+            <div id="paypal-starter" class="payment-slot"></div>
+          </article>
+          <article class="price-row featured reveal">
+            <div>
+              <span>Brand Identity Package</span>
+              <h3>Starting at $275</h3>
+              <p>Logo system, typography direction, business card design, and social templates.</p>
+            </div>
+            <div id="paypal-brand" class="payment-slot"></div>
+          </article>
+          <article class="price-row reveal">
+            <div>
+              <span>Website / Premium Build</span>
+              <h3>Starting at $650</h3>
+              <p>Homepage concept, brand system, digital layout, print collateral, and launch support.</p>
+            </div>
+            <div id="paypal-premium" class="payment-slot"></div>
+          </article>
+          <article class="price-row reveal">
+            <div>
+              <span>Social Media Management</span>
+              <h3>Starting at $220/month</h3>
+              <p>Content calendar, branded posts, caption support, and basic scheduling.</p>
+            </div>
+            <div id="paypal-social" class="payment-slot"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section policy-section">
+        <article class="policy-card reveal">
+          <p class="eyebrow">Refund Policy</p>
+          <h3>Clear expectations before purchase.</h3>
+          <p>
+            Custom design and development work is generally non-refundable once work has started.
+            If a project has not yet begun, refund requests may be reviewed within 24 hours of purchase.
+          </p>
+        </article>
+        <article class="policy-card reveal">
+          <p class="eyebrow">Terms of Service</p>
+          <h3>Project terms for service delivery.</h3>
+          <p>
+            Clients agree to provide clear project information, respond within reasonable timelines,
+            and review deliverables according to the agreed scope. Work beyond scope may require a custom quote.
+          </p>
+        </article>
+        <article class="policy-card reveal">
+          <p class="eyebrow">Privacy Policy</p>
+          <h3>How information is used.</h3>
+          <p>
+            Contact and project information is used only for communication, planning, invoicing, and delivery.
+            Payment details are handled by third-party providers such as PayPal.
+          </p>
+        </article>
+      </section>
+
+      <section class="section cta-section reveal">
+        <h2>Ready to turn your business into a serious digital experience?</h2>
+        <div class="cta-actions">
+          <a class="button button-primary magnetic" href="#contact">Get a Free Quote</a>
+          <a class="button button-ghost magnetic optional-contact" id="call-link" href="#contact">Call/Text Now</a>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Book a project or request a quote.</h2>
+          <p>
+            Send your contact details, business type, and service needed. The form validates before
+            submission and routes to Brandon Stlewis Designs.
+          </p>
+          <div class="contact-buttons">
+            <a class="contact-chip" href="mailto:brandonstlewis73@gmail.com">Email</a>
+            <a class="contact-chip optional-contact" id="phone-chip" href="#contact">Call/Text</a>
+            <a class="contact-chip optional-contact" id="instagram-chip" href="#contact" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+
+        <form class="lead-form reveal" id="lead-form" action="https://formsubmit.co/brandonstlewis73@gmail.com" method="post" novalidate>
+          <input type="hidden" name="_subject" value="New Brandon Stlewis Designs Lead" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://brandonstlewisdesign.shop/" />
+          <label>
+            Name
+            <input name="name" type="text" autocomplete="name" required />
+          </label>
+          <label>
+            Phone
+            <input name="phone" type="tel" autocomplete="tel" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            Business Type
+            <input name="business_type" type="text" placeholder="Restaurant, salon, store, hotel..." required />
+          </label>
+          <label>
+            Service Needed
+            <select name="service_needed" required>
+              <option value="">Choose a service</option>
+              <option>Website Development</option>
+              <option>Online Store</option>
+              <option>POS System</option>
+              <option>AI Receptionist</option>
+              <option>Booking System</option>
+              <option>Secure Uploads</option>
+              <option>Branding & Graphics</option>
+              <option>Business Automation</option>
+              <option>Social Media Management</option>
+            </select>
+          </label>
+          <label class="full">
+            Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+          <button class="button button-primary magnetic full" type="submit">Submit Project Request</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Brandon Stlewis Designs</strong>
+        <span>brandonstlewisdesign.shop</span>
       </div>
-    </div>
+      <div>
+        <span>Websites / POS / AI / Branding / Automation</span>
+        <span>Available worldwide</span>
+      </div>
+    </footer>
   </body>
 </html>
