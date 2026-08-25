@@ -72,10 +72,15 @@ function showPage(page = getCurrentPage()) {
   window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
 }
 
+function setMenuOpen(isOpen) {
+  menuToggle?.setAttribute("aria-expanded", String(isOpen));
+  navbar?.classList.toggle("is-open", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
+}
+
 menuToggle?.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-  navbar?.classList.toggle("is-open", !isExpanded);
+  setMenuOpen(!isExpanded);
 });
 
 navLinks.forEach((group) => {
@@ -86,24 +91,21 @@ navLinks.forEach((group) => {
         window.setTimeout(() => showPage(target), 0);
       }
 
-      navbar?.classList.remove("is-open");
-      menuToggle?.setAttribute("aria-expanded", "false");
+      setMenuOpen(false);
     });
   });
 });
 
 window.addEventListener("hashchange", () => {
   showPage();
-  navbar?.classList.remove("is-open");
-  menuToggle?.setAttribute("aria-expanded", "false");
+  setMenuOpen(false);
 });
 
 showPage();
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    navbar?.classList.remove("is-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
+    setMenuOpen(false);
   }
 });
 
