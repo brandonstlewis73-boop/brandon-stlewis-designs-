@@ -401,3 +401,20 @@ if ("requestIdleCallback" in window) {
 } else {
   window.addEventListener("load", initShowroom);
 }
+
+function initCookieNotice() {
+  const banner = document.getElementById("cookie-banner");
+  const acceptButton = document.getElementById("accept-cookies");
+  if (!banner || !acceptButton) return;
+
+  const consentKey = "bsd_cookie_consent";
+  if (localStorage.getItem(consentKey) === "accepted") return;
+
+  window.setTimeout(() => banner.classList.add("is-visible"), 700);
+  acceptButton.addEventListener("click", () => {
+    localStorage.setItem(consentKey, "accepted");
+    banner.classList.remove("is-visible");
+  });
+}
+
+initCookieNotice();
