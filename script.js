@@ -2,7 +2,7 @@ const CONFIG = {
   domain: "brandonstlewisdesign.shop",
   email: "brandonstlewis73@gmail.com",
   phone: "",
-  instagram: "",
+  instagram: "https://www.instagram.com/brandonstlewisdesigns/",
 };
 
 const pricingPlans = [

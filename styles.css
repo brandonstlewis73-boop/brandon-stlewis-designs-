@@ -255,6 +255,18 @@ h3 {
   box-shadow: 0 16px 48px rgba(20, 125, 255, 0.18);
 }
 
+.social-chip {
+  gap: 0.55rem;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
 .hero-meta {
   margin-top: 1.5rem;
   padding-top: 1rem;
