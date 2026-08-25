@@ -892,20 +892,71 @@ h3 {
 
 .brand-wordmark {
   justify-self: center;
-  padding: 0.45rem 0.9rem;
-  border: 1px solid rgba(66, 165, 255, 0.22);
+  min-width: min(520px, 42vw);
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(66, 165, 255, 0.28);
   border-radius: 999px;
-  background: radial-gradient(circle at 50% 0%, rgba(20, 125, 255, 0.22), rgba(255, 255, 255, 0.035));
-  box-shadow: 0 0 40px rgba(20, 125, 255, 0.18), inset 0 0 28px rgba(255, 255, 255, 0.035);
+  background:
+    radial-gradient(circle at 18% 50%, rgba(20, 125, 255, 0.28), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 0 42px rgba(20, 125, 255, 0.18), inset 0 0 28px rgba(255, 255, 255, 0.035);
 }
 
-.brand-wordmark img {
-  width: clamp(260px, 32vw, 540px);
+.logo-medallion {
+  position: relative;
+  width: 58px;
   height: 58px;
-  border-radius: 0;
-  object-fit: contain;
-  box-shadow: none;
-  filter: drop-shadow(0 0 18px rgba(20, 125, 255, 0.48));
+  flex: 0 0 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  isolation: isolate;
+}
+
+.logo-medallion::before,
+.logo-medallion::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  z-index: -1;
+  border: 1px solid rgba(66, 165, 255, 0.42);
+  border-radius: 50%;
+  animation: logoOrbit 8s linear infinite;
+}
+
+.logo-medallion::after {
+  inset: -13px;
+  border-color: rgba(203, 213, 225, 0.18);
+  border-style: dashed;
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+
+.logo-medallion img {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 24px rgba(20, 125, 255, 0.48);
+  animation: logoGlow 3.8s ease-in-out infinite;
+}
+
+.brand-title {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.brand-title strong {
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  letter-spacing: 0;
+}
+
+.brand-title small {
+  color: rgba(247, 249, 255, 0.62);
+  font-size: clamp(0.56rem, 0.72vw, 0.72rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .nav-left {
@@ -946,6 +997,44 @@ h3 {
   max-width: 980px;
   margin: 0 auto;
   text-align: center;
+}
+
+.hero-logo-stage {
+  position: relative;
+  width: clamp(128px, 16vw, 210px);
+  aspect-ratio: 1;
+  margin: 0 auto 1.8rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.hero-logo-stage::before,
+.hero-logo-stage::after {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  border: 1px solid rgba(66, 165, 255, 0.42);
+  box-shadow: 0 0 38px rgba(20, 125, 255, 0.22);
+  animation: logoOrbit 12s linear infinite;
+}
+
+.hero-logo-stage::after {
+  inset: -23%;
+  border-color: rgba(203, 213, 225, 0.18);
+  border-style: dashed;
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+.hero-logo-stage img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 58px rgba(20, 125, 255, 0.38), 0 22px 90px rgba(0, 0, 0, 0.5);
+  animation: logoFloat 5.5s ease-in-out infinite;
 }
 
 .studio-hero h1 {
@@ -1161,6 +1250,32 @@ h3 {
   }
 }
 
+@keyframes logoOrbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logoGlow {
+  0%,
+  100% {
+    filter: brightness(1) saturate(1.02);
+  }
+  50% {
+    filter: brightness(1.18) saturate(1.18);
+  }
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.025);
+  }
+}
+
 @media (max-width: 1100px) {
   .navbar {
     grid-template-columns: 1fr auto;
@@ -1168,11 +1283,16 @@ h3 {
 
   .brand-wordmark {
     justify-self: start;
+    min-width: 0;
   }
 
   .nav-left,
   .nav-right {
     display: none;
+  }
+
+  .menu-toggle {
+    display: block;
   }
 
   .navbar.is-open .nav-left {
@@ -1211,8 +1331,22 @@ h3 {
 
 @media (max-width: 620px) {
   .brand-wordmark img {
-    width: 218px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .logo-medallion {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+
+  .brand-title strong {
+    font-size: 0.86rem;
+  }
+
+  .brand-title small {
+    display: none;
   }
 
   .studio-hero {
