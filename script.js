@@ -45,8 +45,7 @@ function configureContactLinks() {
 configureContactLinks();
 
 const navbar = document.querySelector(".navbar");
-const menuShell = document.getElementById("menu-shell");
-const menuToggle = document.querySelector(".menu-toggle");
+const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.querySelectorAll(".nav-links");
 const pageSections = document.querySelectorAll("[data-page]");
 const validPages = new Set(["home", "services", "projects", "process", "pricing", "policies", "contact", "reviews"]);
@@ -74,17 +73,14 @@ function showPage(page = getCurrentPage()) {
 }
 
 function setMenuOpen(isOpen) {
-  if (menuShell) menuShell.open = isOpen;
   menuToggle?.setAttribute("aria-expanded", String(isOpen));
   navbar?.classList.toggle("is-open", isOpen);
   document.body.classList.toggle("menu-open", isOpen);
 }
 
-menuShell?.addEventListener("toggle", () => {
-  const isOpen = menuShell.open;
-  menuToggle?.setAttribute("aria-expanded", String(isOpen));
-  navbar?.classList.toggle("is-open", isOpen);
-  document.body.classList.toggle("menu-open", isOpen);
+menuToggle?.addEventListener("click", () => {
+  const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+  setMenuOpen(!isExpanded);
 });
 
 navLinks.forEach((group) => {
