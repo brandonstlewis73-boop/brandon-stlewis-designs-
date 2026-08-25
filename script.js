@@ -72,6 +72,15 @@ function showPage(page = getCurrentPage()) {
   window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
 }
 
+function navigateToPage(page) {
+  if (!validPages.has(page)) return;
+  if (window.location.hash !== `#${page}`) {
+    window.history.pushState(null, "", `#${page}`);
+  }
+  showPage(page);
+  setMenuOpen(false);
+}
+
 function setMenuOpen(isOpen) {
   menuToggle?.setAttribute("aria-expanded", String(isOpen));
   navbar?.classList.toggle("is-open", isOpen);
@@ -85,15 +94,29 @@ menuToggle?.addEventListener("click", () => {
 
 navLinks.forEach((group) => {
   group.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (event) => {
       const target = link.getAttribute("href")?.replace("#", "");
       if (target && validPages.has(target)) {
-        window.setTimeout(() => showPage(target), 0);
+        event.preventDefault();
+        event.stopPropagation();
+        navigateToPage(target);
+        return;
       }
 
       setMenuOpen(false);
     });
   });
+});
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+
+  const target = link.getAttribute("href")?.replace("#", "");
+  if (!target || !validPages.has(target)) return;
+
+  event.preventDefault();
+  navigateToPage(target);
 });
 
 window.addEventListener("hashchange", () => {
