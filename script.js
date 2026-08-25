@@ -12,6 +12,54 @@ const pricingPlans = [
   { selector: "#paypal-social", value: "220.00", name: "Social Media Management" },
 ];
 
+const serviceDetails = {
+  "Website Development": {
+    image: "assets/anchorwheel-website-project.png",
+    type: "Websites / Lead Flow / Launch",
+    items: ["Responsive website build", "Mobile-first layout", "SEO foundation", "Contact and quote flow", "Domain launch support"],
+  },
+  "Online Stores": {
+    image: "assets/hotel-booking-mockup.png",
+    type: "Commerce / Payments / Products",
+    items: ["Product or service pages", "Checkout-ready structure", "Customer trust sections", "Mobile shopping flow", "Launch guidance"],
+  },
+  "POS Systems": {
+    image: "assets/pos-dashboard-mockup.png",
+    type: "POS / Dashboard / Operations",
+    items: ["Sales dashboard layout", "Inventory structure", "Customer records", "Staff workflow screens", "Receipt and reporting flow"],
+  },
+  "AI Receptionist": {
+    image: "assets/ai-receptionist-mockup.png",
+    type: "AI / Intake / Customer Response",
+    items: ["Customer question flow", "Lead qualification", "Appointment routing", "Service intake prompts", "Follow-up structure"],
+  },
+  "Booking Systems": {
+    image: "assets/hotel-booking-mockup.png",
+    type: "Bookings / Appointments / Requests",
+    items: ["Booking page layout", "Service selection", "Customer details form", "Confirmation flow", "Mobile appointment path"],
+  },
+  "Secure Uploads": {
+    image: "assets/ai-receptionist-mockup.png",
+    type: "Uploads / Intake / File Flow",
+    items: ["Client upload layout", "Document request flow", "Project intake organization", "Email alert structure", "Mobile-friendly file steps"],
+  },
+  "Branding & Graphics": {
+    image: "assets/stoned-cooling-logo.jpg",
+    type: "Brand Identity / Graphics / Print",
+    items: ["Logo concepts", "Brand colors", "Social profile graphics", "Business card layout", "Launch visuals"],
+  },
+  "Business Automation": {
+    image: "assets/pos-dashboard-mockup.png",
+    type: "Automation / Forms / Admin Flow",
+    items: ["Quote request routing", "Admin dashboard concept", "Lead organization", "Email notifications", "Repeat workflow cleanup"],
+  },
+  "Flyer & Print Campaigns": {
+    image: "assets/stoned-cooling-flyer-1.jpg",
+    type: "Flyers / Print / Social Ads",
+    items: ["Promotional flyer design", "Print-ready layout", "Social media versions", "Clear CTA structure", "Brand-matched campaign graphics"],
+  },
+};
+
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const lowEndDevice =
   navigator.hardwareConcurrency <= 4 ||
@@ -60,6 +108,14 @@ function getCurrentPage() {
 }
 
 function showPage(page = getCurrentPage()) {
+  document.querySelectorAll("[data-page]").forEach((section) => {
+    const isVisible = section.dataset.page === page;
+    section.classList.toggle("is-page-hidden", !isVisible);
+    if (isVisible) {
+      section.querySelectorAll(".reveal").forEach((item) => item.classList.add("is-visible"));
+    }
+  });
+
   document.querySelectorAll(".nav-links a").forEach((link) => {
     const target = link.getAttribute("href")?.replace("#", "");
     link.classList.toggle("is-current", target === page);
@@ -100,15 +156,13 @@ document.addEventListener("click", (event) => {
 
   event.preventDefault();
   history.pushState(null, "", `#${target}`);
+  document.querySelectorAll("dialog[open]").forEach((dialog) => dialog.close());
+  showPage(target);
   setMenuOpen(false);
   window.setTimeout(() => {
-    const prefersFastJump = window.matchMedia("(max-width: 900px)").matches;
-    const behavior = reducedMotion || prefersFastJump ? "auto" : "smooth";
-    scrollToSection(section, behavior);
-    [120, 600, 1200].forEach((delay) => {
-      window.setTimeout(() => scrollToSection(section, "auto"), delay);
-    });
-    showPage(target);
+    window.scrollTo({ top: 0, behavior: "auto" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, 420);
 });
 
@@ -561,6 +615,13 @@ function initServiceModules() {
   const cards = [...document.querySelectorAll(".service-card")];
   const title = document.getElementById("service-orbit-title");
   const copy = document.getElementById("service-orbit-copy");
+  const modal = document.getElementById("service-modal");
+  const close = document.getElementById("service-modal-close");
+  const modalImage = document.getElementById("service-modal-image");
+  const modalType = document.getElementById("service-modal-type");
+  const modalTitle = document.getElementById("service-modal-title");
+  const modalCopy = document.getElementById("service-modal-copy");
+  const modalList = document.getElementById("service-modal-list");
   if (!cards.length || !title || !copy) return;
 
   const activate = (card) => {
@@ -569,10 +630,37 @@ function initServiceModules() {
     copy.textContent = card.dataset.service || card.querySelector("p")?.textContent || "";
   };
 
+  const openService = (card) => {
+    if (!modal || !modalImage || !modalType || !modalTitle || !modalCopy || !modalList) return;
+
+    const serviceName = card.querySelector("h3")?.textContent || "Service";
+    const details = serviceDetails[serviceName] || {};
+    modalImage.src = details.image || "assets/anchorwheel-website-project.png";
+    modalImage.alt = `${serviceName} service example`;
+    modalType.textContent = details.type || "Service";
+    modalTitle.textContent = serviceName;
+    modalCopy.textContent = card.dataset.service || card.querySelector("p")?.textContent || "";
+    modalList.innerHTML = "";
+    (details.items || []).forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      modalList.appendChild(li);
+    });
+    modal.showModal();
+  };
+
   cards.forEach((card) => {
     card.addEventListener("pointerenter", () => activate(card));
     card.addEventListener("focus", () => activate(card));
-    card.addEventListener("click", () => activate(card));
+    card.addEventListener("click", () => {
+      activate(card);
+      openService(card);
+    });
+  });
+
+  close?.addEventListener("click", () => modal?.close());
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
   });
 }
 
