@@ -64,8 +64,8 @@ function showPage(page = getCurrentPage()) {
     }
   });
 
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    const target = link.getAttribute("href")?.replace("#", "");
+  document.querySelectorAll(".nav-links a, [data-page-target]").forEach((link) => {
+    const target = link.dataset.pageTarget || link.getAttribute("href")?.replace("#", "");
     link.classList.toggle("is-current", target === page);
   });
 
@@ -93,9 +93,9 @@ menuToggle?.addEventListener("click", () => {
 });
 
 navLinks.forEach((group) => {
-  group.querySelectorAll("a").forEach((link) => {
+  group.querySelectorAll("a, [data-page-target]").forEach((link) => {
     link.addEventListener("click", (event) => {
-      const target = link.getAttribute("href")?.replace("#", "");
+      const target = link.dataset.pageTarget || link.getAttribute("href")?.replace("#", "");
       if (target && validPages.has(target)) {
         event.preventDefault();
         event.stopPropagation();
@@ -106,6 +106,15 @@ navLinks.forEach((group) => {
       setMenuOpen(false);
     });
   });
+});
+
+document.querySelectorAll("[data-page-target]").forEach((button) => {
+  button.addEventListener("touchend", (event) => {
+    const target = button.dataset.pageTarget;
+    if (!target || !validPages.has(target)) return;
+    event.preventDefault();
+    navigateToPage(target);
+  }, { passive: false });
 });
 
 document.addEventListener("click", (event) => {

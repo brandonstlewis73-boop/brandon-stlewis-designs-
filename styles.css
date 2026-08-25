@@ -2639,7 +2639,8 @@ main,
   pointer-events: auto;
 }
 
-.nav-right a {
+.nav-right a,
+.nav-right button {
   position: relative;
   z-index: 1;
   min-height: 56px;
@@ -2654,12 +2655,18 @@ main,
   font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: 1rem;
   font-weight: 700;
+  text-align: left;
   transform: translateX(20px);
   opacity: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  touch-action: manipulation;
   transition: transform 260ms ease, opacity 260ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
 }
 
-.nav-right a::after {
+.nav-right a::after,
+.nav-right button::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -2670,21 +2677,25 @@ main,
 }
 
 .navbar.is-open .nav-right a,
-.menu-open .nav-right a {
+.navbar.is-open .nav-right button,
+.menu-open .nav-right a,
+.menu-open .nav-right button {
   transform: translateX(0);
   opacity: 1;
 }
 
-.navbar.is-open .nav-right a:nth-child(2) { transition-delay: 35ms; }
-.navbar.is-open .nav-right a:nth-child(3) { transition-delay: 70ms; }
-.navbar.is-open .nav-right a:nth-child(4) { transition-delay: 105ms; }
-.navbar.is-open .nav-right a:nth-child(5) { transition-delay: 140ms; }
-.navbar.is-open .nav-right a:nth-child(6) { transition-delay: 175ms; }
-.navbar.is-open .nav-right a:nth-child(7) { transition-delay: 210ms; }
-.navbar.is-open .nav-right a:nth-child(8) { transition-delay: 245ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(2) { transition-delay: 35ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(3) { transition-delay: 70ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(4) { transition-delay: 105ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(5) { transition-delay: 140ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(6) { transition-delay: 175ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(7) { transition-delay: 210ms; }
+.navbar.is-open .nav-right :is(a, button):nth-child(8) { transition-delay: 245ms; }
 
 .nav-right a:hover,
-.nav-right a.is-current {
+.nav-right button:hover,
+.nav-right a.is-current,
+.nav-right button.is-current {
   color: #f7f9ff;
   border-color: rgba(80, 228, 255, 0.52);
   background: linear-gradient(135deg, rgba(20, 125, 255, 0.22), rgba(80, 228, 255, 0.08));
@@ -2754,6 +2765,28 @@ main,
 
   .navbar.is-open .nav-right .nav-cta {
     display: flex !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    z-index: 9999 !important;
+  }
+
+  .menu-toggle {
+    z-index: 10002 !important;
+    pointer-events: auto !important;
+  }
+
+  .navbar .nav-right,
+  .navbar.is-open .nav-right,
+  .menu-open .nav-right {
+    z-index: 10000 !important;
+  }
+
+  .navbar.is-open .nav-right button,
+  .menu-open .nav-right button {
+    pointer-events: auto !important;
   }
 }
 
@@ -2936,5 +2969,57 @@ main,
     bottom: -2% !important;
     width: 118vw !important;
     opacity: 0.3 !important;
+  }
+}
+
+/* Mobile tap reliability: menu must always sit above all hero/canvas layers */
+@media (max-width: 900px) {
+  .site-header {
+    z-index: 2147483000 !important;
+  }
+
+  .menu-toggle {
+    position: relative !important;
+    z-index: 2147483002 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+  .navbar .nav-right {
+    position: fixed !important;
+    inset: 0 0 0 auto !important;
+    z-index: 2147483001 !important;
+    width: min(82vw, 420px) !important;
+    height: 100dvh !important;
+    padding: calc(78px + env(safe-area-inset-top)) 1rem 1.2rem !important;
+    display: grid !important;
+    align-content: start !important;
+    gap: 0.72rem !important;
+    transform: translate3d(110%, 0, 0) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .navbar.is-open .nav-right,
+  .menu-open .nav-right {
+    transform: translate3d(0, 0, 0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .navbar .nav-right button,
+  .navbar .nav-right a {
+    position: relative !important;
+    z-index: 2147483002 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+
+  .menu-open .hero-showroom,
+  .menu-open .live-background,
+  .menu-open .motion-grid,
+  .menu-open .creative-studio-animation,
+  .menu-open .studio-racers {
+    pointer-events: none !important;
   }
 }
