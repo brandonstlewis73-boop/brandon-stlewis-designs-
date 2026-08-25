@@ -68,32 +68,41 @@
 
     <header class="site-header">
       <nav class="navbar">
-        <a class="brand-mark" href="#top" aria-label="Brandon Stlewis Designs home">
-          <img src="assets/bsd-logo.png" alt="Brandon Stlewis Designs logo" />
-          <span>
-            <strong>Brandon Stlewis Designs</strong>
-            <small>3D Web + Business Systems</small>
-          </span>
+        <div class="nav-links nav-left">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#process">Process</a>
+          <a class="mobile-only" href="#pricing">Pricing</a>
+          <a class="mobile-only" href="#contact">Contact</a>
+        </div>
+        <a class="brand-mark brand-wordmark" href="#top" aria-label="Brandon Stlewis Designs home">
+          <img src="assets/bsd-wordmark.jpg" alt="Brandon Stlewis Designs logo" />
         </a>
         <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
           <span></span>
           <span></span>
         </button>
-        <div class="nav-links">
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#process">Process</a>
+        <div class="nav-links nav-right">
           <a href="#pricing">Pricing</a>
           <a href="#contact">Contact</a>
+          <a class="nav-cta magnetic" href="#contact">Get a Free Quote</a>
         </div>
-        <a class="nav-cta magnetic" href="#contact">Get a Free Quote</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero-section">
+      <section class="hero-section studio-hero">
+        <div class="hero-showroom" aria-label="Animated creative studio showroom">
+          <canvas id="showroom-canvas"></canvas>
+          <div class="canvas-loader" id="canvas-loader">Loading studio motion</div>
+          <div class="canvas-fallback" id="canvas-fallback">
+            <div class="fallback-panel">Brand</div>
+            <div class="fallback-panel">Web</div>
+            <div class="fallback-panel">Launch</div>
+          </div>
+        </div>
         <div class="hero-copy reveal">
-          <p class="eyebrow">Luxury Tech Studio</p>
+          <p class="eyebrow">Creative Web & Graphic Solutions</p>
           <h1>Brandon Stlewis Designs</h1>
           <p class="hero-lede">
             Futuristic websites, online stores, POS systems, AI receptionist flows, booking systems,
@@ -108,15 +117,14 @@
             <span>Websites / POS / AI / Branding</span>
           </div>
         </div>
-
-        <div class="hero-showroom" aria-label="Animated 3D business systems showroom">
-          <canvas id="showroom-canvas"></canvas>
-          <div class="canvas-loader" id="canvas-loader">Loading 3D showroom</div>
-          <div class="canvas-fallback" id="canvas-fallback">
-            <div class="fallback-panel">Website</div>
-            <div class="fallback-panel">POS</div>
-            <div class="fallback-panel">AI Chat</div>
-          </div>
+        <div class="creative-studio-animation" aria-hidden="true">
+          <span class="studio-ring"></span>
+          <span class="studio-ring ring-two"></span>
+          <span class="studio-cursor"></span>
+          <span class="studio-swatch swatch-blue"></span>
+          <span class="studio-swatch swatch-silver"></span>
+          <span class="studio-swatch swatch-black"></span>
+          <span class="studio-frame-line"></span>
         </div>
       </section>
 
@@ -171,6 +179,11 @@
             <h3>Business Automation</h3>
             <p>Practical automations for inquiries, order flow, follow-ups, dashboards, and repeat admin work.</p>
           </article>
+          <article class="glass-card service-card reveal">
+            <span>09</span>
+            <h3>Flyer & Print Campaigns</h3>
+            <p>Promotional flyers, service ads, launch graphics, print-ready layouts, and branded social versions.</p>
+          </article>
         </div>
       </section>
 
@@ -188,6 +201,16 @@
             <p>Live financial services website for virtual tax preparation, amendment review, tax debt resolution review, and small business tax support.</p>
             <span>Website / Financial Services / Lead Flow</span>
             <a class="project-link" href="https://www.anchorwheelfinancialco.site" target="_blank" rel="noopener noreferrer">View Live Site</a>
+          </article>
+          <article class="project-frame reveal">
+            <div class="frame-top flyer-preview">
+              <img src="assets/stoned-cooling-flyer-1.jpg" alt="Stoned Cooling Services promotional flyer" loading="lazy" />
+              <img src="assets/stoned-cooling-flyer-2.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" loading="lazy" />
+              <img src="assets/stoned-cooling-logo.jpg" alt="Stoned Cooling Services logo design" loading="lazy" />
+            </div>
+            <h3>Stoned Cooling Services</h3>
+            <p>Client flyer and brand graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and logo-led visuals.</p>
+            <span>Flyer Design / Logo Graphics / Print</span>
           </article>
           <article class="project-frame reveal">
             <div class="frame-top">
