@@ -2,7 +2,7 @@ const CONFIG = {
   domain: "brandonstlewisdesign.shop",
   email: "brandonstlewis73@gmail.com",
   phone: "",
-  instagram: "https://www.instagram.com/brandonstlewisdesigns/",
+  instagram: "https://www.instagram.com/bsd_designs_?igsi=MTJpMHVpeHpxZWxxag%3D%3D&utm_source=qr",
 };
 
 const pricingPlans = [
@@ -46,9 +46,13 @@ configureContactLinks();
 
 const navbar = document.querySelector(".navbar");
 const menuToggle = document.getElementById("menu-toggle");
+const siteMenu = document.getElementById("site-menu");
 const navLinks = document.querySelectorAll(".nav-links");
-const pageSections = document.querySelectorAll("[data-page]");
 const validPages = new Set(["home", "services", "projects", "process", "pricing", "policies", "contact", "reviews"]);
+
+if (siteMenu && siteMenu.parentElement !== document.body) {
+  document.body.appendChild(siteMenu);
+}
 
 function getCurrentPage() {
   const page = window.location.hash.replace("#", "") || "home";
@@ -56,29 +60,10 @@ function getCurrentPage() {
 }
 
 function showPage(page = getCurrentPage()) {
-  pageSections.forEach((section) => {
-    const isVisible = section.dataset.page === page;
-    section.classList.toggle("is-page-hidden", !isVisible);
-    if (isVisible) {
-      section.querySelectorAll(".reveal").forEach((item) => item.classList.add("is-visible"));
-    }
-  });
-
-  document.querySelectorAll(".nav-links a, [data-page-target]").forEach((link) => {
-    const target = link.dataset.pageTarget || link.getAttribute("href")?.replace("#", "");
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    const target = link.getAttribute("href")?.replace("#", "");
     link.classList.toggle("is-current", target === page);
   });
-
-  window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
-}
-
-function navigateToPage(page) {
-  if (!validPages.has(page)) return;
-  if (window.location.hash !== `#${page}`) {
-    window.history.pushState(null, "", `#${page}`);
-  }
-  showPage(page);
-  setMenuOpen(false);
 }
 
 function setMenuOpen(isOpen) {
@@ -87,34 +72,20 @@ function setMenuOpen(isOpen) {
   document.body.classList.toggle("menu-open", isOpen);
 }
 
+function scrollToSection(section, behavior = "auto") {
+  const headerOffset = document.querySelector(".site-header")?.offsetHeight || 0;
+  const rectTop = section.getBoundingClientRect().top + window.scrollY;
+  const offsetTop = Number.isFinite(section.offsetTop) ? section.offsetTop : rectTop;
+  const targetTop = Math.max(0, Math.max(rectTop, offsetTop) - headerOffset);
+  window.scrollTo({ top: targetTop, behavior });
+  document.documentElement.scrollTop = targetTop;
+  document.body.scrollTop = targetTop;
+  return targetTop;
+}
+
 menuToggle?.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
   setMenuOpen(!isExpanded);
-});
-
-navLinks.forEach((group) => {
-  group.querySelectorAll("a, [data-page-target]").forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const target = link.dataset.pageTarget || link.getAttribute("href")?.replace("#", "");
-      if (target && validPages.has(target)) {
-        event.preventDefault();
-        event.stopPropagation();
-        navigateToPage(target);
-        return;
-      }
-
-      setMenuOpen(false);
-    });
-  });
-});
-
-document.querySelectorAll("[data-page-target]").forEach((button) => {
-  button.addEventListener("touchend", (event) => {
-    const target = button.dataset.pageTarget;
-    if (!target || !validPages.has(target)) return;
-    event.preventDefault();
-    navigateToPage(target);
-  }, { passive: false });
 });
 
 document.addEventListener("click", (event) => {
@@ -124,8 +95,21 @@ document.addEventListener("click", (event) => {
   const target = link.getAttribute("href")?.replace("#", "");
   if (!target || !validPages.has(target)) return;
 
+  const section = document.getElementById(target);
+  if (!section) return;
+
   event.preventDefault();
-  navigateToPage(target);
+  history.pushState(null, "", `#${target}`);
+  setMenuOpen(false);
+  window.setTimeout(() => {
+    const prefersFastJump = window.matchMedia("(max-width: 900px)").matches;
+    const behavior = reducedMotion || prefersFastJump ? "auto" : "smooth";
+    scrollToSection(section, behavior);
+    [120, 600, 1200].forEach((delay) => {
+      window.setTimeout(() => scrollToSection(section, "auto"), delay);
+    });
+    showPage(target);
+  }, 420);
 });
 
 window.addEventListener("hashchange", () => {
