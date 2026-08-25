@@ -65,6 +65,19 @@
   </head>
   <body>
     <div class="motion-grid" aria-hidden="true"></div>
+    <div class="cursor-orb" id="cursor-orb" aria-hidden="true"><span id="cursor-label"></span></div>
+    <div class="scroll-beam" aria-hidden="true"></div>
+    <section class="intro-sequence" id="intro-sequence" aria-label="Brandon Stlewis Designs digital studio intro">
+      <div class="intro-noise" aria-hidden="true"></div>
+      <div class="intro-core">
+        <div class="intro-mark">
+          <img src="assets/bsd-premium-logo.jpg" alt="Brandon Stlewis Designs logo" />
+        </div>
+        <p>Initializing Creative Engine</p>
+        <div class="intro-loader"><span></span></div>
+        <button class="intro-skip" id="intro-skip" type="button">Skip Intro</button>
+      </div>
+    </section>
 
     <header class="site-header">
       <nav class="navbar">
@@ -137,63 +150,71 @@
         </div>
       </section>
 
-      <section class="trust-strip reveal">
+      <section class="trust-strip reveal journey-strip">
         <span>Premium black, blue, silver, and white digital identity.</span>
         <span>Built for trust, speed, mobile, and conversion.</span>
       </section>
 
-      <section class="section" id="services">
+      <section class="section service-command" id="services">
         <div class="section-heading reveal">
           <p class="eyebrow">Services</p>
           <h2>Business systems designed as one connected digital engine.</h2>
         </div>
         <div class="service-grid">
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal is-active" tabindex="0" data-cursor="OPEN" data-service="Website systems build from strategy to launch: structure, responsive UI, SEO foundation, payment flow, and conversion-focused contact paths.">
             <span>01</span>
             <h3>Website Development</h3>
             <p>Premium responsive websites with strong branding, lead capture, SEO foundations, and fast loading.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Commerce flows connect product pages, service payments, checkout confidence, and customer follow-up into one sales path.">
             <span>02</span>
             <h3>Online Stores</h3>
             <p>Product pages, checkout paths, service payments, and store layouts built for customer confidence.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="POS interfaces organize sales, receipts, inventory, staff tasks, and reporting into a clear operating system.">
             <span>03</span>
             <h3>POS Systems</h3>
             <p>Sales dashboards, product management, receipt workflows, inventory structure, and staff-ready tools.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="AI receptionist flows qualify leads, answer common questions, collect booking details, and route customers faster.">
             <span>04</span>
             <h3>AI Receptionist</h3>
             <p>Chatbot and intake flows that answer common questions, collect leads, and route customers properly.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Booking systems turn interest into scheduled calls, appointments, consultations, and service requests.">
             <span>05</span>
             <h3>Booking Systems</h3>
             <p>Clean appointment, consultation, and service request flows for local and online businesses.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Upload flows help clients send files, documents, references, and project materials without messy message threads.">
             <span>06</span>
             <h3>Secure Uploads</h3>
             <p>Client-friendly upload areas for documents, images, project files, and service intake materials.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Brand systems connect logos, social visuals, print work, typography, colors, and launch graphics into one recognizable identity.">
             <span>07</span>
             <h3>Branding & Graphics</h3>
             <p>Logos, print assets, social visuals, business cards, launch graphics, and premium visual systems.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Automation connects repeat admin work, quote requests, follow-ups, forms, and dashboards so the business runs cleaner.">
             <span>08</span>
             <h3>Business Automation</h3>
             <p>Practical automations for inquiries, order flow, follow-ups, dashboards, and repeat admin work.</p>
           </article>
-          <article class="glass-card service-card reveal">
+          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Flyer campaigns turn offers into professional print/social assets with strong hierarchy, branded visuals, and clear calls to action.">
             <span>09</span>
             <h3>Flyer & Print Campaigns</h3>
             <p>Promotional flyers, service ads, launch graphics, print-ready layouts, and branded social versions.</p>
           </article>
         </div>
+        <aside class="service-orbit reveal" aria-live="polite">
+          <span>Active Module</span>
+          <h3 id="service-orbit-title">Website Development</h3>
+          <p id="service-orbit-copy">Website systems build from strategy to launch: structure, responsive UI, SEO foundation, payment flow, and conversion-focused contact paths.</p>
+          <div class="module-diagram" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </div>
+        </aside>
       </section>
 
       <section class="section split-section" id="projects">
@@ -201,8 +222,8 @@
           <p class="eyebrow">Featured Work</p>
           <h2>Real websites and business systems built for professional brands.</h2>
         </div>
-        <div class="project-grid">
-          <article class="project-frame reveal">
+        <div class="project-grid exhibit-grid">
+          <article class="project-frame reveal" data-cursor="VIEW" data-title="Anchorwheel Financial Co." data-type="Live Website / Financial Services" data-image="assets/anchorwheel-website-project.png" data-copy="A live financial services website designed for tax preparation, amendment review, tax debt resolution review, booking, and lead generation." data-link="https://www.anchorwheelfinancialco.site">
             <div class="frame-top">
               <img src="assets/anchorwheel-website-project.png" alt="Anchorwheel Financial Co website project preview" loading="lazy" />
             </div>
@@ -211,7 +232,7 @@
             <span>Website / Financial Services / Lead Flow</span>
             <a class="project-link" href="https://www.anchorwheelfinancialco.site" target="_blank" rel="noopener noreferrer">View Live Site</a>
           </article>
-          <article class="project-frame reveal">
+          <article class="project-frame reveal" data-cursor="VIEW" data-title="Stoned Cooling Services" data-type="Flyer Design / Logo Graphics / Print" data-image="assets/stoned-cooling-flyer-1.jpg" data-copy="Client flyer and brand graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and logo-led visuals.">
             <div class="frame-top flyer-preview">
               <img src="assets/stoned-cooling-flyer-1.jpg" alt="Stoned Cooling Services promotional flyer" loading="lazy" />
               <img src="assets/stoned-cooling-flyer-2.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" loading="lazy" />
@@ -221,7 +242,7 @@
             <p>Client flyer and brand graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and logo-led visuals.</p>
             <span>Flyer Design / Logo Graphics / Print</span>
           </article>
-          <article class="project-frame reveal">
+          <article class="project-frame reveal" data-cursor="VIEW" data-title="Hotel Booking Website" data-type="Website / Booking / Branding" data-image="assets/hotel-booking-mockup.png" data-copy="Hospitality website concept with mobile booking flow, premium room visuals, inquiry capture, and brand-first layout.">
             <div class="frame-top">
               <img src="assets/hotel-booking-mockup.png" alt="Luxury hotel booking website mockup on laptop and phone" loading="lazy" />
             </div>
@@ -229,7 +250,7 @@
             <p>Hospitality website concept with mobile booking flow, premium room visuals, inquiry capture, and brand-first layout.</p>
             <span>Website / Booking / Branding</span>
           </article>
-          <article class="project-frame reveal">
+          <article class="project-frame reveal" data-cursor="VIEW" data-title="Retail POS Dashboard" data-type="POS / Dashboard / Automation" data-image="assets/pos-dashboard-mockup.png" data-copy="Retail operations concept showing sales reporting, inventory cards, customer records, staff actions, and checkout-focused UI.">
             <div class="frame-top">
               <img src="assets/pos-dashboard-mockup.png" alt="Retail POS dashboard mockup on touchscreen terminal" loading="lazy" />
             </div>
@@ -237,7 +258,7 @@
             <p>Retail operations concept showing sales reporting, inventory cards, customer records, staff actions, and checkout-focused UI.</p>
             <span>POS / Dashboard / Automation</span>
           </article>
-          <article class="project-frame reveal">
+          <article class="project-frame reveal" data-cursor="VIEW" data-title="AI Reception Desk" data-type="AI / Leads / Customer Flow" data-image="assets/ai-receptionist-mockup.png" data-copy="AI receptionist concept with lead qualification, appointment cards, chat intake, and service routing for faster customer response.">
             <div class="frame-top">
               <img src="assets/ai-receptionist-mockup.png" alt="AI receptionist dashboard mockup with chat and booking panels" loading="lazy" />
             </div>
@@ -436,10 +457,35 @@
               <option>Social Media Management</option>
             </select>
           </label>
+          <label>
+            Budget / Scope
+            <select name="budget_scope" required>
+              <option value="">Choose a range</option>
+              <option>Starter: under $150</option>
+              <option>Growth: $150 - $500</option>
+              <option>Premium: $500 - $1,500</option>
+              <option>Custom system: $1,500+</option>
+            </select>
+          </label>
+          <label>
+            Timeline
+            <select name="timeline" required>
+              <option value="">Choose timeline</option>
+              <option>As soon as possible</option>
+              <option>Within 2 weeks</option>
+              <option>This month</option>
+              <option>Planning ahead</option>
+            </select>
+          </label>
           <label class="full">
             Message
             <textarea name="message" rows="5" required></textarea>
           </label>
+          <div class="transmission-panel full" aria-hidden="true">
+            <span></span>
+            <strong>Project Request Terminal</strong>
+            <small>Ready to transmit brief</small>
+          </div>
           <p class="form-status" id="form-status" aria-live="polite"></p>
           <button class="button button-primary magnetic full" type="submit">Submit Project Request</button>
         </form>
@@ -466,5 +512,17 @@
       </div>
       <button class="button button-primary" id="accept-cookies" type="button">Accept</button>
     </div>
+    <dialog class="project-modal" id="project-modal">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close project preview">Close</button>
+      <div class="modal-media">
+        <img id="modal-image" src="assets/anchorwheel-website-project.png" alt="" />
+      </div>
+      <div class="modal-copy">
+        <span id="modal-type">Live Website</span>
+        <h2 id="modal-title">Anchorwheel Financial Co.</h2>
+        <p id="modal-copy">A live financial services website designed for tax preparation, amendment review, tax debt resolution review, booking, and lead generation.</p>
+        <a class="button button-primary" id="modal-link" href="https://www.anchorwheelfinancialco.site" target="_blank" rel="noopener noreferrer">Open Project</a>
+      </div>
+    </dialog>
   </body>
 </html>

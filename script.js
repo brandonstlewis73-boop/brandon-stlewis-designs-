@@ -418,3 +418,128 @@ function initCookieNotice() {
 }
 
 initCookieNotice();
+
+const root = document.documentElement;
+
+function initImmersiveIntro() {
+  const intro = document.getElementById("intro-sequence");
+  const skip = document.getElementById("intro-skip");
+  if (!intro || reducedMotion) {
+    intro?.classList.add("is-hidden");
+    return;
+  }
+
+  const seenKey = "bsd_intro_seen";
+  const closeIntro = () => {
+    intro.classList.add("is-hidden");
+    localStorage.setItem(seenKey, "true");
+  };
+
+  if (localStorage.getItem(seenKey) === "true") {
+    intro.classList.add("is-hidden");
+    return;
+  }
+
+  skip?.addEventListener("click", closeIntro);
+  window.setTimeout(closeIntro, 2600);
+}
+
+function initCustomCursor() {
+  const cursor = document.getElementById("cursor-orb");
+  const label = document.getElementById("cursor-label");
+  if (!cursor || !label || lowEndDevice || window.matchMedia("(pointer: coarse)").matches) return;
+
+  window.addEventListener("pointermove", (event) => {
+    root.style.setProperty("--cursor-x", `${event.clientX}px`);
+    root.style.setProperty("--cursor-y", `${event.clientY}px`);
+  });
+
+  document.querySelectorAll("a, button, .service-card, .project-frame, input, select, textarea").forEach((element) => {
+    element.addEventListener("pointerenter", () => {
+      cursor.classList.add("is-active");
+      label.textContent = element.dataset.cursor || (element.matches(".project-frame") ? "VIEW" : "START");
+    });
+    element.addEventListener("pointerleave", () => {
+      cursor.classList.remove("is-active");
+      label.textContent = "";
+    });
+  });
+}
+
+function initScrollChoreography() {
+  const update = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0;
+    root.style.setProperty("--scroll", progress.toFixed(2));
+  };
+  update();
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+}
+
+function initServiceModules() {
+  const cards = [...document.querySelectorAll(".service-card")];
+  const title = document.getElementById("service-orbit-title");
+  const copy = document.getElementById("service-orbit-copy");
+  if (!cards.length || !title || !copy) return;
+
+  const activate = (card) => {
+    cards.forEach((item) => item.classList.toggle("is-active", item === card));
+    title.textContent = card.querySelector("h3")?.textContent || "Active Module";
+    copy.textContent = card.dataset.service || card.querySelector("p")?.textContent || "";
+  };
+
+  cards.forEach((card) => {
+    card.addEventListener("pointerenter", () => activate(card));
+    card.addEventListener("focus", () => activate(card));
+    card.addEventListener("click", () => activate(card));
+  });
+}
+
+function initProjectExhibits() {
+  const modal = document.getElementById("project-modal");
+  const close = document.getElementById("modal-close");
+  const modalImage = document.getElementById("modal-image");
+  const modalType = document.getElementById("modal-type");
+  const modalTitle = document.getElementById("modal-title");
+  const modalCopy = document.getElementById("modal-copy");
+  const modalLink = document.getElementById("modal-link");
+  if (!modal || !modalImage || !modalType || !modalTitle || !modalCopy || !modalLink) return;
+
+  document.querySelectorAll(".project-frame").forEach((project) => {
+    project.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      modalImage.src = project.dataset.image || project.querySelector("img")?.src || "";
+      modalImage.alt = `${project.dataset.title || "Project"} preview`;
+      modalType.textContent = project.dataset.type || project.querySelector("span")?.textContent || "Project";
+      modalTitle.textContent = project.dataset.title || project.querySelector("h3")?.textContent || "Project";
+      modalCopy.textContent = project.dataset.copy || project.querySelector("p")?.textContent || "";
+      const link = project.dataset.link;
+      modalLink.hidden = !link;
+      if (link) modalLink.href = link;
+      modal.showModal();
+    });
+  });
+
+  close?.addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) modal.close();
+  });
+}
+
+function initTransmission() {
+  leadForm?.addEventListener("submit", () => {
+    if (leadForm.checkValidity()) {
+      leadForm.classList.add("is-transmitting");
+      const panel = leadForm.querySelector(".transmission-panel small");
+      if (panel) panel.textContent = "Brief transmitting to Brandon Stlewis Designs";
+    }
+  });
+}
+
+initImmersiveIntro();
+initCustomCursor();
+initScrollChoreography();
+initServiceModules();
+initProjectExhibits();
+initTransmission();
