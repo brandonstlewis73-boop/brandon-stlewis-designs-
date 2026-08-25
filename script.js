@@ -683,8 +683,19 @@ function initProjectExhibits() {
       modalTitle.textContent = project.dataset.title || project.querySelector("h3")?.textContent || "Project";
       modalCopy.textContent = project.dataset.copy || project.querySelector("p")?.textContent || "";
       const link = project.dataset.link;
-      modalLink.hidden = !link;
-      if (link) modalLink.href = link;
+      if (link) {
+        modalLink.hidden = false;
+        modalLink.href = link;
+        modalLink.target = "_blank";
+        modalLink.rel = "noopener noreferrer";
+        modalLink.textContent = "View Live Site";
+      } else {
+        modalLink.hidden = false;
+        modalLink.href = "#contact";
+        modalLink.removeAttribute("target");
+        modalLink.removeAttribute("rel");
+        modalLink.textContent = "Discuss Similar Work";
+      }
       modal.showModal();
     });
   });
