@@ -1956,3 +1956,163 @@ body::before {
     cursor: auto;
   }
 }
+
+/* 3D logo and live background overrides */
+.live-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: #020409;
+  opacity: 0.62;
+  mix-blend-mode: screen;
+}
+
+.motion-grid {
+  z-index: 0;
+}
+
+.site-header,
+main,
+.site-footer,
+.cookie-banner,
+.project-modal {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-beam {
+  z-index: 30;
+}
+
+.cursor-orb {
+  z-index: 120;
+}
+
+.intro-sequence {
+  z-index: 100;
+}
+
+.logo-medallion,
+.hero-logo-stage,
+.intro-mark {
+  perspective: 900px;
+}
+
+.logo-prism {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
+  transform-style: preserve-3d;
+  animation: logo3DTilt 6s ease-in-out infinite;
+}
+
+.logo-prism::before,
+.logo-prism::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.logo-prism::before {
+  z-index: -1;
+  background: linear-gradient(135deg, rgba(66, 165, 255, 0.68), rgba(0, 0, 0, 0.08));
+  transform: translate3d(10px, 12px, -24px);
+  filter: blur(6px);
+}
+
+.logo-prism::after {
+  background: linear-gradient(115deg, transparent 0 36%, rgba(255, 255, 255, 0.5) 47%, transparent 59% 100%);
+  mix-blend-mode: screen;
+  transform: translateX(-140%) skewX(-12deg);
+  animation: logoLightSweep 4.4s ease-in-out infinite;
+}
+
+.logo-prism img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  transform: translateZ(28px);
+  box-shadow: 0 0 34px rgba(20, 125, 255, 0.54), 0 18px 55px rgba(0, 0, 0, 0.46);
+}
+
+.hero-logo-stage {
+  border-radius: 30px;
+  transform-style: preserve-3d;
+}
+
+.hero-logo-stage .logo-prism {
+  border-radius: 30px;
+}
+
+.intro-mark {
+  overflow: visible;
+}
+
+.intro-mark .logo-prism,
+.intro-mark .logo-prism img {
+  border-radius: 30px;
+}
+
+.studio-racers {
+  position: absolute;
+  left: 50%;
+  bottom: -8%;
+  z-index: -1;
+  width: min(980px, 86vw);
+  max-width: none;
+  transform: translateX(-50%);
+  opacity: 0.54;
+  filter: drop-shadow(0 0 46px rgba(20, 125, 255, 0.34));
+  animation: racersDrift 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes logo3DTilt {
+  0%,
+  100% {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+  35% {
+    transform: rotateX(7deg) rotateY(-10deg) translateZ(18px);
+  }
+  70% {
+    transform: rotateX(-5deg) rotateY(9deg) translateZ(12px);
+  }
+}
+
+@keyframes logoLightSweep {
+  0%,
+  42% {
+    transform: translateX(-140%) skewX(-12deg);
+  }
+  70%,
+  100% {
+    transform: translateX(140%) skewX(-12deg);
+  }
+}
+
+@keyframes racersDrift {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(calc(-50% + 18px)) translateY(-12px);
+  }
+}
+
+@media (max-width: 760px) {
+  .studio-racers {
+    bottom: 2%;
+    width: 135vw;
+    opacity: 0.28;
+  }
+}

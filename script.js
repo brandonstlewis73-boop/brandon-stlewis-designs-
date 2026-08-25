@@ -537,9 +537,125 @@ function initTransmission() {
   });
 }
 
+function initLiveBackground() {
+  const canvas = document.getElementById("live-background");
+  if (!canvas || reducedMotion) return;
+
+  const context = canvas.getContext("2d", { alpha: true });
+  if (!context) return;
+
+  const density = lowEndDevice ? 42 : 90;
+  const trails = lowEndDevice ? 4 : 9;
+  const pointer = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.42 };
+  const particles = Array.from({ length: density }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    z: Math.random() * 0.9 + 0.1,
+    vx: (Math.random() - 0.5) * 0.25,
+    vy: (Math.random() - 0.5) * 0.2,
+  }));
+
+  function resizeBackground() {
+    const ratio = Math.min(window.devicePixelRatio || 1, 1.75);
+    canvas.width = Math.floor(window.innerWidth * ratio);
+    canvas.height = Math.floor(window.innerHeight * ratio);
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  }
+
+  window.addEventListener("resize", resizeBackground);
+  window.addEventListener("pointermove", (event) => {
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
+  }, { passive: true });
+
+  resizeBackground();
+  let frame = 0;
+
+  function drawLiveBackground() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const time = performance.now() * 0.001;
+    const scrollShift = Number.parseFloat(getComputedStyle(root).getPropertyValue("--scroll")) || 0;
+
+    context.clearRect(0, 0, width, height);
+    const bg = context.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, Math.max(width, height) * 0.72);
+    bg.addColorStop(0, "rgba(20,125,255,0.16)");
+    bg.addColorStop(0.35, "rgba(6,18,38,0.08)");
+    bg.addColorStop(1, "rgba(2,4,9,0)");
+    context.fillStyle = bg;
+    context.fillRect(0, 0, width, height);
+
+    context.save();
+    context.globalCompositeOperation = "lighter";
+
+    for (let i = 0; i < trails; i += 1) {
+      const y = height * (0.16 + i * 0.095) + Math.sin(time * 0.7 + i) * 28 + scrollShift * 0.45;
+      const startX = ((time * 54 * (i + 1)) % (width + 480)) - 360;
+      const gradient = context.createLinearGradient(startX, y, startX + 360, y + 28);
+      gradient.addColorStop(0, "rgba(20,125,255,0)");
+      gradient.addColorStop(0.45, "rgba(20,125,255,0.18)");
+      gradient.addColorStop(1, "rgba(247,249,255,0)");
+      context.strokeStyle = gradient;
+      context.lineWidth = i % 3 === 0 ? 1.6 : 0.8;
+      context.beginPath();
+      context.moveTo(startX, y);
+      context.bezierCurveTo(startX + 100, y - 38, startX + 230, y + 46, startX + 420, y - 10);
+      context.stroke();
+    }
+
+    particles.forEach((particle, index) => {
+      const pullX = (pointer.x - width * 0.5) * 0.00005 * particle.z;
+      const pullY = (pointer.y - height * 0.5) * 0.00004 * particle.z;
+      particle.x += particle.vx + pullX;
+      particle.y += particle.vy + pullY + Math.sin(time + index) * 0.02;
+
+      if (particle.x < -20) particle.x = width + 20;
+      if (particle.x > width + 20) particle.x = -20;
+      if (particle.y < -20) particle.y = height + 20;
+      if (particle.y > height + 20) particle.y = -20;
+
+      const size = particle.z * 1.8;
+      context.fillStyle = `rgba(95,180,255,${0.08 + particle.z * 0.28})`;
+      context.beginPath();
+      context.arc(particle.x, particle.y, size, 0, Math.PI * 2);
+      context.fill();
+    });
+
+    for (let i = 0; i < particles.length; i += 1) {
+      for (let j = i + 1; j < particles.length; j += 9) {
+        const a = particles[i];
+        const b = particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 118) {
+          context.strokeStyle = `rgba(66,165,255,${(1 - distance / 118) * 0.09})`;
+          context.lineWidth = 0.6;
+          context.beginPath();
+          context.moveTo(a.x, a.y);
+          context.lineTo(b.x, b.y);
+          context.stroke();
+        }
+      }
+    }
+
+    context.restore();
+    frame = requestAnimationFrame(drawLiveBackground);
+  }
+
+  drawLiveBackground();
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) cancelAnimationFrame(frame);
+    else drawLiveBackground();
+  });
+}
+
 initImmersiveIntro();
 initCustomCursor();
 initScrollChoreography();
 initServiceModules();
 initProjectExhibits();
 initTransmission();
+initLiveBackground();
