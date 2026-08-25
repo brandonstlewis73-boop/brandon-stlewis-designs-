@@ -46,7 +46,31 @@ configureContactLinks();
 
 const navbar = document.querySelector(".navbar");
 const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+const navLinks = document.querySelectorAll(".nav-links");
+const pageSections = document.querySelectorAll("[data-page]");
+const validPages = new Set(["home", "services", "projects", "process", "pricing", "policies", "contact", "reviews"]);
+
+function getCurrentPage() {
+  const page = window.location.hash.replace("#", "") || "home";
+  return validPages.has(page) ? page : "home";
+}
+
+function showPage(page = getCurrentPage()) {
+  pageSections.forEach((section) => {
+    const isVisible = section.dataset.page === page;
+    section.classList.toggle("is-page-hidden", !isVisible);
+    if (isVisible) {
+      section.querySelectorAll(".reveal").forEach((item) => item.classList.add("is-visible"));
+    }
+  });
+
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    const target = link.getAttribute("href")?.replace("#", "");
+    link.classList.toggle("is-current", target === page);
+  });
+
+  window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+}
 
 menuToggle?.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -54,11 +78,33 @@ menuToggle?.addEventListener("click", () => {
   navbar?.classList.toggle("is-open", !isExpanded);
 });
 
-navLinks?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
+navLinks.forEach((group) => {
+  group.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      const target = link.getAttribute("href")?.replace("#", "");
+      if (target && validPages.has(target)) {
+        window.setTimeout(() => showPage(target), 0);
+      }
+
+      navbar?.classList.remove("is-open");
+      menuToggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+});
+
+window.addEventListener("hashchange", () => {
+  showPage();
+  navbar?.classList.remove("is-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+});
+
+showPage();
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
     navbar?.classList.remove("is-open");
     menuToggle?.setAttribute("aria-expanded", "false");
-  });
+  }
 });
 
 const revealObserver = new IntersectionObserver(
