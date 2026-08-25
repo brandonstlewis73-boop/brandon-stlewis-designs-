@@ -95,6 +95,8 @@ document.querySelectorAll(".magnetic").forEach((button) => {
 
 const leadForm = document.getElementById("lead-form");
 const formStatus = document.getElementById("form-status");
+const reviewForm = document.getElementById("review-form");
+const reviewStatus = document.getElementById("review-status");
 
 leadForm?.addEventListener("submit", (event) => {
   if (!leadForm.checkValidity()) {
@@ -108,6 +110,20 @@ leadForm?.addEventListener("submit", (event) => {
   formStatus.textContent = "Sending your project request...";
   formStatus.classList.remove("is-error");
   leadForm.querySelector('button[type="submit"]').disabled = true;
+});
+
+reviewForm?.addEventListener("submit", (event) => {
+  if (!reviewForm.checkValidity()) {
+    event.preventDefault();
+    reviewStatus.textContent = "Please complete every review field before submitting.";
+    reviewStatus.classList.add("is-error");
+    reviewForm.reportValidity();
+    return;
+  }
+
+  reviewStatus.textContent = "Sending your review to BSD...";
+  reviewStatus.classList.remove("is-error");
+  reviewForm.querySelector('button[type="submit"]').disabled = true;
 });
 
 function renderFallbackButton(container, plan) {
@@ -532,7 +548,7 @@ function initTransmission() {
     if (leadForm.checkValidity()) {
       leadForm.classList.add("is-transmitting");
       const panel = leadForm.querySelector(".transmission-panel small");
-      if (panel) panel.textContent = "Brief transmitting to Brandon Stlewis Designs";
+      if (panel) panel.textContent = "Brief transmitting to BSD";
     }
   });
 }
