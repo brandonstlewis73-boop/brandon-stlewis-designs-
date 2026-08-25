@@ -892,9 +892,10 @@ h3 {
 
 .brand-wordmark {
   justify-self: center;
-  min-width: min(520px, 42vw);
+  min-width: 0;
+  width: 92px;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: 0.44rem;
   border: 1px solid rgba(66, 165, 255, 0.28);
   border-radius: 999px;
   background:
@@ -988,9 +989,13 @@ h3 {
   height: 62%;
   z-index: -2;
   background:
-    radial-gradient(circle at 50% 38%, rgba(20, 125, 255, 0.28), transparent 34%),
-    linear-gradient(90deg, transparent, rgba(203, 213, 225, 0.1), transparent);
-  filter: blur(8px);
+    radial-gradient(circle at 50% 54%, rgba(20, 125, 255, 0.28), transparent 28%),
+    radial-gradient(circle at 32% 72%, rgba(80, 228, 255, 0.18), transparent 26%),
+    radial-gradient(circle at 72% 72%, rgba(157, 123, 255, 0.14), transparent 28%),
+    conic-gradient(from 210deg, transparent, rgba(20, 125, 255, 0.2), transparent, rgba(80, 228, 255, 0.13), transparent);
+  filter: blur(12px);
+  opacity: 0.88;
+  animation: galaxyBreath 9s ease-in-out infinite;
 }
 
 .studio-hero .hero-copy {
@@ -1015,16 +1020,16 @@ h3 {
   position: absolute;
   inset: -12%;
   border-radius: 50%;
-  border: 1px solid rgba(66, 165, 255, 0.42);
-  box-shadow: 0 0 38px rgba(20, 125, 255, 0.22);
-  animation: logoOrbit 12s linear infinite;
+  border: 1px solid rgba(66, 165, 255, 0.26);
+  box-shadow: 0 0 24px rgba(20, 125, 255, 0.14);
+  animation: logoOrbit 22s linear infinite;
 }
 
 .hero-logo-stage::after {
   inset: -23%;
-  border-color: rgba(203, 213, 225, 0.18);
+  border-color: rgba(203, 213, 225, 0.1);
   border-style: dashed;
-  animation-duration: 20s;
+  animation-duration: 34s;
   animation-direction: reverse;
 }
 
@@ -1034,7 +1039,7 @@ h3 {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 0 58px rgba(20, 125, 255, 0.38), 0 22px 90px rgba(0, 0, 0, 0.5);
-  animation: logoFloat 5.5s ease-in-out infinite;
+  animation: logoFloat 8s ease-in-out infinite;
 }
 
 .studio-hero h1 {
@@ -1075,6 +1080,12 @@ h3 {
   mask-image: radial-gradient(circle at 50% 46%, #000 0%, #000 38%, transparent 74%);
 }
 
+.canvas-fallback,
+.canvas-fallback.is-visible,
+.fallback-panel {
+  display: none !important;
+}
+
 .creative-studio-animation {
   position: absolute;
   inset: 50% auto auto 50%;
@@ -1083,6 +1094,7 @@ h3 {
   z-index: -1;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  opacity: 0.32;
 }
 
 .studio-ring,
@@ -2067,14 +2079,14 @@ main,
 .studio-racers {
   position: absolute;
   left: 50%;
-  bottom: -8%;
+  bottom: -4%;
   z-index: -1;
   width: min(980px, 86vw);
   max-width: none;
   transform: translateX(-50%);
-  opacity: 0.54;
-  filter: drop-shadow(0 0 46px rgba(20, 125, 255, 0.34));
-  animation: racersDrift 8s ease-in-out infinite;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 58px rgba(20, 125, 255, 0.48)) saturate(1.1);
+  animation: racersDrift 12s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -2109,6 +2121,18 @@ main,
   }
   50% {
     transform: translateX(calc(-50% + 18px)) translateY(-12px);
+  }
+}
+
+@keyframes galaxyBreath {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.96;
   }
 }
 
@@ -2514,6 +2538,18 @@ main,
   z-index: 42;
 }
 
+.menu-shell {
+  justify-self: end;
+}
+
+.menu-shell summary {
+  list-style: none;
+}
+
+.menu-shell summary::-webkit-details-marker {
+  display: none;
+}
+
 .menu-toggle {
   position: relative;
   z-index: 45;
@@ -2555,7 +2591,8 @@ main,
   transform: translateY(5px);
 }
 
-.navbar.is-open .menu-toggle {
+.navbar.is-open .menu-toggle,
+.menu-shell[open] .menu-toggle {
   border-color: rgba(80, 228, 255, 0.62);
   box-shadow: 0 0 34px rgba(20, 125, 255, 0.38);
 }
@@ -2564,11 +2601,13 @@ main,
   overflow: hidden;
 }
 
-.navbar.is-open .menu-toggle span:first-child {
+.navbar.is-open .menu-toggle span:first-child,
+.menu-shell[open] .menu-toggle span:first-child {
   transform: rotate(45deg);
 }
 
-.navbar.is-open .menu-toggle span:last-child {
+.navbar.is-open .menu-toggle span:last-child,
+.menu-shell[open] .menu-toggle span:last-child {
   transform: rotate(-45deg);
 }
 
@@ -2608,6 +2647,7 @@ main,
 }
 
 .navbar.is-open .nav-right,
+.menu-shell[open] .nav-right,
 .menu-open .nav-right {
   transform: translateX(0);
   opacity: 1;
@@ -2645,18 +2685,26 @@ main,
 }
 
 .navbar.is-open .nav-right a,
+.menu-shell[open] .nav-right a,
 .menu-open .nav-right a {
   transform: translateX(0);
   opacity: 1;
 }
 
-.navbar.is-open .nav-right a:nth-child(2) { transition-delay: 35ms; }
-.navbar.is-open .nav-right a:nth-child(3) { transition-delay: 70ms; }
-.navbar.is-open .nav-right a:nth-child(4) { transition-delay: 105ms; }
-.navbar.is-open .nav-right a:nth-child(5) { transition-delay: 140ms; }
-.navbar.is-open .nav-right a:nth-child(6) { transition-delay: 175ms; }
-.navbar.is-open .nav-right a:nth-child(7) { transition-delay: 210ms; }
-.navbar.is-open .nav-right a:nth-child(8) { transition-delay: 245ms; }
+.navbar.is-open .nav-right a:nth-child(2),
+.menu-shell[open] .nav-right a:nth-child(2) { transition-delay: 35ms; }
+.navbar.is-open .nav-right a:nth-child(3),
+.menu-shell[open] .nav-right a:nth-child(3) { transition-delay: 70ms; }
+.navbar.is-open .nav-right a:nth-child(4),
+.menu-shell[open] .nav-right a:nth-child(4) { transition-delay: 105ms; }
+.navbar.is-open .nav-right a:nth-child(5),
+.menu-shell[open] .nav-right a:nth-child(5) { transition-delay: 140ms; }
+.navbar.is-open .nav-right a:nth-child(6),
+.menu-shell[open] .nav-right a:nth-child(6) { transition-delay: 175ms; }
+.navbar.is-open .nav-right a:nth-child(7),
+.menu-shell[open] .nav-right a:nth-child(7) { transition-delay: 210ms; }
+.navbar.is-open .nav-right a:nth-child(8),
+.menu-shell[open] .nav-right a:nth-child(8) { transition-delay: 245ms; }
 
 .nav-right a:hover,
 .nav-right a.is-current {
@@ -2692,13 +2740,19 @@ main,
     display: inline-grid !important;
   }
 
+  .menu-shell {
+    display: block !important;
+    justify-self: end !important;
+  }
+
   .navbar .nav-left,
   .navbar.is-open .nav-left {
     display: none !important;
   }
 
   .navbar .nav-right,
-  .navbar.is-open .nav-right {
+  .navbar.is-open .nav-right,
+  .menu-shell[open] .nav-right {
     position: fixed !important;
     top: 0 !important;
     right: 0 !important;
@@ -2720,6 +2774,7 @@ main,
   }
 
   .navbar.is-open .nav-right,
+  .menu-shell[open] .nav-right,
   .menu-open .nav-right {
     display: grid !important;
     transform: translateX(0) !important;
@@ -2734,7 +2789,8 @@ main,
 
 @media (max-width: 620px) {
   .navbar .nav-right,
-  .navbar.is-open .nav-right {
+  .navbar.is-open .nav-right,
+  .menu-shell[open] .nav-right {
     width: 100vw !important;
     padding-top: 6.35rem !important;
   }

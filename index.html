@@ -100,25 +100,23 @@
               <img src="assets/bsd-premium-logo.png" alt="BSD logo" />
             </span>
           </span>
-          <span class="brand-title">
-            <strong>BSD</strong>
-            <small>Creative Web & Graphic Solutions</small>
-          </span>
         </a>
-        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-          <span></span>
-          <span></span>
-        </button>
-        <div class="nav-links nav-right">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#process">Process</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#contact">Contact</a>
-          <a href="#reviews">Reviews</a>
-          <a class="nav-cta magnetic" href="#contact">Get a Free Quote</a>
-        </div>
+        <details class="menu-shell" id="menu-shell">
+          <summary class="menu-toggle" aria-label="Open navigation">
+            <span></span>
+            <span></span>
+          </summary>
+          <div class="nav-links nav-right">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+            <a href="#reviews">Reviews</a>
+            <a class="nav-cta magnetic" href="#contact">Get a Free Quote</a>
+          </div>
+        </details>
       </nav>
     </header>
 
@@ -127,11 +125,7 @@
         <div class="hero-showroom" aria-label="Animated creative studio showroom">
           <canvas id="showroom-canvas"></canvas>
           <div class="canvas-loader" id="canvas-loader">Loading studio motion</div>
-          <div class="canvas-fallback" id="canvas-fallback">
-            <div class="fallback-panel">Brand</div>
-            <div class="fallback-panel">Web</div>
-            <div class="fallback-panel">Launch</div>
-          </div>
+          <div class="canvas-fallback" id="canvas-fallback" aria-hidden="true"></div>
         </div>
         <div class="hero-copy reveal">
           <div class="hero-logo-stage" aria-hidden="true">
@@ -157,11 +151,6 @@
         <div class="creative-studio-animation" aria-hidden="true">
           <span class="studio-ring"></span>
           <span class="studio-ring ring-two"></span>
-          <span class="studio-cursor"></span>
-          <span class="studio-swatch swatch-blue"></span>
-          <span class="studio-swatch swatch-silver"></span>
-          <span class="studio-swatch swatch-black"></span>
-          <span class="studio-frame-line"></span>
         </div>
         <img class="studio-racers" src="assets/bsd-creative-racers.png" alt="" aria-hidden="true" />
       </section>
