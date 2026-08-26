@@ -82,8 +82,8 @@ if (manifest.start_url !== "/" || manifest.scope !== "/") {
 }
 
 const rewriteDestinations = new Set((vercel.rewrites || []).map((rewrite) => rewrite.destination));
-if (!rewriteDestinations.has("/index.html")) {
-  fail("vercel.json does not rewrite app routes to index.html.");
+if (!rewriteDestinations.has("/")) {
+  fail("vercel.json does not rewrite app routes to the SPA entry.");
 }
 
 for (const endpoint of [
