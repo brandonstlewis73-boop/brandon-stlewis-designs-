@@ -98,6 +98,10 @@ const siteMenu = document.getElementById("site-menu");
 const navLinks = document.querySelectorAll(".nav-links");
 const validPages = new Set(["home", "services", "projects", "process", "pricing", "policies", "contact", "reviews"]);
 
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 if (siteMenu && siteMenu.parentElement !== document.body) {
   document.body.appendChild(siteMenu);
 }
@@ -107,9 +111,14 @@ function getCurrentPage() {
   return validPages.has(page) ? page : "home";
 }
 
+function getVisiblePage(page = getCurrentPage()) {
+  return page === "policies" ? "pricing" : page;
+}
+
 function showPage(page = getCurrentPage()) {
+  const visiblePage = getVisiblePage(page);
   document.querySelectorAll("[data-page]").forEach((section) => {
-    const isVisible = section.dataset.page === page;
+    const isVisible = section.dataset.page === visiblePage;
     section.classList.toggle("is-page-hidden", !isVisible);
     if (isVisible) {
       section.querySelectorAll(".reveal").forEach((item) => item.classList.add("is-visible"));
@@ -118,7 +127,7 @@ function showPage(page = getCurrentPage()) {
 
   document.querySelectorAll(".nav-links a").forEach((link) => {
     const target = link.getAttribute("href")?.replace("#", "");
-    link.classList.toggle("is-current", target === page);
+    link.classList.toggle("is-current", target === visiblePage);
   });
 }
 
@@ -139,6 +148,32 @@ function scrollToSection(section, behavior = "auto") {
   return targetTop;
 }
 
+function forcePageTop(behavior = "auto") {
+  const reset = () => {
+    window.scrollTo({ top: 0, left: 0, behavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
+  reset();
+  requestAnimationFrame(reset);
+  window.setTimeout(reset, 80);
+  window.setTimeout(reset, 360);
+}
+
+function navigateToPage(target, { updateHash = true } = {}) {
+  const visiblePage = getVisiblePage(target);
+  document.querySelectorAll("dialog[open]").forEach((dialog) => dialog.close());
+  setMenuOpen(false);
+  showPage(visiblePage);
+
+  if (updateHash && window.location.hash !== `#${target}`) {
+    history.pushState(null, "", `#${target}`);
+  }
+
+  forcePageTop();
+}
+
 menuToggle?.addEventListener("click", () => {
   const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
   setMenuOpen(!isExpanded);
@@ -155,23 +190,15 @@ document.addEventListener("click", (event) => {
   if (!section) return;
 
   event.preventDefault();
-  history.pushState(null, "", `#${target}`);
-  document.querySelectorAll("dialog[open]").forEach((dialog) => dialog.close());
-  showPage(target);
-  setMenuOpen(false);
-  window.setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-  }, 420);
+  navigateToPage(target);
 });
 
 window.addEventListener("hashchange", () => {
-  showPage();
-  setMenuOpen(false);
+  navigateToPage(getCurrentPage(), { updateHash: false });
 });
 
 showPage();
+window.addEventListener("pageshow", () => forcePageTop());
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
@@ -647,12 +674,20 @@ function initServiceModules() {
       modalList.appendChild(li);
     });
     modal.showModal();
+    modal.scrollTop = 0;
+    modal.querySelector(".modal-copy")?.scrollTo({ top: 0, left: 0, behavior: "auto" });
   };
 
   cards.forEach((card) => {
     card.addEventListener("pointerenter", () => activate(card));
     card.addEventListener("focus", () => activate(card));
     card.addEventListener("click", () => {
+      activate(card);
+      openService(card);
+    });
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
       activate(card);
       openService(card);
     });
@@ -697,6 +732,8 @@ function initProjectExhibits() {
         modalLink.textContent = "Discuss Similar Work";
       }
       modal.showModal();
+      modal.scrollTop = 0;
+      modal.querySelector(".modal-copy")?.scrollTo({ top: 0, left: 0, behavior: "auto" });
     });
   });
 
@@ -723,8 +760,8 @@ function initLiveBackground() {
   const context = canvas.getContext("2d", { alpha: true });
   if (!context) return;
 
-  const density = lowEndDevice ? 42 : 90;
-  const trails = lowEndDevice ? 4 : 9;
+  const density = lowEndDevice ? 64 : 140;
+  const trails = lowEndDevice ? 7 : 16;
   const pointer = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.42 };
   const particles = Array.from({ length: density }, () => ({
     x: Math.random() * window.innerWidth,
@@ -732,6 +769,17 @@ function initLiveBackground() {
     z: Math.random() * 0.9 + 0.1,
     vx: (Math.random() - 0.5) * 0.25,
     vy: (Math.random() - 0.5) * 0.2,
+  }));
+  const starfield = Array.from({ length: lowEndDevice ? 90 : 180 }, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    z: Math.random() * 0.85 + 0.15,
+    twinkle: Math.random() * Math.PI * 2,
+  }));
+  const comets = Array.from({ length: lowEndDevice ? 3 : 6 }, (_, index) => ({
+    delay: index * 0.9,
+    lane: Math.random(),
+    speed: 0.08 + Math.random() * 0.07,
   }));
 
   function resizeBackground() {
@@ -757,11 +805,15 @@ function initLiveBackground() {
     const height = window.innerHeight;
     const time = performance.now() * 0.001;
     const scrollShift = Number.parseFloat(getComputedStyle(root).getPropertyValue("--scroll")) || 0;
+    const horizon = height * (width < 760 ? 0.66 : 0.62);
+    const centerX = width * 0.5 + (pointer.x - width * 0.5) * 0.035;
 
     context.clearRect(0, 0, width, height);
-    const bg = context.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, Math.max(width, height) * 0.72);
-    bg.addColorStop(0, "rgba(20,125,255,0.16)");
-    bg.addColorStop(0.35, "rgba(6,18,38,0.08)");
+
+    const bg = context.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, Math.max(width, height) * 0.82);
+    bg.addColorStop(0, "rgba(33,145,255,0.22)");
+    bg.addColorStop(0.28, "rgba(24,74,155,0.15)");
+    bg.addColorStop(0.6, "rgba(6,18,38,0.08)");
     bg.addColorStop(1, "rgba(2,4,9,0)");
     context.fillStyle = bg;
     context.fillRect(0, 0, width, height);
@@ -769,20 +821,90 @@ function initLiveBackground() {
     context.save();
     context.globalCompositeOperation = "lighter";
 
-    for (let i = 0; i < trails; i += 1) {
-      const y = height * (0.16 + i * 0.095) + Math.sin(time * 0.7 + i) * 28 + scrollShift * 0.45;
-      const startX = ((time * 54 * (i + 1)) % (width + 480)) - 360;
-      const gradient = context.createLinearGradient(startX, y, startX + 360, y + 28);
-      gradient.addColorStop(0, "rgba(20,125,255,0)");
-      gradient.addColorStop(0.45, "rgba(20,125,255,0.18)");
-      gradient.addColorStop(1, "rgba(247,249,255,0)");
-      context.strokeStyle = gradient;
-      context.lineWidth = i % 3 === 0 ? 1.6 : 0.8;
+    const nebula = context.createRadialGradient(width * 0.5, height * 0.56, 0, width * 0.5, height * 0.56, width * 0.78);
+    nebula.addColorStop(0, "rgba(55,160,255,0.15)");
+    nebula.addColorStop(0.28, "rgba(83,95,255,0.08)");
+    nebula.addColorStop(0.52, "rgba(23,214,255,0.045)");
+    nebula.addColorStop(1, "rgba(0,0,0,0)");
+    context.fillStyle = nebula;
+    context.fillRect(0, 0, width, height);
+
+    starfield.forEach((star, index) => {
+      const drift = (time * (8 + star.z * 12) * 0.001 + scrollShift * 0.0009) % 1;
+      const x = ((star.x + drift) % 1) * width;
+      const y = ((star.y + Math.sin(time * 0.08 + index) * 0.004) % 1) * height;
+      const alpha = 0.1 + Math.abs(Math.sin(time * 1.2 + star.twinkle)) * 0.42 * star.z;
+      context.fillStyle = `rgba(188,225,255,${alpha})`;
       context.beginPath();
-      context.moveTo(startX, y);
-      context.bezierCurveTo(startX + 100, y - 38, startX + 230, y + 46, startX + 420, y - 10);
+      context.arc(x, y, Math.max(0.45, star.z * 1.45), 0, Math.PI * 2);
+      context.fill();
+    });
+
+    context.save();
+    context.translate(centerX, horizon);
+    context.scale(width < 760 ? 1.1 : 1.25, width < 760 ? 0.32 : 0.25);
+    for (let ring = 0; ring < 9; ring += 1) {
+      const pulse = (time * 0.55 + ring * 0.17) % 1;
+      const radius = 90 + ring * 82 + pulse * 68;
+      const alpha = Math.max(0, 0.25 - ring * 0.018 - pulse * 0.12);
+      context.strokeStyle = `rgba(83,190,255,${alpha})`;
+      context.lineWidth = ring % 2 === 0 ? 2.4 : 1.1;
+      context.beginPath();
+      context.ellipse(0, 0, radius, radius * 0.52, 0, Math.PI * 0.04, Math.PI * 0.96);
       context.stroke();
     }
+
+    for (let lane = -3; lane <= 3; lane += 1) {
+      const start = lane * width * 0.09 + Math.sin(time + lane) * 18;
+      const gradient = context.createLinearGradient(start, -80, start * 0.25, 420);
+      gradient.addColorStop(0, "rgba(83,190,255,0)");
+      gradient.addColorStop(0.42, "rgba(83,190,255,0.2)");
+      gradient.addColorStop(1, "rgba(255,255,255,0)");
+      context.strokeStyle = gradient;
+      context.lineWidth = 1.2;
+      context.beginPath();
+      context.moveTo(start, -80);
+      context.quadraticCurveTo(start * 0.35, 90, start * 0.12, 420);
+      context.stroke();
+    }
+    context.restore();
+
+    for (let i = 0; i < trails; i += 1) {
+      const y = height * (0.12 + i * 0.055) + Math.sin(time * 0.7 + i) * 24 + scrollShift * 0.38;
+      const startX = ((time * (78 + i * 12)) % (width + 560)) - 420;
+      const gradient = context.createLinearGradient(startX, y, startX + 460, y + 38);
+      gradient.addColorStop(0, "rgba(20,125,255,0)");
+      gradient.addColorStop(0.42, "rgba(40,155,255,0.28)");
+      gradient.addColorStop(0.7, "rgba(155,220,255,0.16)");
+      gradient.addColorStop(1, "rgba(247,249,255,0)");
+      context.strokeStyle = gradient;
+      context.lineWidth = i % 4 === 0 ? 2.2 : 0.9;
+      context.beginPath();
+      context.moveTo(startX, y);
+      context.bezierCurveTo(startX + 120, y - 42, startX + 280, y + 52, startX + 500, y - 12);
+      context.stroke();
+    }
+
+    comets.forEach((comet, index) => {
+      const progress = (time * comet.speed + comet.delay) % 1;
+      const x = width * (1.16 - progress * 1.42);
+      const y = height * (0.18 + comet.lane * 0.52) + Math.sin(time + index) * 26;
+      const tail = 180 + comet.lane * 120;
+      const gradient = context.createLinearGradient(x + tail, y - 34, x, y);
+      gradient.addColorStop(0, "rgba(83,190,255,0)");
+      gradient.addColorStop(0.5, "rgba(83,190,255,0.32)");
+      gradient.addColorStop(1, "rgba(247,249,255,0.88)");
+      context.strokeStyle = gradient;
+      context.lineWidth = 1.8;
+      context.beginPath();
+      context.moveTo(x + tail, y - 34);
+      context.lineTo(x, y);
+      context.stroke();
+      context.fillStyle = "rgba(247,249,255,0.86)";
+      context.beginPath();
+      context.arc(x, y, 1.8, 0, Math.PI * 2);
+      context.fill();
+    });
 
     particles.forEach((particle, index) => {
       const pullX = (pointer.x - width * 0.5) * 0.00005 * particle.z;
@@ -796,7 +918,7 @@ function initLiveBackground() {
       if (particle.y > height + 20) particle.y = -20;
 
       const size = particle.z * 1.8;
-      context.fillStyle = `rgba(95,180,255,${0.08 + particle.z * 0.28})`;
+      context.fillStyle = `rgba(95,190,255,${0.1 + particle.z * 0.34})`;
       context.beginPath();
       context.arc(particle.x, particle.y, size, 0, Math.PI * 2);
       context.fill();
