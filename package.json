@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs",
-    "check": "node --check script.js"
+    "check": "node --check script.js",
+    "check:api": "node --check api/contact.js && node --check api/review.js && node --check api/paypal-config.js && node --check api/create-paypal-order.js && node --check api/capture-paypal-order.js",
+    "test": "npm run check && npm run check:api && node scripts/audit-site.mjs"
   }
 }

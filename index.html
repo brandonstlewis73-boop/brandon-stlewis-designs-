@@ -2,595 +2,885 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BSD | 3D Web, Branding & Business Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>BSD | Brandon St Lewis Designs</title>
     <meta
       name="description"
-      content="BSD builds premium websites, online stores, POS systems, AI receptionist tools, branding, graphics, and business automation."
+      content="BSD builds premium websites, online stores, POS systems, AI receptionist tools, booking systems, branding, graphics, flyer campaigns, and business automation."
     />
     <meta
       name="keywords"
-      content="BSD, web development, POS systems, online stores, AI receptionist, branding, graphic design, social media management, Trinidad"
+      content="BSD, Brandon St Lewis Designs, web development, POS systems, online stores, AI receptionist, branding, graphic design, flyer design, business automation"
     />
     <meta name="theme-color" content="#05070B" />
-    <link rel="canonical" href="https://brandonstlewisdesign.shop/" />
-    <meta property="og:title" content="BSD" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://www.brandonstlewisdesign.shop/" />
+
+    <meta property="og:site_name" content="BSD" />
+    <meta property="og:title" content="BSD | Brandon St Lewis Designs" />
     <meta
       property="og:description"
-      content="Premium websites, business systems, AI tools, branding, and digital design."
+      content="Futuristic websites, graphics, POS systems, AI tools, and digital business systems built to launch."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://brandonstlewisdesign.shop/" />
-    <meta property="og:image" content="assets/hotel-booking-mockup.png" />
+    <meta property="og:url" content="https://www.brandonstlewisdesign.shop/" />
+    <meta property="og:image" content="https://www.brandonstlewisdesign.shop/assets/bsd-header-wordmark-transparent.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="BSD" />
+    <meta name="twitter:title" content="BSD | Brandon St Lewis Designs" />
     <meta
       name="twitter:description"
-      content="Luxury tech-forward websites, POS systems, AI tools, and brand design."
+      content="Premium websites, graphics, online stores, POS systems, AI tools, and business automation."
     />
-    <meta name="twitter:image" content="assets/hotel-booking-mockup.png" />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+    <meta name="twitter:image" content="https://www.brandonstlewisdesign.shop/assets/bsd-header-wordmark-transparent.png" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/bsd-header-wordmark-transparent.png" as="image" />
+    <link rel="preload" href="/assets/bsd-creative-racers.png" as="image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <script
-      src="https://www.paypal.com/sdk/js?client-id=AaN0PcDHxOM8SccAfW02ax4cIRiJ5wXqsjxHuis_9Xm32nYd2VFDJ36c6fcRwj_AJ0N2FaPKoJVh8PVS&currency=USD&intent=capture"
-      data-sdk-source="integration-builder"
-      async
-    ></script>
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
-        }
-      }
-    </script>
-    <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/script.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "BSD",
-        "url": "https://brandonstlewisdesign.shop",
-        "description": "Premium web development, POS systems, online stores, AI receptionist tools, branding, graphics, social media management, and business automation.",
-        "areaServed": "Worldwide",
-        "priceRange": "$$",
-        "email": "brandonstlewis73@gmail.com"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.brandonstlewisdesign.shop/#organization",
+            "name": "BSD",
+            "alternateName": "Brandon St Lewis Designs",
+            "url": "https://www.brandonstlewisdesign.shop/",
+            "logo": "https://www.brandonstlewisdesign.shop/assets/bsd-header-wordmark-transparent.png",
+            "email": "brandonstlewis73@gmail.com",
+            "sameAs": ["https://www.instagram.com/bsd_designs_/"]
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://www.brandonstlewisdesign.shop/#professional-service",
+            "name": "BSD",
+            "url": "https://www.brandonstlewisdesign.shop/",
+            "description": "Premium web development, POS systems, online stores, AI receptionist tools, branding, graphics, flyer campaigns, and business automation.",
+            "email": "brandonstlewis73@gmail.com",
+            "areaServed": "Worldwide",
+            "priceRange": "$$",
+            "parentOrganization": {
+              "@id": "https://www.brandonstlewisdesign.shop/#organization"
+            }
+          }
+        ]
       }
     </script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <canvas class="live-background" id="live-background" aria-hidden="true"></canvas>
-    <div class="motion-grid" aria-hidden="true"></div>
-    <div class="cursor-orb" id="cursor-orb" aria-hidden="true"><span id="cursor-label"></span></div>
-    <div class="scroll-beam" aria-hidden="true"></div>
-    <section class="intro-sequence" id="intro-sequence" aria-label="BSD digital studio intro">
-      <div class="intro-noise" aria-hidden="true"></div>
-      <div class="intro-core">
-        <div class="intro-mark">
-          <span class="logo-prism">
-            <img src="assets/bsd-premium-logo.png" alt="BSD logo" />
-          </span>
-        </div>
-        <p>Initializing Creative Engine</p>
-        <div class="intro-loader"><span></span></div>
-        <button class="intro-skip" id="intro-skip" type="button">Skip Intro</button>
+    <div class="site-shell" aria-hidden="true"></div>
+
+    <section class="intro-sequence" id="intro-sequence" aria-label="BSD intro">
+      <div class="intro-panel">
+        <img src="/assets/bsd-premium-logo.png" alt="" width="96" height="96" />
+        <p>Initializing BSD studio</p>
+        <span class="intro-line"><span></span></span>
+        <button class="text-button" id="intro-skip" type="button">Skip</button>
       </div>
     </section>
 
     <header class="site-header">
-      <nav class="navbar">
-        <div class="nav-links nav-left">
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#process">Process</a>
-          <a class="mobile-only" href="#pricing">Pricing</a>
-          <a class="mobile-only" href="#contact">Contact</a>
-        </div>
-        <a class="brand-mark brand-wordmark header-wordmark" href="#home" aria-label="BSD home">
-          <img src="assets/bsd-header-wordmark-transparent.png" alt="Brandon Stlewis Designs" />
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="brand-home" href="/" data-route="home" aria-label="BSD home">
+          <img
+            src="/assets/bsd-header-wordmark-transparent.png"
+            alt="Brandon St Lewis Designs"
+            width="1193"
+            height="203"
+            decoding="async"
+          />
         </a>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="site-menu" aria-expanded="false">
+
+        <div class="desktop-nav" aria-label="Desktop navigation">
+          <a href="/services" data-route="services">Services</a>
+          <a href="/projects" data-route="projects">Projects</a>
+          <a href="/process" data-route="process">Process</a>
+          <a href="/pricing" data-route="pricing">Pricing</a>
+          <a href="/contact" data-route="contact">Contact</a>
+        </div>
+
+        <a class="header-cta" href="/contact" data-route="contact">Book a Project</a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-label="Open navigation"
+          aria-controls="site-menu"
+          aria-expanded="false"
+        >
           <span></span>
           <span></span>
         </button>
-        <div class="nav-links nav-right" id="site-menu">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#process">Process</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#contact">Contact</a>
-          <a href="#reviews">Reviews</a>
-          <a class="nav-cta magnetic" href="#contact">Get a Free Quote</a>
-        </div>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero-section studio-hero" id="home" data-page="home">
-        <div class="hero-showroom" aria-label="Animated creative studio showroom">
-          <canvas id="showroom-canvas"></canvas>
-          <div class="canvas-loader" id="canvas-loader">Loading studio motion</div>
-          <div class="canvas-fallback" id="canvas-fallback" aria-hidden="true"></div>
-        </div>
-        <div class="hero-copy reveal">
-          <div class="hero-logo-stage" aria-hidden="true">
-            <span class="logo-prism">
-              <img src="assets/bsd-premium-logo.png" alt="" />
-            </span>
-          </div>
-          <p class="eyebrow">Creative Web & Graphic Solutions</p>
-          <h1>Websites, graphics, and systems built to launch.</h1>
-          <p class="hero-lede">
-            Premium websites, graphics, online stores, POS systems, and automation for businesses
-            ready to look serious, move faster, and launch with confidence.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary magnetic" href="#contact">Book a Project</a>
-            <a class="button button-ghost magnetic" href="#projects">View Projects</a>
-          </div>
-          <div class="hero-meta">
-            <span>brandonstlewisdesign.shop</span>
-            <span>Websites / POS / AI / Branding</span>
-          </div>
-        </div>
-        <div class="creative-studio-animation" aria-hidden="true">
-          <span class="studio-ring"></span>
-          <span class="studio-ring ring-two"></span>
-        </div>
-        <img class="studio-racers" src="assets/bsd-creative-racers.png" alt="" aria-hidden="true" />
-      </section>
+    <div class="mobile-menu" id="site-menu" aria-hidden="true">
+      <a href="/" data-route="home">Home</a>
+      <a href="/services" data-route="services">Services</a>
+      <a href="/projects" data-route="projects">Projects</a>
+      <a href="/process" data-route="process">Process</a>
+      <a href="/pricing" data-route="pricing">Pricing</a>
+      <a href="/contact" data-route="contact">Contact</a>
+      <a href="/reviews" data-route="reviews">Reviews</a>
+      <a class="menu-cta" href="/contact" data-route="contact">Get a Free Quote</a>
+    </div>
+    <button class="menu-backdrop" id="menu-backdrop" type="button" aria-label="Close navigation"></button>
 
-      <section class="trust-strip reveal journey-strip" data-page="home">
-        <span>Websites</span>
-        <span>Branding</span>
-        <span>POS Systems</span>
-        <span>Automation</span>
-      </section>
+    <main id="main" tabindex="-1">
+      <section class="page page-home" id="home" data-page="home" aria-labelledby="home-title">
+        <div class="hero-layout">
+          <div class="hero-copy reveal">
+            <p class="section-label">Creative Web & Graphic Solutions</p>
+            <h1 id="home-title">Websites, graphics, and systems built to launch.</h1>
+            <p class="hero-lede">
+              BSD builds premium websites, online stores, POS systems, AI receptionist flows,
+              booking systems, secure uploads, branding, flyers, and automation for businesses
+              that need to look serious online.
+            </p>
+            <div class="hero-actions" aria-label="Primary actions">
+              <a class="button button-primary" href="/contact" data-route="contact">Book a Project</a>
+              <a class="button button-secondary" href="/projects" data-route="projects">View Projects</a>
+            </div>
+            <div class="hero-rail" aria-label="BSD service categories">
+              <span>Web Development</span>
+              <span>Branding</span>
+              <span>POS</span>
+              <span>Automation</span>
+              <span>AI Tools</span>
+            </div>
+          </div>
 
-      <section class="section service-command" id="services" data-page="services">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Services</p>
-          <h2>Business systems designed as one connected digital engine.</h2>
+          <div class="hero-visual reveal" aria-label="BSD cinematic digital studio scene">
+            <div class="scene-frame">
+              <div class="scene-depth" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <img
+                class="racer-art"
+                src="/assets/bsd-creative-racers.png"
+                alt="Futuristic BSD racers inside a blue digital scene"
+                width="1672"
+                height="941"
+                decoding="async"
+              />
+              <div class="scene-modules" aria-hidden="true">
+                <span>Website</span>
+                <span>POS</span>
+                <span>AI</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="service-grid">
-          <article class="glass-card service-card reveal is-active" tabindex="0" data-cursor="OPEN" data-service="Website systems build from strategy to launch: structure, responsive UI, SEO foundation, payment flow, and conversion-focused contact paths.">
+
+        <div class="home-panels">
+          <article class="studio-panel reveal">
             <span>01</span>
-            <h3>Website Development</h3>
-            <p>Premium responsive websites with strong branding, lead capture, SEO foundations, and fast loading.</p>
+            <h2>Built like a digital launch system.</h2>
+            <p>
+              BSD connects design, business tools, customer flow, and launch support into one
+              polished online presence.
+            </p>
           </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Commerce flows connect product pages, service payments, checkout confidence, and customer follow-up into one sales path.">
+          <article class="studio-panel reveal">
             <span>02</span>
-            <h3>Online Stores</h3>
-            <p>Product pages, checkout paths, service payments, and store layouts built for customer confidence.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="POS interfaces organize sales, receipts, inventory, staff tasks, and reporting into a clear operating system.">
-            <span>03</span>
-            <h3>POS Systems</h3>
-            <p>Sales dashboards, product management, receipt workflows, inventory structure, and staff-ready tools.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="AI receptionist flows qualify leads, answer common questions, collect booking details, and route customers faster.">
-            <span>04</span>
-            <h3>AI Receptionist</h3>
-            <p>Chatbot and intake flows that answer common questions, collect leads, and route customers properly.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Booking systems turn interest into scheduled calls, appointments, consultations, and service requests.">
-            <span>05</span>
-            <h3>Booking Systems</h3>
-            <p>Clean appointment, consultation, and service request flows for local and online businesses.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Upload flows help clients send files, documents, references, and project materials without messy message threads.">
-            <span>06</span>
-            <h3>Secure Uploads</h3>
-            <p>Client-friendly upload areas for documents, images, project files, and service intake materials.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Brand systems connect logos, social visuals, print work, typography, colors, and launch graphics into one recognizable identity.">
-            <span>07</span>
-            <h3>Branding & Graphics</h3>
-            <p>Logos, print assets, social visuals, business cards, launch graphics, and premium visual systems.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Automation connects repeat admin work, quote requests, follow-ups, forms, and dashboards so the business runs cleaner.">
-            <span>08</span>
-            <h3>Business Automation</h3>
-            <p>Practical automations for inquiries, order flow, follow-ups, dashboards, and repeat admin work.</p>
-          </article>
-          <article class="glass-card service-card reveal" tabindex="0" data-cursor="OPEN" data-service="Flyer campaigns turn offers into professional print/social assets with strong hierarchy, branded visuals, and clear calls to action.">
-            <span>09</span>
-            <h3>Flyer & Print Campaigns</h3>
-            <p>Promotional flyers, service ads, launch graphics, print-ready layouts, and branded social versions.</p>
+            <h2>Creative enough to stand out. Clear enough to convert.</h2>
+            <p>
+              The experience stays cinematic without hiding the action visitors need to take:
+              view the work, understand the service, and book the project.
+            </p>
           </article>
         </div>
-        <aside class="service-orbit reveal" aria-live="polite">
-          <span>Active Module</span>
-          <h3 id="service-orbit-title">Website Development</h3>
-          <p id="service-orbit-copy">Website systems build from strategy to launch: structure, responsive UI, SEO foundation, payment flow, and conversion-focused contact paths.</p>
-          <div class="module-diagram" aria-hidden="true">
-            <i></i><i></i><i></i><i></i>
-          </div>
-        </aside>
       </section>
 
-      <section class="section split-section" id="projects" data-page="projects">
+      <section class="page" id="services" data-page="services" hidden aria-labelledby="services-title">
         <div class="section-heading reveal">
-          <p class="eyebrow">Featured Work</p>
-          <h2>Real websites and business systems built for professional brands.</h2>
-        </div>
-        <div class="project-grid exhibit-grid">
-          <article class="project-frame reveal" data-cursor="VIEW" data-title="Anchorwheel Financial Co." data-type="Live Website / Financial Services" data-image="assets/anchorwheel-website-project.png" data-copy="A live financial services website designed for tax preparation, amendment review, tax debt resolution review, booking, and lead generation." data-link="https://www.anchorwheelfinancialco.site">
-            <div class="frame-top">
-              <img src="assets/anchorwheel-website-project.png" alt="Anchorwheel Financial Co website project preview" loading="lazy" />
-            </div>
-            <h3>Anchorwheel Financial Co.</h3>
-            <p>Live financial services website for virtual tax preparation, amendment review, tax debt resolution review, and small business tax support.</p>
-            <span>Website / Financial Services / Lead Flow</span>
-            <a class="project-link" href="https://www.anchorwheelfinancialco.site" target="_blank" rel="noopener noreferrer">View Live Site</a>
-          </article>
-          <article class="project-frame reveal" data-cursor="VIEW" data-title="Stoned Cooling Services" data-type="Flyer Design / Logo Graphics / Print" data-image="assets/stoned-cooling-flyer-1.jpg" data-copy="Client flyer and brand graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and logo-led visuals.">
-            <div class="frame-top flyer-preview">
-              <img src="assets/stoned-cooling-flyer-1.jpg" alt="Stoned Cooling Services promotional flyer" loading="lazy" />
-              <img src="assets/stoned-cooling-flyer-2.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" loading="lazy" />
-              <img src="assets/stoned-cooling-logo.jpg" alt="Stoned Cooling Services logo design" loading="lazy" />
-            </div>
-            <h3>Stoned Cooling Services</h3>
-            <p>Client flyer and brand graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and logo-led visuals.</p>
-            <span>Flyer Design / Logo Graphics / Print</span>
-          </article>
-          <article class="project-frame reveal" data-cursor="VIEW" data-title="Hotel Booking Website" data-type="Website / Booking / Branding" data-image="assets/hotel-booking-mockup.png" data-copy="Hospitality website concept with mobile booking flow, premium room visuals, inquiry capture, and brand-first layout.">
-            <div class="frame-top">
-              <img src="assets/hotel-booking-mockup.png" alt="Luxury hotel booking website mockup on laptop and phone" loading="lazy" />
-            </div>
-            <h3>Hotel Booking Website</h3>
-            <p>Hospitality website concept with mobile booking flow, premium room visuals, inquiry capture, and brand-first layout.</p>
-            <span>Website / Booking / Branding</span>
-          </article>
-          <article class="project-frame reveal" data-cursor="VIEW" data-title="Retail POS Dashboard" data-type="POS / Dashboard / Automation" data-image="assets/pos-dashboard-mockup.png" data-copy="Retail operations concept showing sales reporting, inventory cards, customer records, staff actions, and checkout-focused UI.">
-            <div class="frame-top">
-              <img src="assets/pos-dashboard-mockup.png" alt="Retail POS dashboard mockup on touchscreen terminal" loading="lazy" />
-            </div>
-            <h3>Retail POS Dashboard</h3>
-            <p>Retail operations concept showing sales reporting, inventory cards, customer records, staff actions, and checkout-focused UI.</p>
-            <span>POS / Dashboard / Automation</span>
-          </article>
-          <article class="project-frame reveal" data-cursor="VIEW" data-title="AI Reception Desk" data-type="AI / Leads / Customer Flow" data-image="assets/ai-receptionist-mockup.png" data-copy="AI receptionist concept with lead qualification, appointment cards, chat intake, and service routing for faster customer response.">
-            <div class="frame-top">
-              <img src="assets/ai-receptionist-mockup.png" alt="AI receptionist dashboard mockup with chat and booking panels" loading="lazy" />
-            </div>
-            <h3>AI Reception Desk</h3>
-            <p>AI receptionist concept with lead qualification, appointment cards, chat intake, and service routing for faster customer response.</p>
-            <span>AI / Leads / Customer Flow</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="section process-section" id="process" data-page="process">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Process</p>
-          <h2>A clear build process from idea to launch.</h2>
-        </div>
-        <div class="process-line">
-          <article class="process-step reveal">
-            <span>01</span>
-            <h3>Discovery</h3>
-            <p>Goals, audience, services, payment needs, content, integrations, and brand direction.</p>
-          </article>
-          <article class="process-step reveal">
-            <span>02</span>
-            <h3>Design System</h3>
-            <p>Visual direction, page structure, service positioning, CTA flow, and mobile-first layouts.</p>
-          </article>
-          <article class="process-step reveal">
-            <span>03</span>
-            <h3>Build</h3>
-            <p>Responsive frontend, forms, checkout links, dashboards, upload paths, and automation logic.</p>
-          </article>
-          <article class="process-step reveal">
-            <span>04</span>
-            <h3>Launch</h3>
-            <p>Final QA, domain connection, mobile checks, contact testing, and launch package handoff.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section why-section" data-page="home">
-        <div class="why-panel reveal">
-          <p class="eyebrow">About Us</p>
-          <h2>BSD combines design quality with systems thinking.</h2>
+          <p class="section-label">Services</p>
+          <h1 id="services-title">Digital modules for serious business launches.</h1>
           <p>
-            Founded by Brandon Stlewis, BSD is built for businesses that need more than a basic website.
-            The focus is a strong first impression, clean customer flow, practical business tools,
-            and a premium brand presence that can grow.
+            Choose a service to see what BSD builds, who it fits, common deliverables,
+            and the next step.
           </p>
         </div>
-        <div class="why-grid">
-          <div class="mini-card reveal">Fast mobile-first pages</div>
-          <div class="mini-card reveal">Practical business workflows</div>
-          <div class="mini-card reveal">Premium visual identity</div>
-          <div class="mini-card reveal">Clear launch handoff</div>
+
+        <div class="service-system">
+          <div class="service-grid" role="list">
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Website Development"
+              data-type="Websites / Lead Flow / Launch"
+              data-image="/assets/anchorwheel-website-project.png"
+              data-copy="Custom websites for businesses that need a premium online presence, clear service pages, mobile-first layouts, SEO foundations, and contact paths that convert interest into leads."
+              data-items="Responsive page design|Mobile-first build|SEO-ready structure|Quote/contact flow|Domain and launch support"
+            >
+              <span>01</span>
+              <strong>Website Development</strong>
+              <small>Premium websites built for credibility, speed, and leads.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Online Stores"
+              data-type="Commerce / Products / Payments"
+              data-image="/assets/hotel-booking-mockup.png"
+              data-copy="Online stores and service checkout flows for brands that need product pages, payment readiness, customer trust sections, and clean mobile shopping paths."
+              data-items="Product/service page structure|Checkout-ready layout|Trust and policy sections|Mobile store flow|Launch guidance"
+            >
+              <span>02</span>
+              <strong>Online Stores</strong>
+              <small>Commerce layouts that help customers buy with confidence.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="POS Systems"
+              data-type="POS / Dashboard / Operations"
+              data-image="/assets/pos-dashboard-mockup.png"
+              data-copy="POS interfaces and dashboard concepts for businesses that need sales views, inventory structure, customer records, receipt workflows, and staff-friendly tools."
+              data-items="Sales dashboard structure|Inventory views|Customer records|Staff workflow screens|Receipt/reporting paths"
+            >
+              <span>03</span>
+              <strong>POS Systems</strong>
+              <small>Clean operating screens for checkout and management.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="AI Receptionist"
+              data-type="AI / Intake / Customer Response"
+              data-image="/assets/ai-receptionist-mockup.png"
+              data-copy="AI receptionist flows for businesses that need faster customer response, lead qualification, booking intake, service routing, and structured follow-up."
+              data-items="Customer question flow|Lead qualification|Booking prompts|Service routing|Follow-up structure"
+            >
+              <span>04</span>
+              <strong>AI Receptionist</strong>
+              <small>Intake and response systems for faster lead handling.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Booking Systems"
+              data-type="Appointments / Consultations / Requests"
+              data-image="/assets/hotel-booking-mockup.png"
+              data-copy="Booking systems for appointments, consultations, service requests, room inquiries, and scheduled customer interactions."
+              data-items="Booking page layout|Service selection|Customer details form|Confirmation flow|Mobile appointment path"
+            >
+              <span>05</span>
+              <strong>Booking Systems</strong>
+              <small>Appointment paths that make it easier to say yes.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Secure Uploads"
+              data-type="Uploads / Intake / File Flow"
+              data-image="/assets/ai-receptionist-mockup.png"
+              data-copy="Client upload and intake flows for documents, images, references, and project materials so files do not get lost in message threads."
+              data-items="Client upload layout|Document request flow|Project intake organization|Email alert structure|Mobile-friendly upload steps"
+            >
+              <span>06</span>
+              <strong>Secure Uploads</strong>
+              <small>Cleaner file intake for documents and project materials.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Branding & Graphics"
+              data-type="Brand Identity / Graphics / Print"
+              data-image="/assets/stoned-cooling-logo.jpg"
+              data-copy="Branding and graphic design for businesses that need logos, colors, social visuals, business cards, launch graphics, and a sharper visual identity."
+              data-items="Logo concepts|Brand colors|Social profile graphics|Business card layout|Launch visuals"
+            >
+              <span>07</span>
+              <strong>Branding & Graphics</strong>
+              <small>Logo-led visual systems for print, social, and web.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Business Automation"
+              data-type="Automation / Forms / Admin Flow"
+              data-image="/assets/pos-dashboard-mockup.png"
+              data-copy="Business automation for quote routing, intake forms, follow-ups, admin dashboards, and repeat workflows that need to run cleaner."
+              data-items="Quote request routing|Admin dashboard concept|Lead organization|Email notification flow|Workflow cleanup"
+            >
+              <span>08</span>
+              <strong>Business Automation</strong>
+              <small>Practical systems for leads, forms, and admin work.</small>
+            </button>
+
+            <button
+              class="service-card reveal"
+              type="button"
+              data-service-card
+              data-title="Flyer & Print Campaigns"
+              data-type="Flyers / Print / Social Ads"
+              data-image="/assets/stoned-cooling-flyer-1.jpg"
+              data-copy="Flyer and print campaigns for service promotions, launches, events, and local business ads with strong hierarchy and clear calls to action."
+              data-items="Promotional flyer design|Print-ready layout|Social media versions|CTA structure|Brand-matched campaign graphics"
+            >
+              <span>09</span>
+              <strong>Flyer & Print Campaigns</strong>
+              <small>Promotional layouts for print and social campaigns.</small>
+            </button>
+          </div>
+
+          <aside class="active-module reveal" aria-live="polite">
+            <span>Active Module</span>
+            <h2 id="active-service-title">Website Development</h2>
+            <p id="active-service-copy">
+              Custom websites for businesses that need a premium online presence, clear service pages,
+              mobile-first layouts, SEO foundations, and contact paths that convert interest into leads.
+            </p>
+            <a class="button button-primary" href="/contact" data-route="contact">Book This Service</a>
+          </aside>
         </div>
       </section>
 
-      <section class="section" id="pricing" data-page="pricing">
+      <section class="page" id="projects" data-page="projects" hidden aria-labelledby="projects-title">
         <div class="section-heading reveal">
-          <p class="eyebrow">Pricing / Packages</p>
-          <h2>Starting prices for common business needs.</h2>
+          <p class="section-label">Featured Work</p>
+          <h1 id="projects-title">Project exhibits with clear status labels.</h1>
+          <p>
+            Live client work is labeled separately from concept and prototype work. No fake client
+            claims are used.
+          </p>
         </div>
+
+        <div class="project-grid">
+          <article
+            class="project-card reveal"
+            data-project-card
+            data-title="Anchorwheel Financial Co."
+            data-type="Live Website / Financial Services"
+            data-status="Live Client Project"
+            data-image="/assets/anchorwheel-website-project.png"
+            data-copy="A live financial services website for virtual tax preparation, amended returns, tax debt resolution review, booking, and lead generation."
+            data-link="https://www.anchorwheelfinancialco.site"
+          >
+            <div class="project-media">
+              <img
+                src="/assets/anchorwheel-website-project.png"
+                alt="Anchorwheel Financial Co website preview on laptop and phone"
+                width="1568"
+                height="1003"
+                loading="eager"
+                decoding="async"
+              />
+              <span>Live Client Project</span>
+            </div>
+            <div class="project-copy">
+              <p>Website / Financial Services / Lead Flow</p>
+              <h2>Anchorwheel Financial Co.</h2>
+              <span>
+                Live financial services website for tax preparation, amended returns,
+                tax debt review, booking, and customer inquiry flow.
+              </span>
+              <div class="project-actions">
+                <button class="button button-secondary" type="button" data-project-open>View Case Study</button>
+                <a class="button button-primary" href="https://www.anchorwheelfinancialco.site" target="_blank" rel="noopener noreferrer">View Live Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="project-card reveal"
+            data-project-card
+            data-title="Stoned Cooling Services"
+            data-type="Flyer Design / Logo Graphics / Print"
+            data-status="Live Client Graphic Work"
+            data-image="/assets/stoned-cooling-flyer-1.jpg"
+            data-copy="Client flyer and logo-led graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and branded campaign visuals."
+          >
+            <div class="project-media project-collage">
+              <img src="/assets/stoned-cooling-flyer-1.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" width="853" height="1280" loading="lazy" decoding="async" />
+              <img src="/assets/stoned-cooling-flyer-2.jpg" alt="Stoned Cooling Services promotional flyer" width="853" height="1280" loading="lazy" decoding="async" />
+              <img src="/assets/stoned-cooling-logo.jpg" alt="Stoned Cooling Services logo graphic" width="1280" height="720" loading="lazy" decoding="async" />
+              <span>Live Client Graphic Work</span>
+            </div>
+            <div class="project-copy">
+              <p>Flyers / Logo Graphics / Print</p>
+              <h2>Stoned Cooling Services</h2>
+              <span>
+                Flyer and brand graphic work for a vehicle A/C repair service, with service-focused
+                messaging and print/social campaign visuals.
+              </span>
+              <button class="button button-secondary" type="button" data-project-open>View Case Study</button>
+            </div>
+          </article>
+
+          <article
+            class="project-card reveal"
+            data-project-card
+            data-title="Hotel Booking Website"
+            data-type="Website / Booking / Branding"
+            data-status="Concept / Prototype"
+            data-image="/assets/hotel-booking-mockup.png"
+            data-copy="Hospitality website concept with mobile booking flow, premium room presentation, inquiry capture, and brand-first layout."
+          >
+            <div class="project-media">
+              <img src="/assets/hotel-booking-mockup.png" alt="Hotel booking website concept on laptop and phone" width="1568" height="1003" loading="lazy" decoding="async" />
+              <span>Concept / Prototype</span>
+            </div>
+            <div class="project-copy">
+              <p>Website / Booking / Branding</p>
+              <h2>Hotel Booking Website</h2>
+              <span>Hospitality booking concept showing room presentation, mobile inquiry flow, and a premium brand layout.</span>
+              <button class="button button-secondary" type="button" data-project-open>View Case Study</button>
+            </div>
+          </article>
+
+          <article
+            class="project-card reveal"
+            data-project-card
+            data-title="Retail POS Dashboard"
+            data-type="POS / Dashboard / Automation"
+            data-status="Concept / Prototype"
+            data-image="/assets/pos-dashboard-mockup.png"
+            data-copy="Retail operations concept showing sales reporting, inventory cards, customer records, staff actions, and checkout-focused UI."
+          >
+            <div class="project-media">
+              <img src="/assets/pos-dashboard-mockup.png" alt="Retail POS dashboard concept on terminal and mobile screens" width="1586" height="992" loading="lazy" decoding="async" />
+              <span>Concept / Prototype</span>
+            </div>
+            <div class="project-copy">
+              <p>POS / Dashboard / Automation</p>
+              <h2>Retail POS Dashboard</h2>
+              <span>Retail dashboard concept for sales reporting, inventory, customer records, and checkout operations.</span>
+              <button class="button button-secondary" type="button" data-project-open>View Case Study</button>
+            </div>
+          </article>
+
+          <article
+            class="project-card reveal"
+            data-project-card
+            data-title="AI Reception Desk"
+            data-type="AI / Leads / Customer Flow"
+            data-status="Concept / Prototype"
+            data-image="/assets/ai-receptionist-mockup.png"
+            data-copy="AI receptionist concept with lead qualification, appointment cards, chat intake, and service routing for faster customer response."
+          >
+            <div class="project-media">
+              <img src="/assets/ai-receptionist-mockup.png" alt="AI receptionist dashboard concept with chat and booking panels" width="1586" height="992" loading="lazy" decoding="async" />
+              <span>Concept / Prototype</span>
+            </div>
+            <div class="project-copy">
+              <p>AI / Leads / Customer Flow</p>
+              <h2>AI Reception Desk</h2>
+              <span>AI receptionist concept for customer intake, lead qualification, appointment prompts, and service routing.</span>
+              <button class="button button-secondary" type="button" data-project-open>View Case Study</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="process" data-page="process" hidden aria-labelledby="process-title">
+        <div class="section-heading reveal">
+          <p class="section-label">Process</p>
+          <h1 id="process-title">A controlled path from idea to launch.</h1>
+          <p>Every project is scoped around what the business needs to show, sell, collect, or automate.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-step reveal">
+            <span>01</span>
+            <h2>Discovery</h2>
+            <p>Goals, audience, services, content, payments, forms, integrations, and brand direction.</p>
+          </article>
+          <article class="process-step reveal">
+            <span>02</span>
+            <h2>Design System</h2>
+            <p>Visual direction, page hierarchy, customer path, mobile behavior, and core conversion points.</p>
+          </article>
+          <article class="process-step reveal">
+            <span>03</span>
+            <h2>Build</h2>
+            <p>Responsive frontend, project forms, payment readiness, dashboards, upload flow, and automation logic.</p>
+          </article>
+          <article class="process-step reveal">
+            <span>04</span>
+            <h2>Launch</h2>
+            <p>Domain setup, mobile QA, contact testing, policy review, performance checks, and launch support.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="pricing" data-page="pricing" hidden aria-labelledby="pricing-title">
+        <div class="section-heading reveal">
+          <p class="section-label">Pricing</p>
+          <h1 id="pricing-title">Starting prices with custom quote confirmation.</h1>
+          <p>
+            These are starting prices. Final pricing depends on scope, deliverables, timeline,
+            integrations, revisions, and launch support.
+          </p>
+        </div>
+
         <div class="pricing-stack">
           <article class="price-row reveal">
             <div>
               <span>Starter Design Package</span>
-              <h3>Starting at $95</h3>
-              <p>Logo concept, revisions, color palette, and social profile graphic.</p>
+              <h2>Starting from $95</h2>
+              <p>Logo concept, light revisions, color direction, and a social profile graphic.</p>
             </div>
-            <div id="paypal-starter" class="payment-slot"></div>
+            <div class="payment-slot" data-package="starter" aria-live="polite"></div>
           </article>
-          <article class="price-row featured reveal">
-            <div>
-              <span>Brand Identity Package</span>
-              <h3>Starting at $275</h3>
-              <p>Logo system, typography direction, business card design, and social templates.</p>
-            </div>
-            <div id="paypal-brand" class="payment-slot"></div>
-          </article>
+
           <article class="price-row reveal">
             <div>
-              <span>Website / Premium Build</span>
-              <h3>Starting at $650</h3>
-              <p>Homepage concept, brand system, digital layout, print collateral, and launch support.</p>
+              <span>Brand Identity Package</span>
+              <h2>Starting from $275</h2>
+              <p>Logo system, typography direction, business card design, and social templates.</p>
             </div>
-            <div id="paypal-premium" class="payment-slot"></div>
+            <div class="payment-slot" data-package="brand" aria-live="polite"></div>
           </article>
+
+          <article class="price-row featured reveal">
+            <div>
+              <span>Website / Premium Build</span>
+              <h2>Starting from $650</h2>
+              <p>Website structure, brand-led UI, contact flow, launch support, and mobile QA.</p>
+            </div>
+            <div class="payment-slot" data-package="premium" aria-live="polite"></div>
+          </article>
+
           <article class="price-row reveal">
             <div>
               <span>Social Media Management</span>
-              <h3>Starting at $220/month</h3>
-              <p>Content calendar, branded posts, caption support, and basic scheduling.</p>
+              <h2>Starting from $220/month</h2>
+              <p>Content calendar, branded posts, caption support, and basic scheduling support.</p>
             </div>
-            <div id="paypal-social" class="payment-slot"></div>
+            <div class="payment-slot" data-package="social" aria-live="polite"></div>
+          </article>
+        </div>
+
+        <div class="pricing-note reveal">
+          <h2>Payment note</h2>
+          <p>
+            PayPal checkout is loaded only when payment is available for an approved package.
+            Custom work should be quoted before payment so the scope is clear.
+          </p>
+          <a class="button button-primary" href="/contact" data-route="contact">Request a Quote</a>
+        </div>
+      </section>
+
+      <section class="page" id="policies" data-page="policies" hidden aria-labelledby="policies-title">
+        <div class="section-heading reveal">
+          <p class="section-label">Policies</p>
+          <h1 id="policies-title">Project policies and site privacy.</h1>
+          <p>Plain-language policy information for custom design, development, payments, and website data.</p>
+        </div>
+
+        <div class="policy-grid">
+          <article class="policy-card reveal" id="privacy-policy">
+            <h2>Privacy Policy</h2>
+            <p>
+              BSD uses contact and project information only to respond to inquiries, plan work,
+              prepare quotes, send project updates, and deliver services. Payment details are handled
+              by payment providers and are not stored on this website.
+            </p>
+            <p>
+              Form submissions may be routed through BSD's serverless endpoints, email providers,
+              or FormSubmit fallback delivery. Do not submit passwords, card numbers, or highly
+              sensitive documents through the public contact form.
+            </p>
+          </article>
+
+          <article class="policy-card reveal" id="terms-of-service">
+            <h2>Terms of Service</h2>
+            <p>
+              Clients are responsible for providing accurate project information, brand assets,
+              written content, access details, and timely feedback. Work outside the agreed scope
+              may require a revised quote before it begins.
+            </p>
+            <p>
+              Custom work timelines depend on client response time, asset readiness, revision scope,
+              third-party platform access, and technical requirements.
+            </p>
+          </article>
+
+          <article class="policy-card reveal" id="refund-policy">
+            <h2>Refund / Cancellation Policy</h2>
+            <p>
+              Custom design and development work is generally non-refundable once planning, design,
+              development, or file preparation has started. If work has not started, refund or
+              cancellation requests may be reviewed within 24 hours of payment.
+            </p>
+            <p>
+              Deposits, rush fees, third-party platform fees, purchased assets, domain costs, and
+              completed deliverables may be non-refundable.
+            </p>
+          </article>
+
+          <article class="policy-card reveal" id="cookie-policy">
+            <h2>Cookie Policy</h2>
+            <p>
+              This website uses local browser storage to remember cookie notice acceptance and intro
+              display preference. PayPal may load its own scripts, cookies, or frames only when payment
+              checkout is available or requested. Google Fonts are loaded for typography.
+            </p>
+            <p>
+              No optional analytics provider is currently configured in this codebase. Analytics event
+              hooks are prepared so a provider can be connected later with consent-aware handling.
+            </p>
           </article>
         </div>
       </section>
 
-      <section class="section policy-section" id="policies" data-page="pricing">
-        <article class="policy-card reveal">
-          <p class="eyebrow">Refund Policy</p>
-          <h3>Clear expectations before purchase.</h3>
-          <p>
-            Custom design and development work is generally non-refundable once work has started.
-            If a project has not yet begun, refund requests may be reviewed within 24 hours of purchase.
-          </p>
-        </article>
-        <article class="policy-card reveal">
-          <p class="eyebrow">Terms of Service</p>
-          <h3>Project terms for service delivery.</h3>
-          <p>
-            Clients agree to provide clear project information, respond within reasonable timelines,
-            and review deliverables according to the agreed scope. Work beyond scope may require a custom quote.
-          </p>
-        </article>
-        <article class="policy-card reveal">
-          <p class="eyebrow">Privacy Policy</p>
-          <h3>How information is used.</h3>
-          <p>
-            Contact and project information is used only for communication, planning, invoicing, and delivery.
-            Payment details are handled by third-party providers such as PayPal.
-          </p>
-        </article>
-        <article class="policy-card reveal">
-          <p class="eyebrow">Cookie Policy</p>
-          <h3>Simple site preferences.</h3>
-          <p>
-            This website may use essential cookies or local browser storage to remember cookie consent
-            and improve basic site functionality. No payment card information is stored on this website.
-          </p>
-        </article>
-      </section>
+      <section class="page" id="contact" data-page="contact" hidden aria-labelledby="contact-title">
+        <div class="contact-layout">
+          <div class="contact-copy reveal">
+            <p class="section-label">Contact</p>
+            <h1 id="contact-title">Launch a project request.</h1>
+            <p>
+              Send the project details BSD needs to understand the business, service type,
+              budget range, timeline, and next step.
+            </p>
+            <div class="contact-actions">
+              <a class="contact-chip" href="mailto:brandonstlewis73@gmail.com" data-track="email_click">brandonstlewis73@gmail.com</a>
+              <a class="contact-chip" id="phone-chip" href="/contact" data-route="contact">Call/Text</a>
+              <a class="contact-chip" id="instagram-chip" href="https://www.instagram.com/bsd_designs_/" target="_blank" rel="noopener noreferrer" data-track="instagram_click">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="17.5" cy="6.5" r="1.2"></circle>
+                </svg>
+                Instagram
+              </a>
+            </div>
+          </div>
 
-      <section class="section cta-section reveal" data-page="home">
-        <h2>Ready to turn your business into a serious digital experience?</h2>
-        <div class="cta-actions">
-          <a class="button button-primary magnetic" href="#contact">Get a Free Quote</a>
-          <a class="button button-ghost magnetic optional-contact" id="call-link" href="#contact">Call/Text Now</a>
+          <form
+            class="lead-form reveal"
+            id="lead-form"
+            data-api="/api/contact"
+            action="https://formsubmit.co/brandonstlewis73@gmail.com"
+            method="post"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="New BSD Lead" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_autoresponse" value="Thank you for contacting BSD. Your project request was received and will be reviewed shortly." />
+            <input type="hidden" name="_next" value="https://www.brandonstlewisdesign.shop/contact" />
+            <label class="honeypot" aria-hidden="true">
+              Leave this field empty
+              <input name="website_url" type="text" tabindex="-1" autocomplete="off" />
+            </label>
+            <label>
+              Name
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              Phone <span>optional</span>
+              <input name="phone" type="tel" autocomplete="tel" />
+            </label>
+            <label>
+              Business
+              <input name="business" type="text" required />
+            </label>
+            <label>
+              Service Needed
+              <select name="service" required>
+                <option value="">Choose a service</option>
+                <option>Website Development</option>
+                <option>Online Store</option>
+                <option>POS System</option>
+                <option>AI Receptionist</option>
+                <option>Booking System</option>
+                <option>Secure Uploads</option>
+                <option>Branding & Graphics</option>
+                <option>Flyer & Print Campaigns</option>
+                <option>Business Automation</option>
+                <option>Social Media Management</option>
+              </select>
+            </label>
+            <label>
+              Budget / Scope
+              <select name="budget" required>
+                <option value="">Choose a range</option>
+                <option>Starter: under $150</option>
+                <option>Growth: $150 - $500</option>
+                <option>Premium: $500 - $1,500</option>
+                <option>Custom system: $1,500+</option>
+              </select>
+            </label>
+            <label>
+              Timeline
+              <select name="timeline" required>
+                <option value="">Choose timeline</option>
+                <option>As soon as possible</option>
+                <option>Within 2 weeks</option>
+                <option>This month</option>
+                <option>Planning ahead</option>
+              </select>
+            </label>
+            <label class="full">
+              Project Description
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <p class="form-status" id="form-status" aria-live="polite"></p>
+            <button class="button button-primary full" type="submit">Submit Project Request</button>
+          </form>
         </div>
       </section>
 
-      <section class="section contact-section" id="contact" data-page="contact">
-        <div class="contact-copy reveal">
-          <p class="eyebrow">Contact</p>
-          <h2>Book a project or request a quote.</h2>
-          <p>
-            Send your contact details, business type, and service needed. The form validates before
-            submission and routes to BSD.
-          </p>
-          <div class="contact-buttons">
-            <a class="contact-chip" href="mailto:brandonstlewis73@gmail.com">Email</a>
-            <a class="contact-chip optional-contact" id="phone-chip" href="#contact">Call/Text</a>
-            <a class="contact-chip social-chip optional-contact" id="instagram-chip" href="#contact" target="_blank" rel="noreferrer" aria-label="Open BSD on Instagram">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1.2" />
-              </svg>
-              <span>Instagram</span>
-            </a>
+      <section class="page" id="reviews" data-page="reviews" hidden aria-labelledby="reviews-title">
+        <div class="review-layout">
+          <div class="review-copy reveal">
+            <p class="section-label">Client Feedback</p>
+            <h1 id="reviews-title">Submit feedback for approval.</h1>
+            <p>
+              Approved real testimonials can be added here. No public client review is shown until
+              it has been received and approved.
+            </p>
+            <div class="empty-review-state">
+              <strong>No approved public reviews published yet.</strong>
+              <span>Clients can submit feedback using the form on this page.</span>
+            </div>
           </div>
-        </div>
 
-        <form class="lead-form reveal" id="lead-form" action="https://formsubmit.co/brandonstlewis73@gmail.com" method="post" novalidate>
-          <input type="hidden" name="_subject" value="New BSD Lead" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_autoresponse" value="Thank you for contacting BSD. Your project request was received and will be reviewed shortly." />
-          <input type="hidden" name="_next" value="https://brandonstlewisdesign.shop/" />
-          <label>
-            Name
-            <input name="name" type="text" autocomplete="name" required />
-          </label>
-          <label>
-            Phone
-            <input name="phone" type="tel" autocomplete="tel" required />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-          <label>
-            Business Type
-            <input name="business_type" type="text" placeholder="Restaurant, salon, store, hotel..." required />
-          </label>
-          <label>
-            Service Needed
-            <select name="service_needed" required>
-              <option value="">Choose a service</option>
-              <option>Website Development</option>
-              <option>Online Store</option>
-              <option>POS System</option>
-              <option>AI Receptionist</option>
-              <option>Booking System</option>
-              <option>Secure Uploads</option>
-              <option>Branding & Graphics</option>
-              <option>Business Automation</option>
-              <option>Social Media Management</option>
-            </select>
-          </label>
-          <label>
-            Budget / Scope
-            <select name="budget_scope" required>
-              <option value="">Choose a range</option>
-              <option>Starter: under $150</option>
-              <option>Growth: $150 - $500</option>
-              <option>Premium: $500 - $1,500</option>
-              <option>Custom system: $1,500+</option>
-            </select>
-          </label>
-          <label>
-            Timeline
-            <select name="timeline" required>
-              <option value="">Choose timeline</option>
-              <option>As soon as possible</option>
-              <option>Within 2 weeks</option>
-              <option>This month</option>
-              <option>Planning ahead</option>
-            </select>
-          </label>
-          <label class="full">
-            Message
-            <textarea name="message" rows="5" required></textarea>
-          </label>
-          <div class="transmission-panel full" aria-hidden="true">
-            <span></span>
-            <strong>Project Request Terminal</strong>
-            <small>Ready to transmit brief</small>
-          </div>
-          <p class="form-status" id="form-status" aria-live="polite"></p>
-          <button class="button button-primary magnetic full" type="submit">Submit Project Request</button>
-        </form>
-      </section>
-
-      <section class="section review-studio" id="reviews" data-page="reviews">
-        <div class="review-copy reveal">
-          <p class="eyebrow">Client Reviews</p>
-          <h2>Share your project experience.</h2>
-          <p>
-            Clients can submit feedback directly from the site. Reviews are sent for approval
-            before being added to the public page.
-          </p>
-          <div class="review-preview">
-            <blockquote>
-              The new website gave our business a cleaner online presence and made the process easy from start to finish.
-            </blockquote>
-            <span>Example client review</span>
-          </div>
+          <form
+            class="review-form reveal"
+            id="review-form"
+            data-api="/api/review"
+            action="https://formsubmit.co/brandonstlewis73@gmail.com"
+            method="post"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="New BSD Website Review" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://www.brandonstlewisdesign.shop/reviews" />
+            <label class="honeypot" aria-hidden="true">
+              Leave this field empty
+              <input name="website_url" type="text" tabindex="-1" autocomplete="off" />
+            </label>
+            <label>
+              Name
+              <input name="reviewer_name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Business Name
+              <input name="business_name" type="text" required />
+            </label>
+            <label>
+              Email
+              <input name="reviewer_email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              Rating
+              <select name="rating" required>
+                <option value="">Choose rating</option>
+                <option>5 stars</option>
+                <option>4 stars</option>
+                <option>3 stars</option>
+              </select>
+            </label>
+            <label class="full">
+              Review
+              <textarea name="review" rows="5" required></textarea>
+            </label>
+            <p class="form-status" id="review-status" aria-live="polite"></p>
+            <button class="button button-primary full" type="submit">Submit Review</button>
+          </form>
         </div>
-        <form class="review-form reveal" id="review-form" action="https://formsubmit.co/brandonstlewis73@gmail.com" method="post" novalidate>
-          <input type="hidden" name="_subject" value="New BSD Website Review" />
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_next" value="https://brandonstlewisdesign.shop/" />
-          <label>
-            Name
-            <input name="reviewer_name" type="text" autocomplete="name" required />
-          </label>
-          <label>
-            Business Name
-            <input name="business_name" type="text" required />
-          </label>
-          <label>
-            Email
-            <input name="reviewer_email" type="email" autocomplete="email" required />
-          </label>
-          <label>
-            Rating
-            <select name="rating" required>
-              <option value="">Choose rating</option>
-              <option>5 stars</option>
-              <option>4 stars</option>
-              <option>3 stars</option>
-            </select>
-          </label>
-          <label class="full">
-            Review
-            <textarea name="review" rows="5" required></textarea>
-          </label>
-          <p class="form-status" id="review-status" aria-live="polite"></p>
-          <button class="button button-primary magnetic full" type="submit">Submit Review</button>
-        </form>
       </section>
     </main>
 
     <footer class="site-footer">
       <div>
         <strong>BSD</strong>
-        <span>brandonstlewisdesign.shop</span>
+        <span>Brandon St Lewis Designs</span>
       </div>
-      <div>
-        <span>Websites / POS / AI / Branding / Automation</span>
-        <span>Available worldwide</span>
-      </div>
+      <nav aria-label="Footer links">
+        <a href="/policies" data-route="policies">Privacy Policy</a>
+        <a href="/policies" data-route="policies">Terms of Service</a>
+        <a href="/policies" data-route="policies">Refund Policy</a>
+        <a href="/policies" data-route="policies">Cookie Policy</a>
+      </nav>
     </footer>
-    <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+
+    <aside class="cookie-banner" id="cookie-banner" aria-label="Privacy and cookies" aria-live="polite">
       <div>
         <strong>Privacy & Cookies</strong>
         <p>
-          BSD uses essential browser storage only to remember your cookie choice
-          and keep the website working properly. Payment details are handled securely by PayPal.
+          BSD uses local browser storage for cookie notice preference and intro display.
+          PayPal loads only when checkout is available or requested.
         </p>
       </div>
       <div class="cookie-actions">
-        <a class="button button-ghost" href="#pricing">View Policies</a>
-        <button class="button button-primary" id="accept-cookies" type="button">Accept Cookies</button>
+        <a class="button button-secondary" href="/policies" data-route="policies">View Policy</a>
+        <button class="button button-primary" id="accept-cookies" type="button">Accept</button>
       </div>
-    </div>
-    <dialog class="project-modal" id="project-modal">
-      <button class="modal-close" id="modal-close" type="button" aria-label="Close project preview">Close</button>
+    </aside>
+
+    <dialog class="modal project-modal" id="project-modal" aria-labelledby="project-modal-title">
+      <button class="modal-close" id="project-modal-close" type="button" aria-label="Close project preview">Close</button>
       <div class="modal-media">
-        <img id="modal-image" src="assets/anchorwheel-website-project.png" alt="" />
+        <img id="project-modal-image" src="/assets/anchorwheel-website-project.png" alt="" width="1568" height="1003" />
       </div>
       <div class="modal-copy">
-        <span id="modal-type">Live Website</span>
-        <h2 id="modal-title">Anchorwheel Financial Co.</h2>
-        <p id="modal-copy">A live financial services website designed for tax preparation, amendment review, tax debt resolution review, booking, and lead generation.</p>
-        <a class="button button-primary" id="modal-link" href="#contact">Discuss Similar Work</a>
+        <span id="project-modal-status">Live Client Project</span>
+        <p id="project-modal-type">Live Website / Financial Services</p>
+        <h2 id="project-modal-title">Anchorwheel Financial Co.</h2>
+        <p id="project-modal-copy">
+          A live financial services website for virtual tax preparation, amended returns,
+          tax debt resolution review, booking, and lead generation.
+        </p>
+        <div class="modal-actions">
+          <a class="button button-primary" id="project-modal-link" href="/contact" data-route="contact">Discuss Similar Work</a>
+        </div>
       </div>
     </dialog>
-    <dialog class="project-modal service-modal" id="service-modal">
+
+    <dialog class="modal service-modal" id="service-modal" aria-labelledby="service-modal-title">
       <button class="modal-close" id="service-modal-close" type="button" aria-label="Close service details">Close</button>
       <div class="modal-media">
-        <img id="service-modal-image" src="assets/anchorwheel-website-project.png" alt="" />
+        <img id="service-modal-image" src="/assets/anchorwheel-website-project.png" alt="" width="1568" height="1003" />
       </div>
       <div class="modal-copy">
-        <span id="service-modal-type">Service</span>
+        <span id="service-modal-type">Websites / Lead Flow / Launch</span>
         <h2 id="service-modal-title">Website Development</h2>
-        <p id="service-modal-copy">Premium responsive websites with strong branding, lead capture, SEO foundations, and fast loading.</p>
+        <p id="service-modal-copy">
+          Custom websites for businesses that need a premium online presence, clear service pages,
+          mobile-first layouts, SEO foundations, and contact paths that convert interest into leads.
+        </p>
         <ul class="service-deliverables" id="service-modal-list"></ul>
-        <a class="button button-primary" id="service-modal-cta" href="#contact">Start This Service</a>
+        <a class="button button-primary" id="service-modal-cta" href="/contact" data-route="contact">Book This Service</a>
       </div>
     </dialog>
   </body>
