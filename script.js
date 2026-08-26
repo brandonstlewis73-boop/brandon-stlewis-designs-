@@ -102,10 +102,6 @@ if ("scrollRestoration" in window.history) {
   window.history.scrollRestoration = "manual";
 }
 
-if (siteMenu && siteMenu.parentElement !== document.body) {
-  document.body.appendChild(siteMenu);
-}
-
 function getCurrentPage() {
   const page = window.location.hash.replace("#", "") || "home";
   return validPages.has(page) ? page : "home";
