@@ -354,6 +354,7 @@
             data-status="Live Client Project"
             data-image="/assets/anchorwheel-website-project.png"
             data-copy="A live financial services website for virtual tax preparation, amended returns, tax debt resolution review, booking, and lead generation."
+            data-items="Live website build|Financial service presentation|Booking and inquiry flow|Mobile-ready layout|Domain-ready launch support"
             data-link="https://www.anchorwheelfinancialco.site"
           >
             <div class="project-media">
@@ -389,6 +390,7 @@
             data-status="Live Client Graphic Work"
             data-image="/assets/stoned-cooling-flyer-1.jpg"
             data-copy="Client flyer and logo-led graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and branded campaign visuals."
+            data-items="Logo-led campaign graphics|Print flyer layout|Social-ready promo visuals|Service list hierarchy|Strong call-to-action design"
           >
             <div class="project-media project-collage">
               <img src="/assets/stoned-cooling-flyer-1.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" width="853" height="1280" loading="lazy" decoding="async" />
@@ -415,6 +417,7 @@
             data-status="Concept / Prototype"
             data-image="/assets/hotel-booking-mockup.png"
             data-copy="Hospitality website concept with mobile booking flow, premium room presentation, inquiry capture, and brand-first layout."
+            data-items="Room showcase layout|Mobile booking path|Inquiry capture flow|Premium hospitality visuals|Concept UI presentation"
           >
             <div class="project-media">
               <img src="/assets/hotel-booking-mockup.png" alt="Hotel booking website concept on laptop and phone" width="1568" height="1003" loading="lazy" decoding="async" />
@@ -436,6 +439,7 @@
             data-status="Concept / Prototype"
             data-image="/assets/pos-dashboard-mockup.png"
             data-copy="Retail operations concept showing sales reporting, inventory cards, customer records, staff actions, and checkout-focused UI."
+            data-items="Sales dashboard concept|Inventory card layout|Customer record screens|Checkout workflow UI|Staff action panels"
           >
             <div class="project-media">
               <img src="/assets/pos-dashboard-mockup.png" alt="Retail POS dashboard concept on terminal and mobile screens" width="1586" height="992" loading="lazy" decoding="async" />
@@ -457,6 +461,7 @@
             data-status="Concept / Prototype"
             data-image="/assets/ai-receptionist-mockup.png"
             data-copy="AI receptionist concept with lead qualification, appointment cards, chat intake, and service routing for faster customer response."
+            data-items="AI chat intake concept|Lead qualification flow|Appointment prompt cards|Service routing layout|Customer response dashboard"
           >
             <div class="project-media">
               <img src="/assets/ai-receptionist-mockup.png" alt="AI receptionist dashboard concept with chat and booking panels" width="1586" height="992" loading="lazy" decoding="async" />
@@ -789,15 +794,15 @@
     </main>
 
     <footer class="site-footer">
-      <div>
-        <strong>BSD</strong>
-        <span>Brandon St Lewis Designs</span>
-      </div>
+      <a class="footer-brand" href="/" data-route="home" aria-label="BSD home">
+        <img src="/assets/bsd-header-wordmark-transparent.png" alt="Brandon St Lewis Designs" width="720" height="155" loading="lazy" decoding="async" />
+        <span>Creative web, graphics, and business systems.</span>
+      </a>
       <nav aria-label="Footer links">
-        <a href="/policies" data-route="policies">Privacy Policy</a>
-        <a href="/policies" data-route="policies">Terms of Service</a>
-        <a href="/policies" data-route="policies">Refund Policy</a>
-        <a href="/policies" data-route="policies">Cookie Policy</a>
+        <a href="/policies" data-route="policies">Privacy</a>
+        <a href="/policies" data-route="policies">Terms</a>
+        <a href="/policies" data-route="policies">Refunds</a>
+        <a href="/policies" data-route="policies">Cookies</a>
       </nav>
     </footer>
 
@@ -828,6 +833,8 @@
           A live financial services website for virtual tax preparation, amended returns,
           tax debt resolution review, booking, and lead generation.
         </p>
+        <p class="modal-label">Project details</p>
+        <ul class="modal-points" id="project-modal-list"></ul>
         <div class="modal-actions">
           <a class="button button-primary" id="project-modal-link" href="/contact" data-route="contact">Discuss Similar Work</a>
         </div>
@@ -846,7 +853,8 @@
           Custom websites for businesses that need a premium online presence, clear service pages,
           mobile-first layouts, SEO foundations, and contact paths that convert interest into leads.
         </p>
-        <ul class="service-deliverables" id="service-modal-list"></ul>
+        <p class="modal-label">What BSD builds</p>
+        <ul class="modal-points service-deliverables" id="service-modal-list"></ul>
         <a class="button button-primary" id="service-modal-cta" href="/contact" data-route="contact">Book This Service</a>
       </div>
     </dialog>

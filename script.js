@@ -424,8 +424,9 @@ function initProjects() {
   const type = document.getElementById("project-modal-type");
   const title = document.getElementById("project-modal-title");
   const copy = document.getElementById("project-modal-copy");
+  const list = document.getElementById("project-modal-list");
   const link = document.getElementById("project-modal-link");
-  if (!modal || !image || !status || !type || !title || !copy || !link) return;
+  if (!modal || !image || !status || !type || !title || !copy || !list || !link) return;
 
   document.querySelectorAll("[data-project-open]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -438,6 +439,16 @@ function initProjects() {
       type.textContent = card.dataset.type || "";
       title.textContent = card.dataset.title || "Project";
       copy.textContent = card.dataset.copy || "";
+      list.innerHTML = "";
+
+      (card.dataset.items || "")
+        .split("|")
+        .filter(Boolean)
+        .forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          list.appendChild(li);
+        });
 
       if (card.dataset.link) {
         link.href = card.dataset.link;
