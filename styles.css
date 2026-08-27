@@ -1558,7 +1558,7 @@ textarea[aria-invalid="true"] {
 
   .hero-visual {
     position: absolute;
-    inset: 0 -28vw -2svh -42vw;
+    inset: 8svh 4vw 12svh 2vw;
     z-index: 1;
     width: auto;
     height: auto;
@@ -1581,9 +1581,10 @@ textarea[aria-invalid="true"] {
   }
 
   .racer-art {
-    left: 62%;
-    width: 202%;
-    bottom: -1.7rem;
+    left: 50%;
+    width: 104%;
+    bottom: -1.1rem;
+    opacity: 0.86;
   }
 
   .project-grid,
@@ -1731,10 +1732,10 @@ textarea[aria-invalid="true"] {
   }
 
   .racer-art {
-    left: 69%;
-    width: 190%;
-    bottom: -2.45rem;
-    opacity: 0.9;
+    left: 50%;
+    width: 104%;
+    bottom: -0.8rem;
+    opacity: 0.86;
   }
 
   .service-grid,
@@ -1795,6 +1796,11 @@ textarea[aria-invalid="true"] {
 
   .brand-home {
     width: 190px;
+  }
+
+  .racer-art {
+    left: 49%;
+    bottom: -4.8rem;
   }
 
   .scene-frame {
