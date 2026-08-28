@@ -587,11 +587,13 @@ textarea:focus-visible {
 }
 
 .racer-art {
+  display: block;
   position: absolute;
   left: 58%;
   bottom: -0.4rem;
   z-index: 2;
   width: min(1160px, 118%);
+  height: auto;
   max-width: none;
   transform: translateX(-50%);
   filter:
@@ -1335,19 +1337,29 @@ textarea[aria-invalid="true"] {
 }
 
 .footer-brand {
-  display: grid;
-  gap: 0.45rem;
-  width: min(360px, 54vw);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: min(390px, 54vw);
 }
 
 .footer-brand img {
-  width: 100%;
+  width: 78px;
   height: auto;
-  filter: drop-shadow(0 0 18px rgba(20, 125, 255, 0.45));
+  flex: 0 0 auto;
+  aspect-ratio: 1;
+  border: 1px solid rgba(116, 196, 255, 0.24);
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 24px rgba(20, 125, 255, 0.38),
+    0 18px 42px rgba(0, 0, 0, 0.42);
 }
 
 .footer-brand span {
   color: rgba(247, 249, 255, 0.62);
+  max-width: 18rem;
   font-size: 0.9rem;
   line-height: 1.4;
 }
@@ -1507,12 +1519,16 @@ textarea[aria-invalid="true"] {
   .hero-layout {
     width: min(100% - 1rem, 1280px);
     min-height: calc(100svh - var(--header));
-    padding: clamp(1.2rem, 5svh, 3rem) 0 1.35rem;
+    padding: 0.85rem 0 1.15rem;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0.9rem;
   }
 
   .hero-copy {
+    order: 2;
     position: relative;
     z-index: 5;
     text-align: left;
@@ -1557,19 +1573,21 @@ textarea[aria-invalid="true"] {
   }
 
   .hero-visual {
-    position: absolute;
-    inset: 8svh 4vw 12svh 2vw;
+    order: 1;
+    position: relative;
+    inset: auto;
     z-index: 1;
-    width: auto;
+    width: 100%;
     height: auto;
     min-height: auto;
     margin-top: 0;
-    opacity: 0.96;
+    overflow: visible;
+    opacity: 1;
   }
 
   .scene-frame {
-    height: 100%;
-    min-height: 100%;
+    height: auto;
+    min-height: 0;
     overflow: visible;
     background:
       radial-gradient(circle at 64% 62%, rgba(80, 228, 255, 0.22), transparent 18rem),
@@ -1581,10 +1599,16 @@ textarea[aria-invalid="true"] {
   }
 
   .racer-art {
-    left: 50%;
-    width: 104%;
-    bottom: -1.1rem;
-    opacity: 0.86;
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    bottom: auto;
+    max-width: 100%;
+    margin: 0 auto;
+    transform: none;
+    opacity: 0.96;
+    animation: none;
   }
 
   .project-grid,
@@ -1660,7 +1684,7 @@ textarea[aria-invalid="true"] {
   }
 
   .footer-brand {
-    width: min(320px, 100%);
+    width: min(360px, 100%);
   }
 
   .site-footer nav {
@@ -1732,10 +1756,12 @@ textarea[aria-invalid="true"] {
   }
 
   .racer-art {
-    left: 50%;
-    width: 104%;
-    bottom: -0.8rem;
-    opacity: 0.86;
+    left: auto;
+    width: 100%;
+    top: auto;
+    bottom: auto;
+    opacity: 0.96;
+    transform: none;
   }
 
   .service-grid,
@@ -1799,12 +1825,14 @@ textarea[aria-invalid="true"] {
   }
 
   .racer-art {
-    left: 49%;
-    bottom: -4.8rem;
+    left: auto;
+    width: 100%;
+    top: auto;
+    bottom: auto;
   }
 
   .scene-frame {
-    min-height: 280px;
+    min-height: 0;
   }
 }
 
