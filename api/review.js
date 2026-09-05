@@ -124,8 +124,18 @@ module.exports = async function handler(req, res) {
     `;
 
     const result = await sendEmail({ subject: `New BSD review: ${business}`, html, replyTo: email });
-    res.statusCode = result.configured ? 200 : 202;
-    res.end(JSON.stringify({ ok: true, emailConfigured: result.configured }));
+    if (!result.configured) {
+      res.statusCode = 503;
+      res.end(
+        JSON.stringify({
+          error: "Review email is not configured. Please email BSD directly at brandonstlewis73@gmail.com.",
+        }),
+      );
+      return;
+    }
+
+    res.statusCode = 200;
+    res.end(JSON.stringify({ ok: true, emailConfigured: true }));
   } catch {
     res.statusCode = 500;
     res.end(JSON.stringify({ error: "Review submission failed" }));

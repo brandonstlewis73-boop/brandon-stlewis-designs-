@@ -530,7 +530,8 @@ function initAsyncForm(formId, statusId, successMessage, eventName) {
         body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
+      const responseData = await response.json().catch(() => ({}));
+      if (response.ok && responseData.emailConfigured !== false) {
         form.reset();
         markInvalidFields(form);
         status.textContent = successMessage;
