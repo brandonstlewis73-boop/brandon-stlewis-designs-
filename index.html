@@ -80,17 +80,8 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <canvas class="live-background" id="live-background" aria-hidden="true"></canvas>
-    <div class="site-shell" aria-hidden="true"></div>
 
-    <section class="intro-sequence" id="intro-sequence" aria-label="BSD intro">
-      <div class="intro-panel">
-        <img src="/assets/bsd-premium-logo.png" alt="" width="96" height="96" />
-        <p>Initializing BSD studio</p>
-        <span class="intro-line"><span></span></span>
-        <button class="text-button" id="intro-skip" type="button">Skip</button>
-      </div>
-    </section>
+
 
     <header class="site-header">
       <nav class="navbar" aria-label="Primary navigation">
@@ -112,7 +103,7 @@
           <a href="/contact" data-route="contact">Contact</a>
         </div>
 
-        <a class="header-cta" href="/contact" data-route="contact">Book a Project</a>
+        <a class="header-cta" href="/contact" data-route="contact">Start a Project</a>
 
         <button
           class="menu-toggle"
@@ -142,37 +133,28 @@
 
     <main id="main" tabindex="-1">
       <section class="page page-home" id="home" data-page="home" aria-labelledby="home-title">
-        <div class="hero-layout">
-          <div class="hero-copy reveal">
-            <p class="section-label">Creative Web & Graphic Solutions</p>
-            <h1 id="home-title">Build. Brand. Launch.</h1>
-            <p class="hero-lede">
-              Websites, graphics, POS, AI tools, and automation for serious businesses.
-            </p>
-            <div class="hero-actions" aria-label="Primary actions">
-              <a class="button button-primary" href="/contact" data-route="contact">Book a Project</a>
-              <a class="button button-secondary" href="/projects" data-route="projects">View Projects</a>
-            </div>
-          </div>
-
-          <div class="hero-visual reveal" aria-label="BSD cinematic digital studio scene">
-            <div class="scene-frame">
-              <div class="scene-depth" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <img
-                class="racer-art"
-                src="/assets/bsd-creative-racers.png"
-                alt="Futuristic BSD racers inside a blue digital scene"
-                width="1672"
-                height="941"
-                decoding="async"
-              />
-            </div>
-          </div>
+        <div class="editorial-hero">
+          <p class="section-label">Independent design. Built for business.</p>
+          <div class="editorial-heading"><h1 id="home-title">Your next<br>chapter, <span>designed.</span></h1><p>Websites, branding, and business systems by Brandon St Lewis.</p></div>
         </div>
+        <div class="featured-grid" aria-label="Selected client work">
+          <a class="featured-work anchorwheel-work" href="https://www.anchorwheelfinancialco.site" target="_blank" rel="noopener noreferrer">
+            <div class="work-caption"><div><strong>Website</strong><span>Live client project</span></div><span>Anchorwheel Financial Co.</span></div>
+            <img src="/assets/anchorwheel-live.png" alt="Screenshot of the live Anchor Wheel Finance Co. homepage" width="1568" height="1003">
+            <span class="work-link">View the live website</span>
+          </a>
+          <a class="featured-work cooling-work" href="/projects" data-route="projects">
+            <div class="work-caption"><div><strong>Social Media Marketing</strong><span>Client creative work</span></div><span>Stoned Cooling Services</span></div>
+            <img src="/assets/stoned-instagram-1.jpg" alt="Stoned Cooling Services promotional graphic from Instagram">
+            <span class="social-brand"><img src="/assets/stoned-instagram-0.jpg" alt="Stoned Cooling Services original logo" width="44" height="44"><span>Original brand identity</span></span><span class="work-link">Explore the project</span>
+          </a>
+        </div>
+        <div class="home-services">
+          <a href="/services" data-route="services"><h2>Websites</h2><p>Modern websites built around your business and customers.</p></a>
+          <a href="/services" data-route="services"><h2>Branding</h2><p>Distinctive logos and graphics that make your business recognizable.</p></a>
+          <a href="/services" data-route="services"><h2>Business Systems</h2><p>Booking, automation, and tools that simplify your everyday work.</p></a>
+        </div>
+        <div class="home-contact"><div><p class="section-label">Let's build what's next.</p><h2>Have a project in mind?</h2></div><a class="button button-primary" href="/contact" data-route="contact">Start a Project</a></div>
       </section>
 
       <section class="page" id="services" data-page="services" hidden aria-labelledby="services-title">
@@ -193,7 +175,7 @@
               data-service-card
               data-title="Website Development"
               data-type="Websites / Lead Flow / Launch"
-              data-image="/assets/anchorwheel-website-project.png"
+              data-image="/assets/anchorwheel-live.png"
               data-copy="Custom websites for businesses that need a premium online presence, clear service pages, mobile-first layouts, SEO foundations, and contact paths that convert interest into leads."
               data-items="Responsive page design|Mobile-first build|SEO-ready structure|Quote/contact flow|Domain and launch support"
             >
@@ -283,7 +265,7 @@
               data-service-card
               data-title="Branding & Graphics"
               data-type="Brand Identity / Graphics / Print"
-              data-image="/assets/stoned-cooling-logo.jpg"
+              data-image="/assets/stoned-instagram-0.jpg"
               data-copy="Branding and graphic design for businesses that need logos, colors, social visuals, business cards, launch graphics, and a sharper visual identity."
               data-items="Logo concepts|Brand colors|Social profile graphics|Business card layout|Launch visuals"
             >
@@ -313,7 +295,7 @@
               data-service-card
               data-title="Flyer & Print Campaigns"
               data-type="Flyers / Print / Social Ads"
-              data-image="/assets/stoned-cooling-flyer-1.jpg"
+              data-image="/assets/stoned-instagram-1.jpg"
               data-copy="Flyer and print campaigns for service promotions, launches, events, and local business ads with strong hierarchy and clear calls to action."
               data-items="Promotional flyer design|Print-ready layout|Social media versions|CTA structure|Brand-matched campaign graphics"
             >
@@ -352,14 +334,14 @@
             data-title="Anchorwheel Financial Co."
             data-type="Live Website / Financial Services"
             data-status="Live Client Project"
-            data-image="/assets/anchorwheel-website-project.png"
+            data-image="/assets/anchorwheel-live.png"
             data-copy="A live financial services website for virtual tax preparation, amended returns, tax debt resolution review, booking, and lead generation."
             data-items="Live website build|Financial service presentation|Booking and inquiry flow|Mobile-ready layout|Domain-ready launch support"
             data-link="https://www.anchorwheelfinancialco.site"
           >
             <div class="project-media">
               <img
-                src="/assets/anchorwheel-website-project.png"
+                src="/assets/anchorwheel-live.png"
                 alt="Anchorwheel Financial Co website preview on laptop and phone"
                 width="1568"
                 height="1003"
@@ -386,26 +368,27 @@
             class="project-card reveal"
             data-project-card
             data-title="Stoned Cooling Services"
-            data-type="Flyer Design / Logo Graphics / Print"
+            data-type="Social Media Marketing / Logo Design / Promotional Graphics"
             data-status="Live Client Graphic Work"
-            data-image="/assets/stoned-cooling-flyer-1.jpg"
-            data-copy="Client flyer and logo-led graphic work for a vehicle A/C repair service, including promotional layouts, service messaging, and branded campaign visuals."
-            data-items="Logo-led campaign graphics|Print flyer layout|Social-ready promo visuals|Service list hierarchy|Strong call-to-action design"
+            data-image="/assets/stoned-instagram-1.jpg"
+            data-copy="Social media marketing creative by Brandon St Lewis for Stoned Cooling Services: original logo design, branded promotional graphics, and service-focused content for Instagram."
+            data-link="https://www.instagram.com/stonedcoolingservices/"
+            data-items="Original logo design|Branded social media graphics|Service promotions|Instagram campaign creative|Clear calls to action"
           >
             <div class="project-media project-collage">
-              <img src="/assets/stoned-cooling-flyer-1.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" width="853" height="1280" loading="lazy" decoding="async" />
-              <img src="/assets/stoned-cooling-flyer-2.jpg" alt="Stoned Cooling Services promotional flyer" width="853" height="1280" loading="lazy" decoding="async" />
-              <img src="/assets/stoned-cooling-logo.jpg" alt="Stoned Cooling Services logo graphic" width="1280" height="720" loading="lazy" decoding="async" />
+              <img src="/assets/stoned-instagram-1.jpg" alt="Stoned Cooling Services vehicle AC repair flyer" width="853" height="1280" loading="lazy" decoding="async" />
+              <img src="/assets/stoned-instagram-3.jpg" alt="Stoned Cooling Services branded Instagram reel thumbnail" width="360" height="640" loading="lazy" decoding="async" />
+              <img src="/assets/stoned-instagram-0.jpg" alt="Original Stoned Cooling Services Instagram profile logo" width="150" height="150" loading="lazy" decoding="async" />
               <span>Live Client Graphic Work</span>
             </div>
             <div class="project-copy">
-              <p>Flyers / Logo Graphics / Print</p>
+              <p>Social Media Marketing</p>
               <h2>Stoned Cooling Services</h2>
               <span>
-                Flyer and brand graphic work for a vehicle A/C repair service, with service-focused
-                messaging and print/social campaign visuals.
+                A consistent visual identity across promotional posts and reels, created by Brandon St Lewis.
               </span>
               <button class="button button-secondary" type="button" data-project-open>View Case Study</button>
+              <a class="button button-secondary" href="https://www.instagram.com/stonedcoolingservices/" target="_blank" rel="noopener noreferrer">View Instagram</a>
             </div>
           </article>
 
@@ -823,7 +806,7 @@
     <dialog class="modal project-modal" id="project-modal" aria-labelledby="project-modal-title">
       <button class="modal-close" id="project-modal-close" type="button" aria-label="Close project preview">Close</button>
       <div class="modal-media">
-        <img id="project-modal-image" src="/assets/anchorwheel-website-project.png" alt="" width="1568" height="1003" />
+        <img id="project-modal-image" src="/assets/anchorwheel-live.png" alt="" width="1568" height="1003" />
       </div>
       <div class="modal-copy">
         <span id="project-modal-status">Live Client Project</span>
@@ -844,7 +827,7 @@
     <dialog class="modal service-modal" id="service-modal" aria-labelledby="service-modal-title">
       <button class="modal-close" id="service-modal-close" type="button" aria-label="Close service details">Close</button>
       <div class="modal-media">
-        <img id="service-modal-image" src="/assets/anchorwheel-website-project.png" alt="" width="1568" height="1003" />
+        <img id="service-modal-image" src="/assets/anchorwheel-live.png" alt="" width="1568" height="1003" />
       </div>
       <div class="modal-copy">
         <span id="service-modal-type">Websites / Lead Flow / Launch</span>
