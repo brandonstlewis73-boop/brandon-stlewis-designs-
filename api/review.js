@@ -1,143 +1,32 @@
-const rateLimit = new Map();
-
-function readJson(req) {
-  if (req.body && typeof req.body === "object") return Promise.resolve(req.body);
-  return new Promise((resolve, reject) => {
-    let body = "";
-    req.on("data", (chunk) => {
-      body += chunk;
-      if (body.length > 16_000) {
-        req.destroy();
-        reject(new Error("Request too large"));
-      }
-    });
-    req.on("end", () => {
-      try {
-        resolve(body ? JSON.parse(body) : {});
-      } catch {
-        reject(new Error("Invalid JSON"));
-      }
-    });
-    req.on("error", reject);
-  });
+const config = require('../review-config.json');
+async function readJson(req) {
+  if (req.body && typeof req.body === 'object') return req.body;
+  let raw = '';
+  for await (const chunk of req) { raw += chunk; if (raw.length > 10000) throw new Error('Request too large'); }
+  return raw ? JSON.parse(raw) : {};
 }
-
-function clientIp(req) {
-  const forwarded = req.headers["x-forwarded-for"];
-  return String(Array.isArray(forwarded) ? forwarded[0] : forwarded || req.socket?.remoteAddress || "unknown")
-    .split(",")[0]
-    .trim();
-}
-
-function limited(req) {
-  const ip = clientIp(req);
-  const now = Date.now();
-  const hit = rateLimit.get(ip) || { count: 0, reset: now + 10 * 60 * 1000 };
-  if (now > hit.reset) {
-    hit.count = 0;
-    hit.reset = now + 10 * 60 * 1000;
-  }
-  hit.count += 1;
-  rateLimit.set(ip, hit);
-  return hit.count > 5;
-}
-
-function text(value, max = 1200) {
-  return String(value || "").trim().slice(0, max);
-}
-
-function validEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || ""));
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-async function sendEmail({ subject, html, replyTo }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.BSD_EMAIL_TO || "brandonstlewis73@gmail.com";
-  const from = process.env.BSD_EMAIL_FROM || "BSD Website <onboarding@resend.dev>";
-  if (!apiKey) return { configured: false };
-
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ from, to, subject, html, reply_to: replyTo }),
-  });
-
-  if (!response.ok) throw new Error(await response.text());
-  return { configured: true };
-}
-
 module.exports = async function handler(req, res) {
-  res.setHeader("Content-Type", "application/json; charset=utf-8");
-  if (req.method !== "POST") {
-    res.statusCode = 405;
-    res.end(JSON.stringify({ error: "Method not allowed" }));
-    return;
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-store');
+  const end=(status,data)=>{res.statusCode=status;res.end(JSON.stringify(data));};
+  if(!['GET','POST','DELETE'].includes(req.method))return end(405,{error:'Method not allowed.'});
+  if(!config.endpoint)return end(503,{error:'Reviews are being set up.'});
+  const action=new URL(req.url,'https://bsd.local').searchParams.get('action');
+  if(req.method!=='GET'){
+    const origin=req.headers.origin;
+    const allowed=['https://www.brandonstlewisdesign.shop','https://brandonstlewisdesign.shop','http://localhost:4173','http://127.0.0.1:4173'];
+    if(origin&&!allowed.includes(origin)&&!(!process.env.VERCEL&&/^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)))return end(403,{error:'Request not allowed.'});
   }
-
-  if (limited(req)) {
-    res.statusCode = 429;
-    res.end(JSON.stringify({ error: "Too many requests" }));
-    return;
-  }
-
   try {
-    const body = await readJson(req);
-    if (text(body.website_url)) {
-      res.statusCode = 202;
-      res.end(JSON.stringify({ ok: true }));
-      return;
+    const token=String(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith('bsd_review_session='))?.slice('bsd_review_session='.length)||'';
+    const body=req.method==='GET'?undefined:JSON.stringify(await readJson(req));
+    const response=await fetch(config.endpoint+(action?'?action='+encodeURIComponent(action):''),{method:req.method,headers:{'Content-Type':'application/json','x-bsd-session':token,'x-bsd-client':String(req.headers['x-forwarded-for']||req.socket?.remoteAddress||'unknown').split(',')[0].trim()},body});
+    const data=await response.json().catch(()=>({error:'Reviews are temporarily unavailable.'}));
+    if(response.ok&&action==='login'&&data.token){
+      res.setHeader('Set-Cookie',`bsd_review_session=${data.token}; Path=/api/review; HttpOnly; Secure; SameSite=Strict; Max-Age=28800`);
+      delete data.token;
     }
-
-    const name = text(body.reviewer_name, 120);
-    const business = text(body.business_name, 180);
-    const email = text(body.reviewer_email, 160);
-    const rating = text(body.rating, 40);
-    const review = text(body.review, 1800);
-
-    if (!name || !business || !validEmail(email) || !rating || !review) {
-      res.statusCode = 400;
-      res.end(JSON.stringify({ error: "Missing required fields" }));
-      return;
-    }
-
-    const html = `
-      <h1>New BSD review submission</h1>
-      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-      <p><strong>Business:</strong> ${escapeHtml(business)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p><strong>Rating:</strong> ${escapeHtml(rating)}</p>
-      <p><strong>Review:</strong></p>
-      <p>${escapeHtml(review).replace(/\n/g, "<br>")}</p>
-      <p>This review should be approved manually before publishing.</p>
-    `;
-
-    const result = await sendEmail({ subject: `New BSD review: ${business}`, html, replyTo: email });
-    if (!result.configured) {
-      res.statusCode = 503;
-      res.end(
-        JSON.stringify({
-          error: "Review email is not configured. Please email BSD directly at brandonstlewis73@gmail.com.",
-        }),
-      );
-      return;
-    }
-
-    res.statusCode = 200;
-    res.end(JSON.stringify({ ok: true, emailConfigured: true }));
-  } catch {
-    res.statusCode = 500;
-    res.end(JSON.stringify({ error: "Review submission failed" }));
-  }
+    if(action==='logout')res.setHeader('Set-Cookie','bsd_review_session=; Path=/api/review; HttpOnly; Secure; SameSite=Strict; Max-Age=0');
+    end(response.status,data);
+  } catch {end(503,{error:'Reviews are temporarily unavailable. Please try again.'});}
 };

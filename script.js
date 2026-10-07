@@ -533,14 +533,22 @@ function initAsyncForm(formId, statusId, successMessage, eventName) {
       const responseData = await response.json().catch(() => ({}));
       if (response.ok && responseData.emailConfigured !== false) {
         form.reset();
-        markInvalidFields(form);
+        form.querySelectorAll("[aria-invalid]").forEach(field => field.removeAttribute("aria-invalid"));
         status.textContent = successMessage;
         status.className = "form-status is-success";
         submit.disabled = false;
         track(eventName);
+        if (formId === "review-form") loadReviews();
         return;
       }
-    } catch {
+      if (formId === "review-form") throw new Error(responseData.error || "Your review could not be published.");
+    } catch (error) {
+      if (formId === "review-form") {
+        status.textContent = error.message || "Your review could not be published. Please try again.";
+        status.className = "form-status is-error";
+        submit.disabled = false;
+        return;
+      }
       // The static local server does not run Vercel functions. Fall back below.
     }
 
@@ -835,9 +843,71 @@ function init() {
   initServices();
   initProjects();
   initAsyncForm("lead-form", "form-status", "Project request received. BSD will review it and respond by email.", "quote_submission");
-  initAsyncForm("review-form", "review-status", "Review submitted for approval. Thank you.", "review_submission");
+  initAsyncForm("review-form", "review-status", "Your review is now published. Thank you.", "review_submission");
   initLiveBackground();
   initPointerParallax();
 }
 
 init();
+
+
+let reviewOwner = false;
+async function verifyReviewOwner() {
+  try {const r = await fetch("/api/review?action=owner");reviewOwner = r.ok && (await r.json()).owner === true;} catch {reviewOwner = false;}
+}
+async function loadReviews() {
+  const list = document.getElementById("review-list");
+  if (!list) return;
+  try {
+    const response = await fetch("/api/review");
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error);
+    list.replaceChildren();
+    if (!data.reviews.length) { const p = document.createElement("p"); p.textContent = "Be the first to share your experience."; list.append(p); }
+    for (const review of data.reviews) {
+      const item = document.createElement("article"); item.className = "client-review";
+      const heading = document.createElement("h3"); heading.textContent = review.name;
+      const detail = document.createElement("p"); detail.className = "review-meta"; detail.textContent = `${review.business} · ${review.rating} out of 5 · ${new Date(review.created_at).toLocaleDateString()}`;
+      const copy = document.createElement("p"); copy.className = "review-text"; copy.textContent = review.review;
+      item.append(heading, detail, copy);
+      if (reviewOwner) {
+        const button = document.createElement("button"); button.type = "button"; button.className = "button button-secondary"; button.textContent = "Delete review";
+        button.addEventListener("click", async () => {
+          if (!confirm("Delete this review permanently?")) return;
+          button.disabled = true;
+          try {
+            const r = await fetch("/api/review", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: review.id }) });
+            const result = await r.json(); if (!r.ok) throw new Error(result.error); await loadReviews();
+          } catch (error) { document.getElementById("review-admin-status").textContent = error.message; button.disabled = false; }
+        });
+        item.append(button);
+      }
+      list.append(item);
+    }
+  } catch (error) { list.textContent = error.message || "Reviews could not be loaded. Please refresh."; }
+}
+async function showReviewAdmin() {
+  await verifyReviewOwner();
+  document.getElementById("review-admin").hidden = false;
+  document.getElementById("review-owner-form").hidden = reviewOwner;
+  document.getElementById("review-logout").hidden = !reviewOwner;
+  document.getElementById("review-admin-status").textContent = reviewOwner ? "Signed in as owner." : "Sign in to manage reviews.";
+  await loadReviews();
+}
+document.getElementById("manage-reviews")?.addEventListener("click", showReviewAdmin);
+document.getElementById("review-owner-form")?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = document.getElementById("review-login"); button.disabled = true;
+  try {
+    const r = await fetch("/api/review?action=login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({email:document.getElementById("review-owner-email").value,password:document.getElementById("review-owner-password").value}) });
+    const data = await r.json(); if (!r.ok) throw new Error(data.error);
+    document.getElementById("review-owner-password").value = "";
+    await showReviewAdmin();
+  } catch (error) { document.getElementById("review-admin-status").textContent = error.message; }
+  button.disabled = false;
+});
+document.getElementById("review-logout")?.addEventListener("click", async () => {
+  try {const r=await fetch("/api/review?action=logout",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});if(!r.ok)throw new Error();reviewOwner=false;await showReviewAdmin();}catch{document.getElementById("review-admin-status").textContent="Could not sign out. Please try again.";}
+});
+if (new URLSearchParams(location.search).has("manage")) showReviewAdmin();
+else loadReviews();

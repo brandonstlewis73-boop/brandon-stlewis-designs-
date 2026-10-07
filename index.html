@@ -87,10 +87,10 @@
       <nav class="navbar" aria-label="Primary navigation">
         <a class="brand-home" href="/" data-route="home" aria-label="BSD home">
           <img
-            src="/assets/bsd-header-wordmark-transparent.png"
+            src="/assets/bsd-header-wordmark.jpg"
             alt="Brandon St Lewis Designs"
-            width="1193"
-            height="203"
+            width="1280"
+            height="720"
             decoding="async"
           />
         </a>
@@ -717,14 +717,20 @@
         <div class="review-layout">
           <div class="review-copy reveal">
             <p class="section-label">Client Feedback</p>
-            <h1 id="reviews-title">Submit feedback for approval.</h1>
+            <h1 id="reviews-title">What clients say.</h1>
             <p>
-              Approved real testimonials can be added here. No public client review is shown until
-              it has been received and approved.
+              Share your experience working with BSD. Reviews publish immediately.
             </p>
-            <div class="empty-review-state">
-              <strong>No approved public reviews published yet.</strong>
-              <span>Clients can submit feedback using the form on this page.</span>
+            <div id="review-list" aria-live="polite"><p>Loading reviews…</p></div>
+            <button class="text-button" id="manage-reviews" type="button">Manage reviews</button>
+            <div id="review-admin" hidden>
+              <p id="review-admin-status" role="status"></p>
+              <form id="review-owner-form">
+                <label>Owner email<input id="review-owner-email" type="email" autocomplete="username" value="brandonstlewis73@gmail.com" required></label>
+                <label>Password<input id="review-owner-password" type="password" autocomplete="current-password" required></label>
+                <button class="button button-secondary" id="review-login" type="submit">Sign in</button>
+              </form>
+              <button class="button button-secondary" id="review-logout" type="button" hidden>Sign out</button>
             </div>
           </div>
 
@@ -746,15 +752,15 @@
             </label>
             <label>
               Name
-              <input name="reviewer_name" type="text" autocomplete="name" required />
+              <input name="reviewer_name" type="text" autocomplete="name" maxlength="120" required />
             </label>
             <label>
               Business Name
-              <input name="business_name" type="text" required />
+              <input name="business_name" type="text" maxlength="180" required />
             </label>
             <label>
               Email
-              <input name="reviewer_email" type="email" autocomplete="email" required />
+              <input name="reviewer_email" type="email" autocomplete="email" maxlength="254" required />
             </label>
             <label>
               Rating
@@ -763,14 +769,17 @@
                 <option>5 stars</option>
                 <option>4 stars</option>
                 <option>3 stars</option>
+                <option>2 stars</option>
+                <option>1 star</option>
               </select>
             </label>
             <label class="full">
               Review
-              <textarea name="review" rows="5" required></textarea>
+              <textarea name="review" rows="5" minlength="10" maxlength="1800" required></textarea>
             </label>
             <p class="form-status" id="review-status" aria-live="polite"></p>
-            <button class="button button-primary full" type="submit">Submit Review</button>
+            <p class="review-disclosure full">Your name, business, rating, and review will be public. Your email stays private. BSD may remove reviews after publication.</p>
+            <button class="button button-primary full" type="submit">Publish Review</button>
           </form>
         </div>
       </section>
@@ -782,6 +791,7 @@
         <span>Creative web, graphics, and business systems.</span>
       </a>
       <nav aria-label="Footer links">
+        <a href="/reviews" data-route="reviews">Reviews</a>
         <a href="/policies" data-route="policies">Privacy</a>
         <a href="/policies" data-route="policies">Terms</a>
         <a href="/policies" data-route="policies">Refunds</a>

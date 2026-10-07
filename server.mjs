@@ -1,3 +1,6 @@
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+const reviewHandler = require("./api/review.js");
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import { extname, join, resolve } from "node:path";
@@ -31,7 +34,8 @@ createServer(async (request, response) => {
       return;
     }
 
-    if ((pathname === "/api/contact" || pathname === "/api/review") && request.method === "POST") {
+    if (pathname === "/api/review") { await reviewHandler(request, response); return; }
+    if (pathname === "/api/contact" && request.method === "POST") {
       response.writeHead(202, { "Content-Type": "application/json; charset=utf-8" });
       response.end(JSON.stringify({ ok: true, local: true }));
       return;

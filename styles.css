@@ -1976,3 +1976,30 @@ input,select,textarea { background:#fff; color:#101010; border-color:#999; }
 
 .social-brand { display:flex; align-items:center; gap:10px; padding:12px 24px 0; font-size:12px; }
 .cooling-work .social-brand img { width:44px; height:44px; object-fit:contain; }
+
+.client-review { padding:24px 0; border-bottom:1px solid #ccc; }
+.client-review h3 { margin-bottom:6px; }
+.review-meta,.review-disclosure { font-size:13px; }
+.review-text { white-space:pre-wrap; overflow-wrap:anywhere; }
+#review-admin { margin-top:16px; padding:20px; background:#eee; }
+#review-admin[hidden],#review-login[hidden],#review-logout[hidden] { display:none; }
+
+#review-owner-form[hidden] {display:none;}
+#review-owner-form {display:grid;gap:16px;}
+
+/* Preserve the metallic original logo on its native dark background. */
+.site-header {background:#03060d;color:#f7f9ff;}
+.navbar {border-bottom:1px solid #273345;min-height:100px;}
+.brand-home {width:420px;max-width:38vw;}
+.brand-home img {width:100%;height:90px;object-fit:cover;object-position:center;filter:none;}
+.desktop-nav {color:#d5dbe5;}
+.desktop-nav a:hover,.desktop-nav a[aria-current="page"] {color:#fff;}
+.menu-toggle {background:#101821;border-color:#354456;box-shadow:none;}
+@media(max-width:1000px) {.brand-home {width:310px;}.brand-home img {height:78px;}}
+@media(max-width:720px) {.navbar {min-height:90px;}.brand-home {width:calc(100vw - 110px);max-width:310px;}.brand-home img {height:78px;}}
+.review-form {background:#fff;border:1px solid #ccc;box-shadow:none;}
+.review-form label {color:#101010;}
+.review-disclosure {color:#4b4b48;line-height:1.5;}
+.form-status.is-success {color:#13643b;}
+.form-status.is-error {color:#a5162a;}
+.site-header {background:#000;}
